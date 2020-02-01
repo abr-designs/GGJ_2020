@@ -1,23 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Recycling;
 
 public class EnemyProjectile : MonoBehaviour
 {
 
     float projectileDamage = 1.0f;
+    
+    private void OnTriggerEnter(Collider other) {
 
-    private void OnCollisionEnter(Collision other) {
+        // Debug.Log($"{gameObject} collided with {other.name} with tag {other.tag}");
 
-        Debug.Log($"Collide with {other.gameObject}");
-        
+        // check if colliding with something to destroy it
+        bool collideWithDestroyer = false;
+
         // if collides with planet, then deal damage
-        if(other.gameObject.GetComponent<PlantBase>()) {
+        if(other.gameObject.tag == "Tree") {
             other.gameObject.GetComponent<PlantBase>().Damage(projectileDamage);
+            collideWithDestroyer = true;
+        } else if(other.gameObject.tag == "Ground") {
+            collideWithDestroyer = true;
         }
 
         // destroy projectile after collision
-        Destroy(gameObject);
+        if(collideWithDestroyer)
+            Destroy(gameObject);
 
 
     }

@@ -12,7 +12,7 @@ public class EnemySpawnController : MonoBehaviour
     bool isActiveStageSpawner;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // initialize spawnPointList
         foreach(Transform child in transform) {
@@ -28,6 +28,8 @@ public class EnemySpawnController : MonoBehaviour
     // }
 
     public void setSpawnersActive(bool b) {
+
+        isActiveStageSpawner = b;
         foreach(GameObject spawner in spawnPointList) {
             spawner.GetComponent<EnemySpawnPoint>().setIsSpawning(b);
         }

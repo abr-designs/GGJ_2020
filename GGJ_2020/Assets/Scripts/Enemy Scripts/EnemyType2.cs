@@ -11,8 +11,8 @@ public class EnemyType2 : EnemyBaseState
         setMovementSpeed(2.5f);
         setRotationSpeed(35.0f);
         // set health stats
-        setHealth(10.0f);
-        setDefense(10.0f);
+        setHealth(20.0f);
+        setDefense(0.0f);
         // set attack stats
         setAttackRange(5.0f);
         setAttackCooldown(5.0f);

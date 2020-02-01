@@ -95,6 +95,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
         activeSeeds = new Transform[seedGrowthLocations.Length];
         seedTimers = new float[seedGrowthLocations.Length];
         
+        health = 10;
         
         // set attack cooldown to zero
         Timer = 0;
@@ -136,15 +137,17 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     public void Damage(float amount)
     {
 
-        Debug.Log($"Deal {amount} damage to {name}");
+        health -= amount;
 
-        if (health < 0)
+        Debug.Log($"Deal [{amount}] damage to [{name}]. Remaining health = [{health}]");
+        
+        if (health <= 0)
         {
             SetState(STATE.DEATH);
             return;
         }
         
-        health -= amount;
+
     }
 
     public void Heal(float amount)

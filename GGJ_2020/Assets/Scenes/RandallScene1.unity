@@ -133,9 +133,9 @@ GameObject:
   - component: {fileID: 3895126}
   - component: {fileID: 3895125}
   - component: {fileID: 3895128}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Defensive Tree (1)
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 218931333}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -484,6 +484,81 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: ammoLibrary
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[BaseItem+itemList, Assembly-CSharp],[UnityEngine.GameObject,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[BaseItem+itemList,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  isDebug: 0
 --- !u!1001 &410454395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -825,9 +900,9 @@ GameObject:
   - component: {fileID: 683719092}
   - component: {fileID: 683719091}
   - component: {fileID: 683719095}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Defensive Tree
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1419,9 +1494,9 @@ GameObject:
   - component: {fileID: 1950149136}
   - component: {fileID: 1950149135}
   - component: {fileID: 1950149138}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Base Tree
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

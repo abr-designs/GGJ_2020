@@ -20,7 +20,7 @@ public class EnemyType1 : EnemyBaseState
         setRotationSpeed(50.0f);
         // set health stats
         setHealth(10.0f);
-        setDefense(10.0f);
+        setDefense(0.0f);
         // set attack stats
         setAttackRange(2.5f);
         setAttackCooldown(2.0f);

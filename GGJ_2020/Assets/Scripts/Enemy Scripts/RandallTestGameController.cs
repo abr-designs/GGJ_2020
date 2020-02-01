@@ -17,7 +17,9 @@ public class RandallTestGameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // set spawn controller 1 as active
+        changeActiveSpawnerSet(spawnController1);
+
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class RandallTestGameController : MonoBehaviour
             }
 
         }
+
     }
 
 }
