@@ -15,7 +15,7 @@ public enum enemyState {
 };
 
 private enemyState state;
-[SerializeField, ReadOnly]
+[SerializeField]
 protected GameObject target;
 // movement stats
 private float movementSpeed = 5.0f;

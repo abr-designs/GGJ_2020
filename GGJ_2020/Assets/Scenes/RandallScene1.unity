@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 3895127}
   - component: {fileID: 3895126}
   - component: {fileID: 3895125}
+  - component: {fileID: 3895128}
   m_Layer: 0
   m_Name: Defensive Tree (1)
   m_TagString: Untagged
@@ -212,6 +213,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3895123}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &3895128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cdd1354d6e06c44bb2d45c94ed9627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  plantType: 0
+  growCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  growTime: 0
+  seedGrowthTime: 0
+  attackCooldown: 0
+  seedPrefab: {fileID: 0}
+  seedGrowthLocations: []
 --- !u!1 &163834327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3080447566786746894, guid: dec44a5f7849342419ce57043650b84f,
@@ -798,6 +824,7 @@ GameObject:
   - component: {fileID: 683719093}
   - component: {fileID: 683719092}
   - component: {fileID: 683719091}
+  - component: {fileID: 683719095}
   m_Layer: 0
   m_Name: Defensive Tree
   m_TagString: Untagged
@@ -878,6 +905,31 @@ Transform:
   m_Father: {fileID: 538246236}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &683719095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683719090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cdd1354d6e06c44bb2d45c94ed9627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  plantType: 0
+  growCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  growTime: 0
+  seedGrowthTime: 0
+  attackCooldown: 0
+  seedPrefab: {fileID: 0}
+  seedGrowthLocations: []
 --- !u!1001 &814895259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -974,7 +1026,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 683719090}
+      objectReference: {fileID: 0}
     - target: {fileID: 8926211259009203867, guid: 715ccf2f173e74c8d9a06e706191b9cf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1317,7 +1369,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504859706}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1687759e456c4cc3b5c8e021676b6ce, type: 3}
   m_Name: 
@@ -1366,6 +1418,7 @@ GameObject:
   - component: {fileID: 1950149137}
   - component: {fileID: 1950149136}
   - component: {fileID: 1950149135}
+  - component: {fileID: 1950149138}
   m_Layer: 0
   m_Name: Base Tree
   m_TagString: Untagged
@@ -1446,6 +1499,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950149133}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1950149138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950149133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0cdd1354d6e06c44bb2d45c94ed9627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  plantType: 0
+  growCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  growTime: 0
+  seedGrowthTime: 0
+  attackCooldown: 0
+  seedPrefab: {fileID: 0}
+  seedGrowthLocations: []
 --- !u!1 &2117678011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1568,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1950149133}
+      objectReference: {fileID: 0}
     - target: {fileID: 8209669636462423545, guid: 0be7ae5190bff4569a54ff4366d03bcd,
         type: 3}
       propertyPath: m_Name
@@ -1569,7 +1647,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 3895123}
+      objectReference: {fileID: 0}
     - target: {fileID: 8926211259009203867, guid: 715ccf2f173e74c8d9a06e706191b9cf,
         type: 3}
       propertyPath: m_LocalPosition.x
