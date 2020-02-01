@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
-// using Unity.Mathf;
+using Recycling;
 
 public abstract class EnemyBaseState : MonoBehaviour, IDamageable
 {
@@ -171,13 +171,32 @@ private float attackDamage;
     {
         health -= amount - defense;
 
+        Debug.Log($"Deal {amount} damage to {name}. Remaining health = {health}");
+
         if(health <= 0) {
             state = enemyState.dying;
+
+            // run death animation
+            //
+
+            // destroy/recycle enemy
+            Destroy(gameObject);
         }
     }
 
     public void Heal(float amount)
     {
         health += amount;
+    }
+
+
+    [FoldoutGroup("Debug Damage Enemy"), Button("Enemy Receive 1 Damage")]
+    public void debugDamageEnemy() {
+        Damage(1);
+    }
+
+    [FoldoutGroup("Debug Damage Enemy"), Button("Kill Enemy")]
+    public void debugKillEnemy() {
+        Damage(health);
     }
 }
