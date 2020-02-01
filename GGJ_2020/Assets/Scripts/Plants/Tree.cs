@@ -19,7 +19,10 @@ public class Tree : PlantBase
         if (Timer < growTime)
         {
             Timer += Time.deltaTime;
-            transform.localScale = Vector3.one * growCurve.Evaluate(Timer / growTime); 
+            transform.localScale = Vector3.one * growCurve.Evaluate(Timer / growTime);
+            
+            //Paints on the Fertility Controller
+            FertilityController.PaintAt(transform.position + Vector3.up, fetilityRadius);
         }
         else
         {
