@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 // using Unity.Mathf;
 
@@ -14,7 +15,8 @@ public enum enemyState {
 };
 
 private enemyState state;
-public GameObject target;
+[SerializeField, ReadOnly]
+protected GameObject target;
 // movement stats
 private float movementSpeed = 5.0f;
 private float lookAtThreshold = 2.5f;
