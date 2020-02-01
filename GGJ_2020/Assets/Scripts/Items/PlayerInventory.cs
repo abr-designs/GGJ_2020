@@ -6,7 +6,7 @@ using UnityEngine;
 
 class PlayerInventory : SerializedMonoBehaviour
  {
-     [SerializeField]
+     [SerializeField, ReadOnly]
      private Dictionary<BaseItem.itemList, int> playerInventory = new Dictionary<BaseItem.itemList, int>();
 
     private void Start() {
