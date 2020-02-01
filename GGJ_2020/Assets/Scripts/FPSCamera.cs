@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FPSCamera : MonoBehaviour
 {
+
+    public Material material;
     public Camera cam;
 
     public float mainSpeed = 5.0f; //regular speed
@@ -160,6 +162,13 @@ public class FPSCamera : MonoBehaviour
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
         }
       
+    }
+
+    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        // Copy the source Render Texture to the destination,
+        // applying the material along the way.
+        Graphics.Blit(source, destination, material);
     }
     void OnCollisionStay(Collision other)
     {
