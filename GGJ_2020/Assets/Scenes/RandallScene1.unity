@@ -133,9 +133,9 @@ GameObject:
   - component: {fileID: 3895126}
   - component: {fileID: 3895125}
   - component: {fileID: 3895128}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Defensive Tree (1)
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,9 +256,9 @@ GameObject:
   - component: {fileID: 218931335}
   - component: {fileID: 218931334}
   - component: {fileID: 218931333}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -825,9 +825,9 @@ GameObject:
   - component: {fileID: 683719092}
   - component: {fileID: 683719091}
   - component: {fileID: 683719095}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Defensive Tree
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1419,9 +1419,9 @@ GameObject:
   - component: {fileID: 1950149136}
   - component: {fileID: 1950149135}
   - component: {fileID: 1950149138}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Base Tree
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
