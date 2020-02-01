@@ -20,7 +20,7 @@ public class EnemyType1 : EnemyBaseState
 
     public override void performAttack() {
         
-        Debug.Log($"Attack from {gameObject.name}");
+        // Debug.Log($"Attack from {gameObject.name}");
 
     }
 
