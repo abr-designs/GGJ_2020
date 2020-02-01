@@ -8,6 +8,9 @@ public class EnemySpawnController : MonoBehaviour
     public List<GameObject> spawnPointList;
     public Transform enemyContainer;
 
+    [SerializeField]
+    bool isActiveStageSpawner;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,16 @@ public class EnemySpawnController : MonoBehaviour
             child.GetComponent<EnemySpawnPoint>().setSpawnController(this.gameObject);
         }
 
+    }
+
+    // void Update() {
+    //     if(Input.GetKeyDown(KeyCode.A)) { activateSpawners(); }
+    // }
+
+    public void setSpawnersActive(bool b) {
+        foreach(GameObject spawner in spawnPointList) {
+            spawner.GetComponent<EnemySpawnPoint>().setIsSpawning(b);
+        }
     }
 
 }

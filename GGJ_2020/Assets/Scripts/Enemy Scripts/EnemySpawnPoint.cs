@@ -14,6 +14,7 @@ public class EnemySpawnPoint : MonoBehaviour
     private float spawnCooldown;
     private float spawnCooldownCounter;
 
+    [SerializeField]
     private bool isSpawning;
 
     // Start is called before the first frame update
@@ -47,9 +48,10 @@ public class EnemySpawnPoint : MonoBehaviour
         // Debug.Log(spawnCooldown);
         spawnCooldownCounter = spawnCooldown;
 
-        isSpawning = true;
+        // isSpawning = true;
     }
 
+    public void setIsSpawning(bool b) { isSpawning = b; /*Debug.Log($"Set spawning {isSpawning}");*/ }
     public void setSpawnController(GameObject g) {
         spawnController = g.GetComponent<EnemySpawnController>();
     }
@@ -89,5 +91,22 @@ public class EnemySpawnPoint : MonoBehaviour
             // reset spawn countdown
             spawnCooldownCounter = spawnCooldown;
         }
+    }
+
+    public void spawnDebugEnemy(GameObject g) {
+
+        GameObject enemyToSpawn = g;
+
+        // check for null value
+        if(enemyToSpawn == null) {
+            Debug.LogError("Cannot spawn enemy. No enemy type selected.");
+            return;
+        }
+
+        // spawn the selected type of enemy
+        Vector3 spawnPositionOffset = new Vector3(0,1,0);
+        Vector3 spawnPosition = transform.position + spawnPositionOffset;
+
+        GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, spawnController.enemyContainer);
     }
 }
