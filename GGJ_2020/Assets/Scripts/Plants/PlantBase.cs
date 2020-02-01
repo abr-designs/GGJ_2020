@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public abstract class PlantBase : MonoBehaviour
+public abstract class PlantBase : MonoBehaviour, IDamageable
 {
     public enum STATE
     {
@@ -115,4 +115,16 @@ public abstract class PlantBase : MonoBehaviour
     public abstract void DeathState();
     
     //================================================================================================================//
+    public void Damage(float amount)
+    {
+        if(health < 0)
+            return;
+        
+        health -= amount;
+    }
+
+    public void Heal(float amount)
+    {
+        health += amount;
+    }
 }
