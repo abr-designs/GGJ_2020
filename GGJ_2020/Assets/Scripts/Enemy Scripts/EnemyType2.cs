@@ -20,7 +20,7 @@ public class EnemyType2 : EnemyBaseState
 
     public override void performAttack() {
         
-        Debug.Log("Attack from enemy 2");
+        // Debug.Log("Attack from enemy 2");
 
     }
 
