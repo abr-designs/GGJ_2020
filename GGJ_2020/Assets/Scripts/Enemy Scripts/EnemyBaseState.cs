@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 // using Unity.Mathf;
 
-public abstract class EnemyBaseState : MonoBehaviour
+public abstract class EnemyBaseState : MonoBehaviour, IDamageable
 {
     
 public enum enemyState {
@@ -156,29 +156,26 @@ private float attackDamage;
     // enemy will received damage from an attack minus its defense stat
     public void receiveDamage(float f) {
         
-        health -= f - defense;
-
-        if(health <= 0) {
-            state = enemyState.dying;
-            performDeath();
-        }
+        
     }
 
     // abstract function to perform a specific attack base on the type of enemy
     public abstract void performAttack();
 
-    void performDeath() {
-        // perform an animation
-        //
-
-        // drop loot
-        // dropLoot();
-
-        // remove the game object
-        Destroy(gameObject);
-    }
-
     // abstract function to call items to be dropped based on this enemies drop tables
     // public abstract void dropLoot();
 
+    public void Damage(float amount)
+    {
+        health -= amount - defense;
+
+        if(health <= 0) {
+            state = enemyState.dying;
+        }
+    }
+
+    public void Heal(float amount)
+    {
+        health += amount;
+    }
 }
