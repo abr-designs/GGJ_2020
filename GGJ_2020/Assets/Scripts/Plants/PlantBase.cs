@@ -139,7 +139,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
 
         health -= amount;
 
-        Debug.Log($"Deal {amount} damage to {name}. Remaining health = {health}");
+        Debug.Log($"Deal [{amount}] damage to [{name}]. Remaining health = [{health}]");
         
         if (health <= 0)
         {
