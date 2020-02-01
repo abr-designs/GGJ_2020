@@ -10,6 +10,8 @@ public abstract class Singleton<T> : MonoBehaviour where T: MonoBehaviour
 
     protected virtual void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+        
         if (Instance != null)
         {
             Debug.LogError($"WARNING YOU ARE TRYING TO CREATE NEW INSTANCE OF {typeof(T)} WHEN ONE ALREADY EXISTS");
