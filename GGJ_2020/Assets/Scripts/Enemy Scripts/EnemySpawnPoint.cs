@@ -10,11 +10,15 @@ public class EnemySpawnPoint : MonoBehaviour
     
     public List<GameObject> enemyTypes;
 
-    int totalEnemies = 5;
-    int remainingEnemies;
+    // int totalEnemies = 5;
+    // int remainingEnemies;
 
+    [SerializeField]
+    private int spawnMinInterval, spawnMaxInterval;
     private float spawnCooldown;
     private float spawnCooldownCounter;
+    [SerializeField]
+    private float spawnSpeedMultiplier; // speed multiplier increase when damaged by fertility
 
     [SerializeField]
     private bool isSpawning;
@@ -36,7 +40,7 @@ public class EnemySpawnPoint : MonoBehaviour
 
         // Debug.Log(spawnCooldownCounter);
 
-        if(spawnCooldownCounter <= 0 && remainingEnemies > 0) {
+        if(spawnCooldownCounter <= 0) { //} && remainingEnemies > 0) {
             spawnEnemy();
         }
     }
@@ -44,27 +48,35 @@ public class EnemySpawnPoint : MonoBehaviour
     void initStats() {
 
         // totalEnemies = 5;
-        remainingEnemies = totalEnemies;
-
-        spawnCooldown = Random.Range(20,50) / 10;
+        // remainingEnemies = totalEnemies;
+        //spawnCooldown = 
+        setSpawnCooldown();
         // Debug.Log(spawnCooldown);
-        spawnCooldownCounter = spawnCooldown;
 
         // isSpawning = true;
+        spawnSpeedMultiplier = 1.0f;
+
     }
 
-    public void setIsSpawning(bool b) { isSpawning = b; /*Debug.Log($"Set spawning {isSpawning}");*/ }
+    public void setIsSpawning(bool b) { isSpawning = b; }
     public void setSpawnController(GameObject g) {
         spawnController = g.GetComponent<EnemySpawnController>();
     }
+    public void setSpawnSpeedMultiplier(float f) { spawnSpeedMultiplier = f; }
+    public float getSpawnSpeedMultiplier() { return spawnSpeedMultiplier; }
 
     // update counters being tracked for this enemy
     void updateCounters() {
-        if(spawnCooldownCounter > 0) { spawnCooldownCounter -= Time.deltaTime; }
+        if(spawnCooldownCounter > 0) { spawnCooldownCounter -= Time.deltaTime * spawnSpeedMultiplier; }
+    }
+
+    void setSpawnCooldown() {
+        spawnCooldown = (float)Random.Range(spawnMinInterval*10, spawnMaxInterval*10) / 10.0f;
+        spawnCooldownCounter = spawnCooldown;
     }
 
     void spawnEnemy() {
-        
+
         // determine what type of enemy to spawn
         //
 
@@ -83,18 +95,20 @@ public class EnemySpawnPoint : MonoBehaviour
 
             // set pathway for newEnemy
             newEnemy.GetComponent<EnemyBaseState>().setPathway(pathwayForSpawnPoint);
+            newEnemy.GetComponent<EnemyBaseState>().setSpawnPoint(gameObject);
 
             // reduce the number of remainingEnemies
-            remainingEnemies -= 1;
+            // remainingEnemies -= 1;
 
-            // check if remainingEnemies < 1
-            if(remainingEnemies < 1) {
-                // destroy or disable the spawner
-                isSpawning = false;
-            }
+            // // check if remainingEnemies < 1
+            // if(remainingEnemies < 1) {
+            //     // destroy or disable the spawner
+            //     isSpawning = false;
+            // }
 
             // reset spawn countdown
-            spawnCooldownCounter = spawnCooldown;
+            // spawnCooldownCounter = spawnCooldown;
+            setSpawnCooldown();
         }
     }
 
@@ -113,5 +127,9 @@ public class EnemySpawnPoint : MonoBehaviour
         Vector3 spawnPosition = transform.position + spawnPositionOffset;
 
         GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, spawnController.enemyContainer);
+
+        // set pathway for newEnemy
+        newEnemy.GetComponent<EnemyBaseState>().setPathway(pathwayForSpawnPoint);
+        newEnemy.GetComponent<EnemyBaseState>().setSpawnPoint(gameObject);
     }
 }

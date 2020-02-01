@@ -12,11 +12,14 @@ public enum enemyState {
     followWaypoint,
     pursueTarget,
     attack,
-    dying
+    dying,
+    returnHome
 };
 
 [SerializeField]
 private enemyState state;
+[SerializeField]
+private GameObject spawnPoint;
 
 // waypoint stats
 public RobotPathway robotPathway;
@@ -93,6 +96,8 @@ private float attackDamage;
     // get set pathway stats
     public RobotPathway getPathway() { return robotPathway; }
     public void setPathway(RobotPathway path) { robotPathway = path; }
+    public GameObject getSpawnPoint() { return spawnPoint; }
+    public void setSpawnPoint(GameObject g) { spawnPoint = g; }
 
     void defaultEnemyStats() {
         // set attack cooldown to zero
@@ -140,6 +145,12 @@ private float attackDamage;
                 transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
                 // state = enemyState.pursueTarget;
             } else {
+                // within threshold distance to waypoint
+                if(state == enemyState.returnHome) {
+                    // despawn enemy who returned home
+                    despawnEnemy();
+                }
+
                 // increment to next waypoint
                 // Debug.Log("Advance to next waypoint");
                 int waypointIndex = robotPathway.pathway.IndexOf(currentWaypoint);
@@ -150,6 +161,9 @@ private float attackDamage;
                 } else {
                     // set state to idle
                     state = enemyState.idle;
+                    // set state to return home after reaching last waypoint
+                    state = enemyState.returnHome;
+                    currentWaypoint = robotPathway.pathway[0];
                 }
             }
         }
@@ -162,6 +176,15 @@ private float attackDamage;
         
         // search a target forlder for any gameobject
         GameObject targetsParent = GameObject.Find("Trees").gameObject;
+
+        // check count of trees in scene
+        int numTrees = targetsParent.transform.childCount;
+        // if numTrees < 1 then set enemy to return to spawn point
+        if(numTrees < 1) {
+            state = enemyState.returnHome;
+            currentWaypoint = robotPathway.pathway[0];
+        }
+
         // select first child object from targetsParent
         foreach(Transform child in targetsParent.transform) {
 
@@ -266,6 +289,10 @@ private float attackDamage;
         health += amount;
     }
 
+    void despawnEnemy() {
+        // enemy returned home
+        Destroy(gameObject);
+    }
 
     [FoldoutGroup("Debug Damage Enemy"), Button("Enemy Receive 1 Damage")]
     public void debugDamageEnemy() {

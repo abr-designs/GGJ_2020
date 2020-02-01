@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
         }
 
         debugSpawnPoint.GetComponent<EnemySpawnPoint>().spawnDebugEnemy(prefabDebugEnemyType);
+        
     }
 
     #endregion //Spawn Debug Enemies

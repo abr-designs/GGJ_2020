@@ -44,8 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38de1641ff8b43da8fb087fddf83657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathwayForSpawnPoint: {fileID: 0}
   enemyTypes:
   - {fileID: 8209669636462423545, guid: 0be7ae5190bff4569a54ff4366d03bcd, type: 3}
+  spawnMinInterval: 2
+  spawnMaxInterval: 5
+  spawnSpeedMultiplier: 1
+  isSpawning: 0
 --- !u!1 &8114815939058115751
 GameObject:
   m_ObjectHideFlags: 0
