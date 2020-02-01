@@ -94,7 +94,14 @@ public class EnemySpawnPoint : MonoBehaviour
     }
 
     public void spawnDebugEnemy(GameObject g) {
+
         GameObject enemyToSpawn = g;
+
+        // check for null value
+        if(enemyToSpawn == null) {
+            Debug.LogError("Cannot spawn enemy. No enemy type selected.");
+            return;
+        }
 
         // spawn the selected type of enemy
         Vector3 spawnPositionOffset = new Vector3(0,1,0);

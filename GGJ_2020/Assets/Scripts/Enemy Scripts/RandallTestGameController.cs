@@ -51,6 +51,13 @@ public class RandallTestGameController : MonoBehaviour
 
     [FoldoutGroup("Odin Functions"), Button("Spawn Debug Enemy")]
     public void spawnDebugEnemy() {
+
+        // check for null value
+        if(debugSpawnPoint == null) {
+            Debug.LogError("Cannot spawn enemy. No spawn point selected.");
+            return;
+        }
+
         debugSpawnPoint.GetComponent<EnemySpawnPoint>().spawnDebugEnemy(prefabDebugEnemyType);
     }
 }
