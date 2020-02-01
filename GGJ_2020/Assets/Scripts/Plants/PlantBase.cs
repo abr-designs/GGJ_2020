@@ -40,6 +40,8 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     
     
     protected float Timer;
+    
+    //================================================================================================================//
 
     private new Transform transform;
 
