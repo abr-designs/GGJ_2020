@@ -5,9 +5,29 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 class PlayerInventory : SerializedMonoBehaviour
- {
-     [SerializeField, ReadOnly]
-     private Dictionary<BaseItem.itemList, int> playerInventory = new Dictionary<BaseItem.itemList, int>();
+{
+    [SerializeField] private bool isDebug;
+    
+    [SerializeField, ReadOnly]
+    private Dictionary<BaseItem.itemList, int> playerInventory = new Dictionary<BaseItem.itemList, int>();
+
+    [SerializeField, DisableInPlayMode, DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.Foldout)] 
+    private Dictionary<BaseItem.itemList, GameObject> ammoLibrary =
+        new Dictionary<BaseItem.itemList, GameObject>
+        {
+            {
+                BaseItem.itemList.bramblePlantSeed, null
+            },
+            {
+                BaseItem.itemList.oakWithBeesPlantSeed, null
+            },
+            {
+                BaseItem.itemList.slowingFungusPlantSeed, null
+            },
+            {
+                BaseItem.itemList.restorativeFlowerPlantSeed, null
+            },
+        };
 
     private void Start() {
         initInventory();
@@ -28,23 +48,19 @@ class PlayerInventory : SerializedMonoBehaviour
          alterItemQuantity(seed, 1);
      }
      
-     public GameObject GetSeed(BaseItem.itemList seed)
+     public bool TryGetSeed(BaseItem.itemList seed, out GameObject prefab)
      {
-         if (!alterItemQuantity(seed, -1))
-             return null;
-         switch (seed)
+         prefab = null;
+
+         if (!isDebug)
          {
-             case BaseItem.itemList.bramblePlantSeed:
-                 break;
-             case BaseItem.itemList.oakWithBeesPlantSeed:
-                 break;
-             case BaseItem.itemList.slowingFungusPlantSeed:
-                 break;
-             case BaseItem.itemList.restorativeFlowerPlantSeed:
-                 break;
+             if (!alterItemQuantity(seed, -1))
+                 return false;
          }
+
+         prefab = ammoLibrary[seed];
          
-         throw new NotImplementedException($"{seed} has not been implemented");
+         return true;
      }
 
      /// <summary>
