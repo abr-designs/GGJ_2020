@@ -8,14 +8,19 @@ public abstract class Singleton<T> : MonoBehaviour where T: MonoBehaviour
     public static T Instance { get; private set; }
     private static T _instance;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
-        if (_instance != null)
+        if (Instance != null)
         {
             Debug.LogError($"WARNING YOU ARE TRYING TO CREATE NEW INSTANCE OF {typeof(T)} WHEN ONE ALREADY EXISTS");
             Destroy(gameObject);
         }
 
-        _instance = this as T;
+        Instance = this as T;
+    }
+
+    protected virtual void OnDestroy()
+    {
+        Instance = null;
     }
 }
