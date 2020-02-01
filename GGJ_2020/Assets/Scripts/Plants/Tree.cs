@@ -24,12 +24,16 @@ public class Tree : PlantBase
         else
         {
             Timer = 0f;
-            SetState(STATE.IDLE);
+            SetState(STATE.FRUITING);
             transform.localScale = Vector3.one;
         }
     }
 
     public override void IdleState()
+    {
+    }
+
+    public override void FruitingState()
     {
         //Do nothing...
         for (var i = 0; i < seedGrowthLocations.Length; i++)
@@ -52,7 +56,6 @@ public class Tree : PlantBase
             activeSeeds[i].localScale = Vector3.one * growCurve.Evaluate( seedTimers[i] / growTime);
 
         }
-        
     }
 
     public override void AttackState()

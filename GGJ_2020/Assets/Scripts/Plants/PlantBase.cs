@@ -1,4 +1,5 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public abstract class PlantBase : MonoBehaviour, IDamageable
@@ -7,13 +8,22 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     {
         GROW,
         IDLE,
+        FRUITING,
         ATTACK,
         DEATH
     }
-    
+
+    public enum TYPE
+    {
+        TREE,
+        BRUSH
+    }
     //================================================================================================================//
 
+    [SerializeField, ReadOnly]
     private STATE currentState;
+    [SerializeField]
+    private TYPE plantType;
 
     private float health;
     
@@ -65,6 +75,9 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
             case STATE.IDLE:
                 IdleState();
                 break;
+            case STATE.FRUITING:
+                FruitingState();
+                break;
             case STATE.ATTACK:
                 AttackState();
                 break;
@@ -99,6 +112,8 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
                 break;
             case STATE.IDLE:
                 break;
+            case STATE.FRUITING:
+                break;
             case STATE.ATTACK:
                 break;
             case STATE.DEATH:
@@ -113,14 +128,18 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
 
     public abstract void GrowState();
     public abstract void IdleState();
+    public abstract void FruitingState();
     public abstract void AttackState();
     public abstract void DeathState();
     
     //================================================================================================================//
     public void Damage(float amount)
     {
-        if(health < 0)
+        if (health < 0)
+        {
+            SetState(STATE.DEATH);
             return;
+        }
         
         health -= amount;
     }
