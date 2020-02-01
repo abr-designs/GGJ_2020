@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5311914751631523827}
   - component: {fileID: 5311914751631523826}
   - component: {fileID: 1263730616}
+  - component: {fileID: 1263730610}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,7 +151,11 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 3927724437367063948, guid: 1800bf7fe4c869248a26367cba554fd4, type: 3}
+    - {fileID: 4008730514266649294, guid: e33ed91cb3c2c304089a9989083ae565, type: 3}
+    - {fileID: 2575019335926624051, guid: cd5cc820b365b60418660bf5d86c69e3, type: 3}
+    - {fileID: 3710909547522393244, guid: 00fb37af9f84f0e42820d37938077833, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -209,8 +214,8 @@ MonoBehaviour:
       Entry: 3
       Data: 0
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -221,8 +226,8 @@ MonoBehaviour:
       Entry: 3
       Data: 1
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -233,8 +238,8 @@ MonoBehaviour:
       Entry: 3
       Data: 2
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -245,8 +250,8 @@ MonoBehaviour:
       Entry: 3
       Data: 3
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -257,6 +262,22 @@ MonoBehaviour:
       Entry: 8
       Data: 
   isDebug: 0
+--- !u!114 &1263730610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311914751631523828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf74bc85ab39504eaf82b25897ad8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAmmo: 0
+  spawnPointTransform: {fileID: 5311914751818889891}
+  shootForce: 20
+  shootKey: 323
 --- !u!1 &5311914751818889895
 GameObject:
   m_ObjectHideFlags: 0

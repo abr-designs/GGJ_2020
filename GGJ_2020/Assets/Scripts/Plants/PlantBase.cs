@@ -23,13 +23,15 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
 
     protected static FertilityController FertilityController;
 
-    [Range(0.1f, 50f)]
-    protected float fetilityRadius = 1f;
+    
 
     [SerializeField, ReadOnly]
     private STATE currentState;
     [SerializeField]
     private TYPE plantType;
+    
+    [SerializeField, Range(0.1f, 50f)]
+    protected float fetilityRadius = 1f;
 
     [SerializeField]
     private float startHealth;
@@ -116,7 +118,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
         SetState(STATE.GROW);
     }
     
-    protected void SetState(STATE nextState)
+    protected virtual void SetState(STATE nextState)
     {
         currentState = nextState;
         
