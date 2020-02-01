@@ -48,6 +48,7 @@ public class Tree : PlantBase
             if (seedTimers[i] > growTime)
             {
                 activeSeeds[i].GetComponent<Rigidbody>().isKinematic = false;
+                activeSeeds[i].GetComponent<BoxCollider>().enabled = true;
                 activeSeeds[i] = null;
                 continue;
             }

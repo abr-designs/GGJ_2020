@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FPSCamera : MonoBehaviour
 {
@@ -9,9 +10,10 @@ public class FPSCamera : MonoBehaviour
     private bool invertY;
     public Camera cam;
 
-    public float mainSpeed = 5.0f; //regular speed
-    float shiftAdd = 5; //multiplied by how long shift is held.  Basically running
-    float maxShift = 100; //Maximum speed when holdin gshift
+    public float mainSpeed = 5.0f; //regular speed\
+    [SerializeField, Range(1f, 3f)]
+    private float runSpeedMultiplier = 1.75f;
+    
     public float jumpForce = 2.0f; // How Powerful is our Jump
     public LayerMask mask;
 
@@ -37,7 +39,7 @@ public class FPSCamera : MonoBehaviour
 
     public float rotationSpeed = 20f;
 
-    public float testHeight = 1.05f;
+    [FormerlySerializedAs("testHeight")] public float groundCheckDistance = 1.05f;
 
     private new Transform transform;
 
@@ -75,9 +77,19 @@ public class FPSCamera : MonoBehaviour
         //set the rotation
         newRotation = transform.eulerAngles;
 
+        //If left shift held, use run instead of walk speed
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            newPosition += transform.forward * (y * mainSpeed * runSpeedMultiplier * Time.deltaTime);
+            newPosition += transform.right * (x * mainSpeed* runSpeedMultiplier * Time.deltaTime);
+        }
+        else
+        {
+            newPosition += transform.forward * (y * mainSpeed * Time.deltaTime);
+            newPosition += transform.right * (x * mainSpeed * Time.deltaTime);
+        }
         //apply changes in position and rotation
-        newPosition += transform.forward * (y * mainSpeed * Time.deltaTime);
-        newPosition += transform.right * (x * mainSpeed * Time.deltaTime);
+        
 
         newRotation.y += rotateValue.x * rotationSpeed * Time.deltaTime;
 
@@ -174,11 +186,11 @@ public class FPSCamera : MonoBehaviour
     private void Jump()
     {
 
-        if (Physics.Raycast(transform.position, Vector3.down, testHeight, mask.value))
+        if (Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, mask.value))
         {
             Debug.Log("Did Hit");
             isGrounded = true;
-            Debug.DrawRay(transform.position, Vector3.down * testHeight, Color.green, 2f);
+            Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.green, 2f);
         }
         else
         {
@@ -186,7 +198,7 @@ public class FPSCamera : MonoBehaviour
             isGrounded = false;
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
             Debug.Log("Did not Hit");
-            Debug.DrawRay(transform.position, Vector3.down * testHeight, Color.red, 2f);
+            Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red, 2f);
         }
 
         if (isGrounded)
