@@ -1,6 +1,7 @@
 ﻿using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class PlantBase : MonoBehaviour, IDamageable
 {
@@ -30,7 +31,11 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     [SerializeField]
     private TYPE plantType;
 
-    private float health;
+    [SerializeField]
+    private float startHealth;
+    
+    [SerializeField, ProgressBar(0f,nameof(startHealth),0f,1f,0f), ReadOnly, PropertyOrder(-1000)]
+    private float currentHealth;
     
     [SerializeField]
     protected AnimationCurve growCurve = new AnimationCurve();
@@ -103,7 +108,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
         activeSeeds = new Transform[seedGrowthLocations.Length];
         seedTimers = new float[seedGrowthLocations.Length];
         
-        health = 10;
+        currentHealth = 10;
         
         // set attack cooldown to zero
         Timer = 0;
@@ -145,11 +150,11 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     public void Damage(float amount)
     {
 
-        health -= amount;
+        currentHealth -= amount;
 
-        Debug.Log($"Deal [{amount}] damage to [{name}]. Remaining health = [{health}]");
+        Debug.Log($"Deal [{amount}] damage to [{name}]. Remaining health = [{currentHealth}]");
         
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             SetState(STATE.DEATH);
 
@@ -167,7 +172,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
 
     public void Heal(float amount)
     {
-        health += amount;
+        currentHealth += amount;
     }
 
     //================================================================================================================//
@@ -179,6 +184,6 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
 
     [FoldoutGroup("Debug Damage Tree"), Button("Kill Tree")]
     public void debugKillTree() {
-        Damage(health);
+        Damage(currentHealth);
     }
 }
