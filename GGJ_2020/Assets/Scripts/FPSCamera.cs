@@ -17,9 +17,6 @@ public class FPSCamera : MonoBehaviour
     public float jumpForce = 2.0f; // How Powerful is our Jump
     public LayerMask mask;
 
-    Vector3 jump;
-
-
     bool isGrounded;
     bool hideMouse = true;
     Vector3 newPosition, newRotation;
@@ -203,7 +200,7 @@ public class FPSCamera : MonoBehaviour
 
         if (isGrounded)
         {
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
     }

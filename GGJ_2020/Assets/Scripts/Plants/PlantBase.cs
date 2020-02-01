@@ -20,6 +20,11 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     }
     //================================================================================================================//
 
+    protected static FertilityController FertilityController;
+
+    [Range(0.1f, 50f)]
+    protected float fetilityRadius = 1f;
+
     [SerializeField, ReadOnly]
     private STATE currentState;
     [SerializeField]
@@ -59,6 +64,9 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     private void Start()
     {
+        if(FertilityController == null)
+            FertilityController = FindObjectOfType<FertilityController>();
+        
         transform = gameObject.transform;
         
         Init();
