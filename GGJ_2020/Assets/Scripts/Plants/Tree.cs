@@ -66,6 +66,9 @@ public class Tree : PlantBase
 
     public override void DeathState()
     {
+
+        Destroy(gameObject);
+
         throw new System.NotImplementedException();
     }
 }

@@ -9,13 +9,10 @@ public class RandallTestGameController : MonoBehaviour
     public GameObject spawnController1;
     public GameObject spawnController2;
 
+
     [SerializeField]
     GameObject selectedSpawner;
 
-    [FoldoutGroup("Odin Functions")]
-    public GameObject debugSpawnPoint;
-    [FoldoutGroup("Odin Functions")]
-    public GameObject prefabDebugEnemyType;
 
     // Start is called before the first frame update
     void Start()
@@ -49,15 +46,4 @@ public class RandallTestGameController : MonoBehaviour
         }
     }
 
-    [FoldoutGroup("Odin Functions"), Button("Spawn Debug Enemy")]
-    public void spawnDebugEnemy() {
-
-        // check for null value
-        if(debugSpawnPoint == null) {
-            Debug.LogError("Cannot spawn enemy. No spawn point selected.");
-            return;
-        }
-
-        debugSpawnPoint.GetComponent<EnemySpawnPoint>().spawnDebugEnemy(prefabDebugEnemyType);
-    }
 }

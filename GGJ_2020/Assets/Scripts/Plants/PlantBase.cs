@@ -135,6 +135,9 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     //================================================================================================================//
     public void Damage(float amount)
     {
+
+        Debug.Log($"Deal {amount} damage to {name}");
+
         if (health < 0)
         {
             SetState(STATE.DEATH);

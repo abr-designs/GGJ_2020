@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -57,5 +58,31 @@ public class GameManager : MonoBehaviour
     }
     #endregion //Registration of Objects
     
+    //================================================================================================================//
+    
+    #region Spawn Debug Enemies
+
+    [FoldoutGroup("Debug Enemy Spawner")]
+    GameObject selectedSpawner;
+
+    [FoldoutGroup("Debug Enemy Spawner")]
+    public GameObject debugSpawnPoint;
+    [FoldoutGroup("Debug Enemy Spawner")]
+    public GameObject prefabDebugEnemyType;
+
+    [FoldoutGroup("Debug Enemy Spawner"), Button("Spawn Debug Enemy")]
+    public void spawnDebugEnemy() {
+
+        // check for null value
+        if(debugSpawnPoint == null) {
+            Debug.LogError("Cannot spawn enemy. No spawn point selected.");
+            return;
+        }
+
+        debugSpawnPoint.GetComponent<EnemySpawnPoint>().spawnDebugEnemy(prefabDebugEnemyType);
+    }
+
+    #endregion //Spawn Debug Enemies
+
     //================================================================================================================//
 }
