@@ -108,7 +108,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
         activeSeeds = new Transform[seedGrowthLocations.Length];
         seedTimers = new float[seedGrowthLocations.Length];
         
-        currentHealth = 10;
+        currentHealth = startHealth;
         
         // set attack cooldown to zero
         Timer = 0;
