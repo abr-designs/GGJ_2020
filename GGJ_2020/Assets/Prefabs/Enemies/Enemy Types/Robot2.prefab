@@ -107,7 +107,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de52d09ff33b4e10ac9ba743f3f6c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  robotPathway: {fileID: 0}
+  currentWaypoint: {fileID: 0}
   target: {fileID: 0}
+  projectilePrefab: {fileID: 5344517865195770641, guid: fc0179983179848deb9f8ff4d3916ccf,
+    type: 3}
 --- !u!1 &8926211259612322776
 GameObject:
   m_ObjectHideFlags: 0

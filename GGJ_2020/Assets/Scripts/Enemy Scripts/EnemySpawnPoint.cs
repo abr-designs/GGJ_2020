@@ -6,6 +6,8 @@ public class EnemySpawnPoint : MonoBehaviour
 {
     EnemySpawnController spawnController;
     
+    public RobotPathway pathwayForSpawnPoint;
+    
     public List<GameObject> enemyTypes;
 
     int totalEnemies = 5;
@@ -78,6 +80,9 @@ public class EnemySpawnPoint : MonoBehaviour
             Vector3 spawnPosition = transform.position + spawnPositionOffset;
 
             GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, spawnController.enemyContainer);
+
+            // set pathway for newEnemy
+            newEnemy.GetComponent<EnemyBaseState>().setPathway(pathwayForSpawnPoint);
 
             // reduce the number of remainingEnemies
             remainingEnemies -= 1;

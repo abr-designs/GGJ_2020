@@ -19,6 +19,7 @@ public class RandallTestGameController : MonoBehaviour
     {
         // set spawn controller 1 as active
         // changeActiveSpawnerSet(spawnController1);
+        Debug.Log("Press key 1 or 2 to activate stage spawners. Press 0 to deactivate stage.");
 
     }
 
@@ -43,7 +44,12 @@ public class RandallTestGameController : MonoBehaviour
             // activate selected spawn controller
             if(selectedSpawner != null) {
                 selectedSpawner.GetComponent<EnemySpawnController>().setSpawnersActive(true);
+                Debug.Log("Activate stage " + selectedSpawner);
+            } else {
+                // disable stage spawners
+                Debug.Log("Disable stage spawners");
             }
+
 
         }
 

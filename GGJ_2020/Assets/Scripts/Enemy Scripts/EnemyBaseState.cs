@@ -120,7 +120,7 @@ private float attackDamage;
     public void advanceOnWaypoint() {
 
         // determine position of target Waypoint
-        Debug.Log(currentWaypoint);
+        // Debug.Log(currentWaypoint);
 
         // check if facing target
         Vector3 localTarget = transform.InverseTransformPoint(currentWaypoint.transform.position);
@@ -134,14 +134,14 @@ private float attackDamage;
 
             // check range to target
             float distToTarget = Vector3.Distance(transform.position, currentWaypoint.transform.position);
-            float waypointDistThreshold = 1.0f;
+            float waypointDistThreshold = 1.5f;
             if(distToTarget > waypointDistThreshold) {
                 // move towards target
                 transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
                 // state = enemyState.pursueTarget;
             } else {
                 // increment to next waypoint
-                Debug.Log("Advance to next waypoint");
+                // Debug.Log("Advance to next waypoint");
                 int waypointIndex = robotPathway.pathway.IndexOf(currentWaypoint);
                 waypointIndex += 1;
                 // check if at final waypoint
@@ -158,7 +158,7 @@ private float attackDamage;
 
     public void searchForTarget() {
 
-        // check distance to a target plant
+        // check distance to a target plant]
         
         // search a target forlder for any gameobject
         GameObject targetsParent = GameObject.Find("Trees").gameObject;
@@ -167,13 +167,16 @@ private float attackDamage;
 
             // check distance
             float dist = Vector3.Distance(child.transform.position, transform.position);
+
+            // Debug.Log($"Distance from {gameObject} to {child} = {dist}");
+
             float distThreshold = 5.0f; // move to a class variable
             if(dist < distThreshold) {
                 setTarget(child.gameObject);
                 // set state to pursueTarget
                 state = enemyState.pursueTarget;
+                break;
             }
-            break;
         }
     }
 
