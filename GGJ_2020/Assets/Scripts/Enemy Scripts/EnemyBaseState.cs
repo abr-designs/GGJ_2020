@@ -9,12 +9,20 @@ public abstract class EnemyBaseState : MonoBehaviour, IDamageable
     
 public enum enemyState {
     idle,
-    pursue,
+    followWaypoint,
+    pursueTarget,
     attack,
     dying
 };
 
+[SerializeField]
 private enemyState state;
+
+// waypoint stats
+public RobotPathway robotPathway;
+
+Waypoint currentWaypoint; 
+
 [SerializeField]
 protected GameObject target;
 // movement stats
@@ -32,7 +40,6 @@ private float attackCooldownCounter;
 private float attackDamage;
 // drop table stats
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -46,9 +53,16 @@ private float attackDamage;
         updateCounters();
 
         if(target == null) {
+            // check if pathway is null
+            if(robotPathway != null) {
+                advanceOnWaypoint();
+            } else {
+                // change state to idle
+                state = enemyState.idle;
+            }
             searchForTarget();
         } else {
-            if(state == enemyState.pursue) {
+            if(state == enemyState.pursueTarget) {
                 pursueTarget();
             } else if(state == enemyState.attack) {
                 attackTarget();
@@ -75,12 +89,23 @@ private float attackDamage;
     public float getAttackDamage() { return attackDamage; }
     public void setAttackCDamage(float f) { attackDamage = f; }
 
+    // get set pathway stats
+    public RobotPathway getPathway() { return robotPathway; }
+    public void setPathway(RobotPathway path) { robotPathway = path; }
+
     void defaultEnemyStats() {
         // set attack cooldown to zero
         attackCooldownCounter = 0;
 
         // set state to pursue
-        state = enemyState.pursue;
+        // state = enemyState.pursueTarget;
+        state = enemyState.followWaypoint;
+
+        // define initial waypoint
+        if(robotPathway != null) {
+            currentWaypoint = robotPathway.pathway[0];
+        }
+        
     }
 
     // each enemy will need to be loaded with their specifc stats based on the type of enemy
@@ -91,14 +116,55 @@ private float attackDamage;
         if(attackCooldownCounter > 0) { attackCooldownCounter -= Time.deltaTime; }
     }
 
+    public void advanceOnWaypoint() {
+
+        // determine position of target Waypoint
+        Debug.Log(currentWaypoint);
+
+        // check if facing target
+        Vector3 localTarget = transform.InverseTransformPoint(currentWaypoint.gameObject.transform.position);
+        float angleToTarget = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
+        if(Mathf.Abs(angleToTarget) > lookAtThreshold) {
+            transform.Rotate(Vector3.up * angleToTarget/Mathf.Abs(angleToTarget) * rotationSpeed * Time.deltaTime); 
+            // state = enemyState.pursueTarget;
+        } else {
+            // snap rotation to target
+            transform.Rotate(Vector3.up * angleToTarget);
+
+            // check range to target
+            float distToTarget = Vector3.Distance(transform.position, localTarget);
+            float waypointDistThreshold = 2.0f;
+            if(distToTarget > waypointDistThreshold) {
+                // move towards target
+                transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+                // state = enemyState.pursueTarget;
+            } else {
+                // increment to next waypoint
+                int waypointIndex = robotPathway.pathway.IndexOf(currentWaypoint);
+                waypointIndex += 1;
+                currentWaypoint = robotPathway.pathway[waypointIndex];
+            }
+        }
+
+    }
+
     public void searchForTarget() {
 
-        // placeholder
+        // check distance to a target plant
+        
         // search a target forlder for any gameobject
         GameObject targetsParent = GameObject.Find("Trees").gameObject;
         // select first child object from targetsParent
         foreach(Transform child in targetsParent.transform) {
-            setTarget(child.gameObject);
+
+            // check distance
+            float dist = Vector3.Distance(child.transform.position, transform.position);
+            float distThreshold = 10.0f; // move to a class variable
+            if(dist < distThreshold) {
+                setTarget(child.gameObject);
+                // set state to pursueTarget
+                state = enemyState.pursueTarget;
+            }
             break;
         }
     }
@@ -114,7 +180,7 @@ private float attackDamage;
         float angleToTarget = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
         if(Mathf.Abs(angleToTarget) > lookAtThreshold) {
             transform.Rotate(Vector3.up * angleToTarget/Mathf.Abs(angleToTarget) * rotationSpeed * Time.deltaTime); 
-            state = enemyState.pursue;
+            state = enemyState.pursueTarget;
         } else {
             // snap rotation to target
             transform.Rotate(Vector3.up * angleToTarget);
@@ -124,7 +190,7 @@ private float attackDamage;
             if(distToTarget > attackRange) {
                 // move towards target
                 transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
-                state = enemyState.pursue;
+                state = enemyState.pursueTarget;
             } else {
                 // set state to attack
                 state = enemyState.attack;
@@ -140,7 +206,7 @@ private float attackDamage;
         float distToTarget = Vector3.Distance(transform.position, target.transform.position);
         if(distToTarget > attackRange) {
             // change state to purse
-            state = enemyState.pursue;
+            state = enemyState.pursueTarget;
         } else {
 
             // check attack cooldown

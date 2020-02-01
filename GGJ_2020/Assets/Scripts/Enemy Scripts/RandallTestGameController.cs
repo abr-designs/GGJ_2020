@@ -18,7 +18,7 @@ public class RandallTestGameController : MonoBehaviour
     void Start()
     {
         // set spawn controller 1 as active
-        changeActiveSpawnerSet(spawnController1);
+        // changeActiveSpawnerSet(spawnController1);
 
     }
 
