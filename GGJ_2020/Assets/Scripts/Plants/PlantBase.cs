@@ -152,6 +152,13 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
         if (health <= 0)
         {
             SetState(STATE.DEATH);
+
+            // run death animation
+            //
+
+            // destroy/recycle enemy
+            Destroy(gameObject);
+            
             return;
         }
         
@@ -161,5 +168,17 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     public void Heal(float amount)
     {
         health += amount;
+    }
+
+    //================================================================================================================//
+
+    [FoldoutGroup("Debug Damage Tree"), Button("Tree Receive 1 Damage")]
+    public void debugDamageTree() {
+        Damage(1);
+    }
+
+    [FoldoutGroup("Debug Damage Tree"), Button("Kill Tree")]
+    public void debugKillTree() {
+        Damage(health);
     }
 }
