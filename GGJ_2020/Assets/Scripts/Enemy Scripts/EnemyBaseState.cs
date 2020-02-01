@@ -21,6 +21,7 @@ private enemyState state;
 // waypoint stats
 public RobotPathway robotPathway;
 
+[SerializeField]
 Waypoint currentWaypoint; 
 
 [SerializeField]
@@ -122,7 +123,7 @@ private float attackDamage;
         Debug.Log(currentWaypoint);
 
         // check if facing target
-        Vector3 localTarget = transform.InverseTransformPoint(currentWaypoint.gameObject.transform.position);
+        Vector3 localTarget = transform.InverseTransformPoint(currentWaypoint.transform.position);
         float angleToTarget = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
         if(Mathf.Abs(angleToTarget) > lookAtThreshold) {
             transform.Rotate(Vector3.up * angleToTarget/Mathf.Abs(angleToTarget) * rotationSpeed * Time.deltaTime); 
@@ -132,17 +133,24 @@ private float attackDamage;
             transform.Rotate(Vector3.up * angleToTarget);
 
             // check range to target
-            float distToTarget = Vector3.Distance(transform.position, localTarget);
-            float waypointDistThreshold = 2.0f;
+            float distToTarget = Vector3.Distance(transform.position, currentWaypoint.transform.position);
+            float waypointDistThreshold = 1.0f;
             if(distToTarget > waypointDistThreshold) {
                 // move towards target
                 transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
                 // state = enemyState.pursueTarget;
             } else {
                 // increment to next waypoint
+                Debug.Log("Advance to next waypoint");
                 int waypointIndex = robotPathway.pathway.IndexOf(currentWaypoint);
                 waypointIndex += 1;
-                currentWaypoint = robotPathway.pathway[waypointIndex];
+                // check if at final waypoint
+                if(waypointIndex < robotPathway.pathway.Count) {
+                    currentWaypoint = robotPathway.pathway[waypointIndex];
+                } else {
+                    // set state to idle
+                    state = enemyState.idle;
+                }
             }
         }
 
@@ -159,7 +167,7 @@ private float attackDamage;
 
             // check distance
             float dist = Vector3.Distance(child.transform.position, transform.position);
-            float distThreshold = 10.0f; // move to a class variable
+            float distThreshold = 5.0f; // move to a class variable
             if(dist < distThreshold) {
                 setTarget(child.gameObject);
                 // set state to pursueTarget
