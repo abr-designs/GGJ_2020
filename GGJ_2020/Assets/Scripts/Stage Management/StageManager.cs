@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
@@ -25,6 +26,8 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    public void setHomeBaseTree(GameObject g) { currentBaseTree = g; }
+
     public void checkCompletion() {
         // check the integrety of all spawn points
         bool anySpawnPointAlive = false;
@@ -45,6 +48,31 @@ public class StageManager : MonoBehaviour
             // complete level
             gm.completeCurrentStage();
         }
+    }
+    
+    public void checkFailure() {
+
+        Debug.Log($"Tree destroyed. check stage failure = {currentBaseTree}");
+
+        // check if the base tree is alive
+        // bool homeBaseTreeAlive = true;
+
+        if(currentBaseTree == null) {
+            // home base tree is dead, fail level
+            failStage();
+        }
+
+    }
+
+    public void failStage() {
+        gm.failCurrentStage();
+    }
+
+    
+    // debug fail stage
+    [FoldoutGroup("Debug Fail Stage"), Button("Fail Stage")]
+    public void debugFailStage() {
+        failStage();
     }
 
 }

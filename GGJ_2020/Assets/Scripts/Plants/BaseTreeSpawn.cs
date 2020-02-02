@@ -61,7 +61,8 @@ public class BaseTreeSpawn : MonoBehaviour
 
         // instantiate 
         GameObject newSeed = Instantiate(baseTreeSeedPrefab, seedMesh.transform.position, Quaternion.identity, gm.seedAmmoContainer);
-
+        gm.setStageBaseTree(newSeed);
+        
         // delay for 1 second
         StartCoroutine(Wait(0.025f, () => {
             // launch seeds
