@@ -2263,7 +2263,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   plantType: 0
-  lockRadius: 15
   fetilityRadius: 10
   startHealth: 1000
   currentHealth: 0
@@ -2322,7 +2321,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   plantType: 0
-  lockRadius: 15
   fetilityRadius: 10
   startHealth: 1000
   currentHealth: 0

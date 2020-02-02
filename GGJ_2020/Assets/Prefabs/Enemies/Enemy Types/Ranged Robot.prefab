@@ -47,7 +47,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &6836554856404842825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,27 +70,13 @@ MonoBehaviour:
   rotationSpeed: 50
   health: 10
   defense: 0
-  perceptionValue: 12.5
+  perceptionValue: 17.5
   attackRange: 10
   attackCooldown: 5
   attackCooldownCounter: 0
   attackDamage: 5
   projectilePrefab: {fileID: 5344517865195770641, guid: fc0179983179848deb9f8ff4d3916ccf,
     type: 3}
---- !u!136 &2374223644327898897
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7511847719830965067}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8284711344922850576
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,12 +224,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef683c18491b49e41bc5f45804452a76, type: 3}
---- !u!1 &7511847719830965067 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ef683c18491b49e41bc5f45804452a76,
-    type: 3}
-  m_PrefabInstance: {fileID: 1954171524253815362}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6801605778551388504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ef683c18491b49e41bc5f45804452a76,

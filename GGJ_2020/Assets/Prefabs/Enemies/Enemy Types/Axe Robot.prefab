@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3199502341894361982}
   - component: {fileID: 8690313608534989350}
   - component: {fileID: 8549136068623371729}
+  - component: {fileID: 1965986460505737522}
   m_Layer: 0
   m_Name: Axe Robot
   m_TagString: Untagged
@@ -46,7 +47,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &8549136068623371729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,26 +70,28 @@ MonoBehaviour:
   rotationSpeed: 50
   health: 20
   defense: 0
-  perceptionValue: 7.5
+  perceptionValue: 12.5
   attackRange: 2.5
   attackCooldown: 5
   attackCooldownCounter: 0
   attackDamage: 25
   projectilePrefab: {fileID: 0}
---- !u!136 &3553164776607933740
-CapsuleCollider:
+--- !u!54 &1965986460505737522
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8755840902645170550}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 2010911748538247856}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1001 &766478349501405311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158,12 +161,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef683c18491b49e41bc5f45804452a76, type: 3}
---- !u!1 &8755840902645170550 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ef683c18491b49e41bc5f45804452a76,
-    type: 3}
-  m_PrefabInstance: {fileID: 766478349501405311}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5753813831991604069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ef683c18491b49e41bc5f45804452a76,
