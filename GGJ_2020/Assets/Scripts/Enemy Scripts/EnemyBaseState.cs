@@ -175,7 +175,7 @@ private float attackDamage;
         // check distance to a target plant]
         
         // search a target forlder for any gameobject
-        GameObject targetsParent = GameObject.Find("Trees").gameObject;
+        GameObject targetsParent = GameObject.Find("Current Stage Trees").gameObject;
 
         // check count of trees in scene
         int numTrees = targetsParent.transform.childCount;

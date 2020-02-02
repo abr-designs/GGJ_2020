@@ -17,7 +17,7 @@ public class EnemyType1 : EnemyBaseState
     public override void initEnemy() {
         // set movement stats
         setMovementSpeed(5.0f);
-        setRotationSpeed(50.0f);
+        setRotationSpeed(150.0f);
         // set health stats
         setHealth(10.0f);
         setDefense(0.0f);
