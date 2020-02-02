@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116bbf6205475414794188663eeea105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetProperty: _Splatter
+  pow2: 1024
+  Multiplier: 10
   isDebug: 0
   layerMask:
     serializedVersion: 2

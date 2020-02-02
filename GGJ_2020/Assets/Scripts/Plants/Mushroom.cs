@@ -63,7 +63,7 @@ public class Mushroom : PlantBase, IInteractable
             
             SetState(STATE.GROW);
         }
-        else
+        else  if(isFruiting)
         {
             SetState(STATE.FRUITING);
         }
@@ -72,6 +72,12 @@ public class Mushroom : PlantBase, IInteractable
 
     public override void FruitingState()
     {
+        if (!isFruiting)
+        {
+            SetState(STATE.IDLE);
+            return;
+        }
+        
         //Do nothing...
         for (var i = 0; i < seedGrowthLocations.Length; i++)
         {
