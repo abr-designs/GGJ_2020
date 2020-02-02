@@ -62,6 +62,8 @@ public class EnemyType : EnemyBaseState
         Vector3 spawnPosition = transform.position + spawnPositionOffset;
         
         GameObject newProjectile = Instantiate(projectilePrefab, spawnPosition, transform.rotation, gm.enemyProjectilesContainer); // Quaternion.identity);
+        // set projectile damage value
+        newProjectile.GetComponent<EnemyProjectile>().setProjectileDamage(attackDamage);
 
         // identify projectile rigidbody
         Rigidbody rb = newProjectile.GetComponent<Rigidbody>();

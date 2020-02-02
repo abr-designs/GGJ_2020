@@ -93,9 +93,9 @@ public class BaseTreeSpawn : MonoBehaviour
             GameObject newSeed = Instantiate(seedAmmoPrefab, spawnPosition, Quaternion.identity, gm.seedAmmoContainer);
 
             // add force to launched seed
-            randX = (float)Random.Range(-250,-750)/10;
+            randX = (float)Random.Range(-250,-750)/2;
             randY = (float)Random.Range(0,250)/10;
-            randZ = (float)Random.Range(-250,-750)/10;
+            randZ = (float)Random.Range(-250,-750)/2;
             Vector3 newLauchForce = new Vector3(toolkitSeedLaunchForce.x + randX,
                 toolkitSeedLaunchForce.y + randY,
                 toolkitSeedLaunchForce.z + randZ);
