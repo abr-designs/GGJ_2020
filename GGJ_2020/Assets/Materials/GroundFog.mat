@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Depth
+  m_Name: GroundFog
   m_Shader: {fileID: 4800000, guid: b465540aa1273e34091f6dedc6af545c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 1

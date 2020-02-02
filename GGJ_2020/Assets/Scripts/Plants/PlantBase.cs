@@ -44,8 +44,8 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
 
     public float lockRadius;
     
-    [SerializeField, Range(1f,10f)]
-    protected float fetilityRadius = 1f;
+    [FormerlySerializedAs("fetilityRadius")] [SerializeField, Range(1f,10f)]
+    protected float fertilityRadius = 1f;
 
     [SerializeField]
     protected float startHealth;

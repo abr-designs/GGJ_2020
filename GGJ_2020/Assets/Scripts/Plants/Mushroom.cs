@@ -41,7 +41,7 @@ public class Mushroom : PlantBase, IInteractable
             currentHealth = startHealth * growCurve.Evaluate(Timer / growTime);
             
             //Paints on the Fertility Controller
-            FertilityController.PaintAt(transform.position + Vector3.up, fetilityRadius);
+            FertilityController.PaintAt(transform.position + Vector3.up, fertilityRadius);
         }
         else
         {
