@@ -86,6 +86,7 @@ public class BaseTreeSpawn : MonoBehaviour
 
     void launchSeeds() {
 
+        Debug.Log($"Launch {toolkitSeeds.Count} toolkit seeds");
         // lauch each toolkit seed
         foreach(GameObject seedAmmoPrefab in toolkitSeeds) {
 
