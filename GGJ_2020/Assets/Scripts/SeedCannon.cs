@@ -41,26 +41,18 @@ public class SeedCannon : MonoBehaviour
     {
         if (Input.GetKeyDown(shootKey))
             ShootSeed();
-
-        if (!Input.GetKeyDown(KeyCode.Tab)) 
-            return;
-        
-        var val = (int)selectedAmmo;
-        val++;
-        if (val > 3)
-            val = 0;
-
-        selectedAmmo = (BaseItem.itemList)val;
     }
 
     //================================================================================================================//
 
     private void ShootSeed()
     {
+        
+        
         //TODO Try to get prefab
-        if (!playerInventory.TryGetSeed(selectedAmmo, out var seedPrefab))
+        if (!playerInventory.TryGetSeed(out var seedPrefab))
         {
-            Debug.Log($"Out of ammo");
+            Debug.Log($"Out of ammo for {selectedAmmo}");
             return;
         }
 

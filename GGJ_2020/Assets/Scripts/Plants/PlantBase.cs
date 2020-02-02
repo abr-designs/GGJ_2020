@@ -39,6 +39,8 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     private STATE currentState;
     [SerializeField]
     private TYPE plantType;
+
+    public float lockRadius;
     
     [SerializeField, Range(1f,10f)]
     protected float fetilityRadius = 1f;

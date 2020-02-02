@@ -662,7 +662,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   plantType: 0
-  fetilityRadius: 250
+  lockRadius: 10
+  fetilityRadius: 10
   startHealth: 100
   currentHealth: 0
   growCurve:

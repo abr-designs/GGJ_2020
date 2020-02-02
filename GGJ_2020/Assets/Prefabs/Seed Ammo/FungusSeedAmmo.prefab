@@ -108,8 +108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6117011760027634023, guid: 6d3075537dfb5e54399fb416d11c7024, type: 3}
+  spawnRequiredRadius: 0
   targetTag: Ground
-  currentTreeContainer: {fileID: 0}
+  PickupPrefab: {fileID: 7120939825873802332, guid: 5e8b0e85bc1b20846b47dfc02153cf2b,
+    type: 3}
 --- !u!54 &5560219058385287015
 Rigidbody:
   m_ObjectHideFlags: 0
