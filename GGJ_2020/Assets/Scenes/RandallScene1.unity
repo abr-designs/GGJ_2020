@@ -239,6 +239,8 @@ MonoBehaviour:
   growTime: 0
   seedGrowthTime: 0
   attackCooldown: 0
+  attackRange: 0
+  attackDamage: 0
   seedPrefab: {fileID: 0}
   seedGrowthLocations: []
 --- !u!1001 &4601044
@@ -1196,6 +1198,8 @@ MonoBehaviour:
   growTime: 0
   seedGrowthTime: 0
   attackCooldown: 0
+  attackRange: 0
+  attackDamage: 0
   seedPrefab: {fileID: 0}
   seedGrowthLocations: []
 --- !u!65 &575637025
@@ -1417,6 +1421,8 @@ MonoBehaviour:
   growTime: 0
   seedGrowthTime: 0
   attackCooldown: 0
+  attackRange: 0
+  attackDamage: 0
   seedPrefab: {fileID: 0}
   seedGrowthLocations: []
 --- !u!1001 &693774861
@@ -2773,6 +2779,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26cbd5c4d96eac4591323fd296bfe07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyProjectilesContainer: {fileID: 0}
+  robotsContainer: {fileID: 0}
+  currentStageTreesContainer: {fileID: 0}
+  archivedTreesContainer: {fileID: 0}
+  seedAmmoContainer: {fileID: 0}
+  pickupSeedsContainer: {fileID: 0}
   debugSpawnPoint: {fileID: 1042885152}
   prefabDebugEnemyType: {fileID: 8209669636462423545, guid: 0be7ae5190bff4569a54ff4366d03bcd,
     type: 3}
@@ -3312,6 +3324,8 @@ MonoBehaviour:
   growTime: 0
   seedGrowthTime: 0
   attackCooldown: 0
+  attackRange: 0
+  attackDamage: 0
   seedPrefab: {fileID: 0}
   seedGrowthLocations: []
 --- !u!1001 &1960524340
