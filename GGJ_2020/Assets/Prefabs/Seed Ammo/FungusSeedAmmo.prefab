@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2575019335926624054}
   - component: {fileID: 1471311153687973484}
   - component: {fileID: 5560219058385287015}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FungusSeedAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83969e8f1e29ab448a5697246ded263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6117011760027634023, guid: 6d3075537dfb5e54399fb416d11c7024, type: 3}
   targetTag: Ground
   currentTreeContainer: {fileID: 0}
 --- !u!54 &5560219058385287015

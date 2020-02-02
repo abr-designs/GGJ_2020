@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3927724437367063947}
   - component: {fileID: 2471901277035801233}
   - component: {fileID: 4747490832353978739}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BaseTreeSeedAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -70,10 +70,11 @@ MonoBehaviour:
   rotationSpeed: 50
   health: 10
   defense: 0
-  attackRange: 2.5
+  perceptionValue: 12.5
+  attackRange: 10
   attackCooldown: 5
   attackCooldownCounter: 0
-  attackDamage: 25
+  attackDamage: 5
   projectilePrefab: {fileID: 5344517865195770641, guid: fc0179983179848deb9f8ff4d3916ccf,
     type: 3}
 --- !u!136 &2374223644327898897
