@@ -126,7 +126,7 @@ class PlayerInventory : SerializedMonoBehaviour
                 if (value == (int) currentlySelected.Value && playerInventory[currentlySelected.Value] <= 0)
                 {
                     currentlySelected = null;
-                    Debug.Log($"currentlySelected = null");
+                    // Debug.Log($"currentlySelected = null");
                     ShowSelectedObject();
                     return;
                     

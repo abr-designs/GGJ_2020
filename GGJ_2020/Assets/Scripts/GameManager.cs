@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     //================================================================================================================//
     // containers
     [FoldoutGroup("Containers References")]
+    public Transform stagesContainer;
+    [FoldoutGroup("Containers References")]
     public Transform enemyProjectilesContainer;
     [FoldoutGroup("Containers References")]
     public Transform robotsContainer;
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
     // stage variables
     public int currentStageIndex;
     public GameObject currentStageReference;
-    public List<GameObject> stagesRefernceList;
+    public List<GameObject> stagePrefabs;
     [SerializeField]
     private GameObject selectedSpawner;
 
@@ -56,6 +58,10 @@ public class GameManager : MonoBehaviour
         playerGameObject = playerInventory.gameObject;
 
         initStage(startingStage);
+    }
+
+    private void Update() {
+        // check if stage base tree 
     }
 
     //================================================================================================================//
@@ -80,10 +86,14 @@ public class GameManager : MonoBehaviour
             plants = new List<PlantBase>();
         
         plants.Add(plant);
+
+        
     }
     public void UnRegisterPlant(PlantBase plant)
     {
         plants?.Remove(plant);
+
+        checkStageFailure();
     }
     
     public void RegisterPlant(EnemySpawnController enemySpawnController)
@@ -104,47 +114,64 @@ public class GameManager : MonoBehaviour
     // stage management
 
     // function to call when base tree is planted
-    public void initStage(int i) {
+    public void initStage(int stageNum) {
 
-        Debug.Log($"Set stage as active: {i}");
+        // remove existing current stage
+        if(currentStageReference != null ) {
+            Destroy(currentStageReference);
+        }
 
-        currentStageIndex = i;
+        Debug.Log($"Set stage as active: {stageNum}");
+
+        currentStageIndex = stageNum;
         
         // check if stagesRefernceList is emtpty
-        if(stagesRefernceList.Count == 0) return;
+        if(stagePrefabs.Count == 0) return;
 
-        currentStageReference = stagesRefernceList[i-1];
+        currentStageReference = Instantiate(stagePrefabs[currentStageIndex], Vector3.zero, Quaternion.identity, stagesContainer);
 
-        string stageObjectName = "Stage " + currentStageIndex;
+        setStageBaseTree(currentStageReference.GetComponent<StageManager>().baseSeedContainerReference);
+
+        // string stageObjectName = "Stage " + currentStageIndex;
         
         // init stage needs to identify the base seed - and subsequent base tree
-        GameObject stageObject = GameObject.Find(stageObjectName);
+        // GameObject stageObject = GameObject.Find(stageObjectName);
         // GameObject baseSeedContainer = stageObject.chil
-        Transform[] children = stageObject.GetComponentsInChildren<Transform>();
-        foreach (Transform child in children)
-            if (child.name == "Base Seed Container")
-                stageBaseSeedPosition = child.position;
+        // Transform[] children = stageObject.GetComponentsInChildren<Transform>();
+        // foreach (Transform child in children)
+        //     if (child.name == "Base Seed Container")
+        //         stageBaseSeedPosition = child.position;
+
+
 
     }
     
-    public void setStageBaseTree(GameObject g) { stageHomeBaseTree = g; }
+    public void setStageBaseTree(GameObject g) { 
+        // Debug.Log($"Set home base tree as {g}");
+        stageHomeBaseTree = g;
+
+        // set this on the stage manager
+        currentStageReference.GetComponent<StageManager>().setHomeBaseTree(g);
+    }
 
 
     public void activateStageSpawners() {
 
         GameObject spawnsToActivate = null;
 
-        switch(currentStageIndex) {
-            case 1:
-                spawnsToActivate = spawnController1;
-                break;
-            case 2:
-                spawnsToActivate = spawnController2;
-                break;
-            default:
-                spawnsToActivate = null;
-                break;
-        }
+        // switch(currentStageIndex) {
+        //     case 1:
+        //         spawnsToActivate = spawnController1;
+        //         break;
+        //     case 2:
+        //         spawnsToActivate = spawnController2;
+        //         break;
+        //     default:
+        //         spawnsToActivate = null;
+        //         break;
+        // }
+
+        spawnsToActivate = currentStageReference.GetComponent<StageManager>().enemySpawnControllerReference;//.GetComponent>EnemySpawnController>()
 
         changeActiveSpawnerSet(spawnsToActivate);
     }
@@ -182,6 +209,12 @@ public class GameManager : MonoBehaviour
         currentStageReference.GetComponent<StageManager>().checkCompletion();
 
     }
+
+    public void checkStageFailure() {
+
+        currentStageReference.GetComponent<StageManager>().checkFailure();
+
+    }
     
     public void failCurrentStage() {
 
@@ -197,10 +230,22 @@ public class GameManager : MonoBehaviour
         // remove all seed pickups in the world
         destroyRemainingSeedPickups();
 
+        // destory all current robots
+        foreach(Transform robot in robotsContainer) {
+            Destroy(robot.gameObject);
+        }
+
         // destroy all current stage trees
         // foreach(GameObject tree in currentStageTreesContainer) {
             // destroy - or deal interative damage until dead
         // }
+        // move all current stage trees into archived trees and set as no longer fruiting
+        foreach(Transform tree in currentStageTreesContainer) {
+            Destroy(tree.gameObject);
+        }
+
+        // remove all seed pickups in the world
+        destroyRemainingSeedPickups();
 
         // wait until the stage has reverted to initial state
         // reverting a stage will need to include restoring destroed factories
@@ -215,7 +260,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Complete stage: {currentStageIndex}");
 
         // deactivate existing spawners
-        deactivateStageSpawners();
+        // deactivateStageSpawners();
 
         // destory all current robots
         foreach(Transform robot in robotsContainer) {

@@ -37,13 +37,16 @@ public class Tree : PlantBase
         {
             Timer += Time.deltaTime;
             transform.localScale = Vector3.one * growCurve.Evaluate(Timer / growTime);
+            
+            currentHealth = startHealth * growCurve.Evaluate(Timer / growTime);
            
             //Paints on the Fertility Controller
             FertilityController.PaintAt(transform.position + Vector3.up, fetilityRadius);
-            int shrubtotal = Mathf.RoundToInt(numShrubs * CurrentGrowth);
-            for (int i = 0; i < numShrubs; i++)
+            
+            var shrubTotal = Mathf.RoundToInt(numShrubs * CurrentGrowth);
+            for (var i = 0; i < numShrubs; i++)
             {
-                shrubs[i].SetActive(i <= shrubtotal);
+                shrubs[i].SetActive(i <= shrubTotal);
                 shrubs[i].transform.localScale = Vector3.one * CurrentGrowth;
             }
         }
@@ -72,7 +75,7 @@ public class Tree : PlantBase
             if (activeSeeds[i] == null)
             {
                 seedTimers[i] = 0f - Random.value;
-                activeSeeds[i] = Instantiate(seedPrefab, seedGrowthLocations[i].position, Quaternion.identity).transform;
+                activeSeeds[i] = Instantiate(seedPrefab, seedGrowthLocations[i].position, Quaternion.identity, GameManager.pickupSeedsContainer).transform;
                 activeSeeds[i].localScale = Vector3.zero;
             }
 
