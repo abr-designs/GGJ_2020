@@ -92,8 +92,9 @@ public class SeedAmmo : BaseItem
 
     private bool CheckCanSpawn(Vector3 point)
     {
-        if (!ignoreFertility && FertilityController.CanPlantAt(point))
-            return true;
+        if (!ignoreFertility)
+            if(!FertilityController.CanPlantAt(point))
+                return false;
         
         var plants = gm.plants;
 
