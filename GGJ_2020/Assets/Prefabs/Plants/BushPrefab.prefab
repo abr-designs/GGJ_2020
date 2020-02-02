@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 9040121501188465904}
   - component: {fileID: 6493222069164372403}
   m_Layer: 0
-  m_Name: Bush
-  m_TagString: Untagged
+  m_Name: BushPrefab
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,8 @@ MonoBehaviour:
   attackCooldown: 0
   attackRange: 0
   attackDamage: 0
-  seedPrefab: {fileID: 0}
+  seedPrefab: {fileID: 4633668425555022018, guid: dd7c05c5050e3124cabdc1b89bb13043,
+    type: 3}
   seedGrowthLocations:
   - {fileID: 8155183349501040170}
   - {fileID: 961830542512615019}
