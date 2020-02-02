@@ -698,8 +698,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  growTime: 60
-  seedGrowthTime: 60
+  growTime: 6
+  seedGrowthTime: 6
   attackCooldown: 5
   attackRange: 5
   attackDamage: 0

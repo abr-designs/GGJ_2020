@@ -44,9 +44,16 @@ private float attackCooldownCounter;
 private float attackDamage;
 // drop table stats
 
+// reference static
+private static GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
+        if(gm == null) {
+            gm = FindObjectOfType<GameManager>();
+        }
+
         defaultEnemyStats();
         initEnemy();
     }
@@ -111,6 +118,9 @@ private float attackDamage;
         if(robotPathway != null) {
             currentWaypoint = robotPathway.pathway[0];
         }
+
+        // register enemy
+        gm.RegisterEnemy(this);
         
     }
 
@@ -287,6 +297,12 @@ private float attackDamage;
     public void Heal(float amount)
     {
         health += amount;
+    }
+
+    private void OnDestroy() {
+        
+        // unregister
+        gm.UnRegisterEnemy(this);
     }
 
     void despawnEnemy() {
