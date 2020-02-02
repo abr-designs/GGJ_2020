@@ -53,7 +53,7 @@ public class StageManager : MonoBehaviour
     
     public void checkFailure() {
 
-        var check = !gm.plants.Any(p => p == currentBaseTree);
+        var check = gm.plants.All(p => p.gameObject != currentBaseTree);
         
         Debug.Log($"Tree destroyed. check stage failure = {check}");
 

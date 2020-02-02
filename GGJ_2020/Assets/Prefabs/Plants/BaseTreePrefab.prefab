@@ -2264,7 +2264,7 @@ MonoBehaviour:
   isFruiting: 0
   currentState: 0
   plantType: 0
-  lockRadius: 15
+  lockRadius: 10
   fertilityRadius: 7
   startHealth: 1000
   currentHealth: 0
