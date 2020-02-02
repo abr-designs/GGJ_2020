@@ -2463,6 +2463,7 @@ MonoBehaviour:
   archivedTreesContainer: {fileID: 285011039}
   seedAmmoContainer: {fileID: 76633632}
   pickupSeedsContainer: {fileID: 2036953494}
+  currentStageIndex: 0
   spawnController1: {fileID: 1594000474}
   spawnController2: {fileID: 1252935264}
   selectedSpawner: {fileID: 0}
@@ -2498,6 +2499,11 @@ PrefabInstance:
     - target: {fileID: 1263730616, guid: 21ee6c6f59cfd5a409ab6d80ef9f1080, type: 3}
       propertyPath: isDebug
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311914751631523825, guid: 21ee6c6f59cfd5a409ab6d80ef9f1080,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5311914751631523828, guid: 21ee6c6f59cfd5a409ab6d80ef9f1080,
         type: 3}

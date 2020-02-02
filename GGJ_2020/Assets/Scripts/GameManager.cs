@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public Transform pickupSeedsContainer;
     //================================================================================================================//
     // stage variables
+    public int currentStageIndex;
+
     [FoldoutGroup("Spawn Controllers")]
     public GameObject spawnController1;
     [FoldoutGroup("Spawn Controllers")]
@@ -44,6 +46,8 @@ public class GameManager : MonoBehaviour
     {
         playerInventory = FindObjectOfType<PlayerInventory>();
         playerGameObject = playerInventory.gameObject;
+
+        initStage(1);
     }
 
     //================================================================================================================//
@@ -96,14 +100,26 @@ public class GameManager : MonoBehaviour
 
         Debug.Log($"Set stage as active: {i}");
 
+        currentStageIndex = i;
+        
+        // init stage needs to identify the base seed - and subsequent base tree
+        
+
+    }
+    
+    void setStageBaseTree(GameObject g) { stageBaseTree = g; }
+
+
+    public void activateStageSpawners() {
+
         GameObject spawnsToActivate = null;
 
-        switch(i) {
+        switch(currentStageIndex) {
             case 1:
                 spawnsToActivate = spawnController1;
                 break;
             case 2:
-                spawnsToActivate = spawnController1;
+                spawnsToActivate = spawnController2;
                 break;
             default:
                 spawnsToActivate = null;
@@ -111,10 +127,7 @@ public class GameManager : MonoBehaviour
         }
 
         changeActiveSpawnerSet(spawnsToActivate);
-
     }
-    
-    void setStageBaseTree(GameObject g) { stageBaseTree = g; }
 
     void changeActiveSpawnerSet(GameObject g) {
 
@@ -138,22 +151,33 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    
-    public void failStage(int i) {
 
-        Debug.Log($"Failed stage: {i}");
+    public void deactivateStageSpawners() {
+        selectedSpawner.GetComponent<EnemySpawnController>().setSpawnersActive(false);
+        selectedSpawner = null;
+    }
+    
+    public void failCurrentStage() {
+
+        Debug.Log($"Failed stage: {currentStageIndex}");
+
+        // deactivate existing spawners
+        deactivateStageSpawners();
 
         // replace base seed of this stage
-        //
+        initStage(currentStageIndex);
 
     }
 
-    public void completeStage(int i) {
+    public void completeCurrentStage() {
         
-        Debug.Log($"Complete stage: {i}");
+        Debug.Log($"Complete stage: {currentStageIndex}");
+
+        // deactivate existing spawners
+        deactivateStageSpawners();
 
         // need to activate the base seed of the next stage
-        //
+        initStage(currentStageIndex + 1);
     }
 
     //================================================================================================================//
