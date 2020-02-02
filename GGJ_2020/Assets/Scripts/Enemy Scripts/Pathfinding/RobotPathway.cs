@@ -12,10 +12,13 @@ public class RobotPathway : MonoBehaviour
         //  Gizmos.DrawWireCube(transform.position, new Vector3(transform.lossyScale.x, transform.lossyScale.y, transform.lossyScale.z));
 
         // for each waypoint less than count, add line
+        Vector3 prevPoint = pathway[0].transform.position;
 
-        // foreach(Waypoint waypoint in pathway) {
-        //     Gizmos.DrawLine(transform.position, target.position);
-        // }
+        for(int i = 1; i < pathway.Count; i += 1) {
+            Vector3 nextPoint = pathway[i].transform.position;
+            Gizmos.DrawLine(prevPoint, nextPoint);
+            prevPoint = nextPoint;
+        }
 
     }
 

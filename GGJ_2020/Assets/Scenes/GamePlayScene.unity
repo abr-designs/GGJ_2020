@@ -1023,6 +1023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot Pathway
       objectReference: {fileID: 0}
+    - target: {fileID: 2784992566625868057, guid: 6eed5c8a6848f4936b8689e2d56f0f13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3648210977788421185, guid: 6eed5c8a6848f4936b8689e2d56f0f13,
         type: 3}
       propertyPath: pathway.Array.size
