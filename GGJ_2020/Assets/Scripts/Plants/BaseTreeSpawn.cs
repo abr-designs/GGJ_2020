@@ -106,6 +106,9 @@ public class BaseTreeSpawn : MonoBehaviour
                 toolkitSeedLaunchForce.y + randY,
                 toolkitSeedLaunchForce.z + randZ);
 
+            // newSeed.GetComponent<Collider>().isKinematic = false;
+            // newSeed.GetComponent<Rigidbody>().isKinematic = false;
+
             newSeed.GetComponent<Rigidbody>().AddForce(newLauchForce);
             newSeed.GetComponent<Rigidbody>().AddTorque(newLauchForce);
 
