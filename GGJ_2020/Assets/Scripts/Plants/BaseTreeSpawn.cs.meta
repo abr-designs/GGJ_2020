@@ -3,7 +3,13 @@ guid: 75f80d634acbb4cd1a544b9de8b81048
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - seedMesh: {instanceID: 0}
+  - baseTreeSeedPrefab: {instanceID: 0}
+  - currentTreeContainer: {instanceID: 0}
+  - seedAmmoContainer: {instanceID: 0}
+  - willowSeedPrefab: {fileID: 3927724437367063948, guid: 1800bf7fe4c869248a26367cba554fd4,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

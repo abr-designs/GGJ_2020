@@ -21,6 +21,8 @@ public class BaseTreeSpawn : MonoBehaviour
     public Transform currentTreeContainer;
     public Transform seedAmmoContainer;
 
+    public GameObject willowSeedPrefab;
+
     // reference static
     private static GameManager gm;
     
@@ -90,25 +92,52 @@ public class BaseTreeSpawn : MonoBehaviour
         // lauch each toolkit seed
         foreach(GameObject seedAmmoPrefab in toolkitSeeds) {
 
-            // randomize spawn position
-            float randX = (float)Random.Range(-20,20)/40.0f;
-            float randY = (float)Random.Range(-20,20)/40.0f;
-            float randZ = (float)Random.Range(-20,20)/40.0f;
-            Vector3 randomPosition = new Vector3(randX, randY, randZ);
-            Vector3 spawnPosition = transform.position + randomPosition;
-            GameObject newSeed = Instantiate(seedAmmoPrefab, spawnPosition, Quaternion.identity, gm.seedAmmoContainer);
+            GameObject newSeed = null;
+            Vector3 newLauchForce;
 
-            // add force to launched seed
-            randX = (float)Random.Range(-250,-750)/2;
-            randY = (float)Random.Range(0,250)/10;
-            randZ = (float)Random.Range(-250,-750)/2;
-            Vector3 newLauchForce = new Vector3(toolkitSeedLaunchForce.x + randX,
-                toolkitSeedLaunchForce.y + randY,
-                toolkitSeedLaunchForce.z + randZ);
+            // special condition for first willow seed
+            // Debug.Log($"Check special condition: {gm.currentStageIndex}, {seedAmmoPrefab}");
+            if(gm.currentStageIndex == 0) {//} && seedAmmoPrefab == willowSeedPrefab) {
+                
+                Debug.Log("Special seed launch condition");
+                // launch seeds without special cases
+                // randomize spawn position
+                // float randX = 50.0f;
+                // float randY = 0.0f;
+                // float randZ = 50.0f;
+                float randX = (float)Random.Range(-20,20)/40.0f;
+                float randY = (float)Random.Range(20,40)/40.0f;
+                float randZ = (float)Random.Range(-20,20)/40.0f;
+                Vector3 randomPosition = new Vector3(randX, randY, randZ);
+                Vector3 spawnPosition = transform.position + randomPosition;
+                newSeed = Instantiate(seedAmmoPrefab, spawnPosition, Quaternion.identity, gm.seedAmmoContainer);
 
-            // newSeed.GetComponent<Collider>().isKinematic = false;
-            // newSeed.GetComponent<Rigidbody>().isKinematic = false;
+                // add force to launched seed
+                randX = 250;
+                randY = 500;
+                randZ = 250;
+                newLauchForce = new Vector3(randX, randY, randZ);
 
+            } else {
+                // launch seeds without special cases
+                // randomize spawn position
+                float randX = (float)Random.Range(-20,20)/40.0f;
+                float randY = (float)Random.Range(20,40)/40.0f;
+                float randZ = (float)Random.Range(-20,20)/40.0f;
+                Vector3 randomPosition = new Vector3(randX, randY, randZ);
+                Vector3 spawnPosition = transform.position + randomPosition;
+                newSeed = Instantiate(seedAmmoPrefab, spawnPosition, Quaternion.identity, gm.seedAmmoContainer);
+
+                // add force to launched seed
+                randX = (float)Random.Range(-250,-750)/2;
+                randY = (float)Random.Range(0,250)/10;
+                randZ = (float)Random.Range(-250,-750)/2;
+                newLauchForce = new Vector3(toolkitSeedLaunchForce.x + randX,
+                    toolkitSeedLaunchForce.y + randY,
+                    toolkitSeedLaunchForce.z + randZ);
+            }
+
+            Debug.Log($"Launch force = {newLauchForce}");
             newSeed.GetComponent<Rigidbody>().AddForce(newLauchForce);
             newSeed.GetComponent<Rigidbody>().AddTorque(newLauchForce);
 

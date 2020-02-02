@@ -19,6 +19,8 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
     private int spawnMinInterval, spawnMaxInterval;
     private float spawnCooldown;
     private float spawnCooldownCounter;
+    public float fertilityDamageInterval = 5.0f;
+    public float fertilityDamageCounter;
     [SerializeField]
     private float spawnSpeedMultiplier; // speed multiplier increase when damaged by fertility
 
@@ -54,6 +56,10 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
         if(spawnCooldownCounter <= 0) { //} && remainingEnemies > 0) {
             spawnEnemy();
         }
+
+        if(fertilityDamageCounter <= 0) { //} && remainingEnemies > 0) {
+            dealFertilityDamage();
+        }
     }
     
     void initStats() {
@@ -64,8 +70,12 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
         setSpawnCooldown();
         // Debug.Log(spawnCooldown);
 
+
+
         // isSpawning = true;
         spawnSpeedMultiplier = 1.0f;
+
+        fertilityDamageCounter = fertilityDamageInterval;
 
         factoryIntegrity = 1.0f; // use for factory damage in order to cause factory to be destoryed
 
@@ -83,6 +93,8 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
     // update counters being tracked for this enemy
     void updateCounters() {
         if(spawnCooldownCounter > 0) { spawnCooldownCounter -= Time.deltaTime * spawnSpeedMultiplier; }
+
+        if(fertilityDamageCounter > 0) { fertilityDamageCounter -= Time.deltaTime; }
     }
 
     void setSpawnCooldown() {
@@ -167,11 +179,25 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
 
             // identify first waypoint
             GameObject firstWaypoint = newPathway.pathway[0].gameObject;
-            
+
         // rotate spawned enemy to look at first waypoint
         Vector3 localTarget = newEnemy.transform.InverseTransformPoint(firstWaypoint.transform.position);
         float angleToTarget = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
         newEnemy.transform.Rotate(Vector3.up * angleToTarget);
+    }
+
+    void dealFertilityDamage() {
+
+        float fertilityDamageAmount = 0;
+
+        // check fertility in range of factory to determine how much damage to deal
+        Debug.Log($"Deal [{fertilityDamageAmount}] fertility damage to factory");
+
+        Damage(fertilityDamageAmount);
+
+        // reset countdown
+        fertilityDamageCounter = fertilityDamageInterval;
+
     }
     public void Damage(float amount)
     {

@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     // [FoldoutGroup("Debug Enemy Spawner")]
 
     // stage variables
-    private int currentStageIndex;
+    public int currentStageIndex;
     public GameObject currentStageReference;
     public List<GameObject> stagePrefabs;
     [SerializeField]
