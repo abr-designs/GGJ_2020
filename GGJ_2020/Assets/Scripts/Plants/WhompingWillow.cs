@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using UnityEngine;
 
 public class WhompingWillow : PlantBase, IAnimationAttack
@@ -37,6 +39,8 @@ public class WhompingWillow : PlantBase, IAnimationAttack
         {
             Timer += Time.deltaTime;
             transform.localScale = Vector3.one * growCurve.Evaluate(Timer / growTime);
+
+            currentHealth = startHealth * growCurve.Evaluate(Timer / growTime);
             
             //Paints on the Fertility Controller
             FertilityController.PaintAt(transform.position + Vector3.up, fetilityRadius);
@@ -46,6 +50,7 @@ public class WhompingWillow : PlantBase, IAnimationAttack
             Timer = 0f;
             SetState(STATE.FRUITING);
             transform.localScale = Vector3.one;
+            currentHealth = startHealth;
         }
         
         if(EnemyInRange())
@@ -54,9 +59,17 @@ public class WhompingWillow : PlantBase, IAnimationAttack
 
     public override void IdleState()
     {
-        //TODO Decide if i need to heal
-        //Decide if i need to grow
-        //Decide if i need to fruit
+        if (currentHealth < startHealth)
+        {
+            Timer = growCurve.Evaluate(currentHealth / startHealth);
+            
+            SetState(STATE.GROW);
+        }
+        else
+        {
+            SetState(STATE.FRUITING);
+        }
+
     }
 
     public override void FruitingState()
@@ -117,6 +130,11 @@ public class WhompingWillow : PlantBase, IAnimationAttack
 
     public void AnimationAttack()
     {
-        Debug.Break();
+        var enemies = GameManager.enemies;
+
+        if (enemies == null || enemies.Count == 0)
+            return;
+
+        enemies.Where(e => Vector3.Distance(e.transform.position, transform.position) <= attackRange).ForEach(e => e.Damage(attackDamage));
     }
 }
