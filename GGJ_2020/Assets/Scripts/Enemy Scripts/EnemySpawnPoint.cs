@@ -31,12 +31,17 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
 
     // reference static
     private static GameManager gm;
+
+    private FertilityController fertilityController;
     
     // Start is called before the first frame update
     void Start()
     {
         if(gm == null) {
             gm = FindObjectOfType<GameManager>();
+        }
+        if(fertilityController == null) {
+            fertilityController = FindObjectOfType<FertilityController>();
         }
         
         initStats();
@@ -188,7 +193,8 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
 
     void dealFertilityDamage() {
 
-        float fertilityDamageAmount = 0;
+        // fertilityController.GetFloatAtPos(transform.position);
+        float fertilityDamageAmount = fertilityController.GetFloatAtPos(transform.position);;
 
         // check fertility in range of factory to determine how much damage to deal
         Debug.Log($"Deal [{fertilityDamageAmount}] fertility damage to factory");
