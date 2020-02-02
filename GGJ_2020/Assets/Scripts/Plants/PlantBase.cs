@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 
 public abstract class PlantBase : MonoBehaviour, IDamageable
 {
+    //================================================================================================================//
+
     public enum STATE
     {
         GROW,
@@ -26,7 +28,12 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     protected static FertilityController FertilityController;
     protected static GameManager GameManager;
 
-    
+    //================================================================================================================//
+
+    public float CurrentGrowth => currentHealth / startHealth;
+
+    //================================================================================================================//
+
 
     [SerializeField, ReadOnly]
     private STATE currentState;
@@ -124,7 +131,8 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
             SetState(STATE.ATTACK);
     }
 
-//================================================================================================================//
+    //================================================================================================================//
+    
     protected virtual void Init()
     {
         activeSeeds = new Transform[seedGrowthLocations.Length];
@@ -158,6 +166,8 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
                 throw new ArgumentOutOfRangeException(nameof(nextState), nextState, null);
         }
     }
+    
+    //================================================================================================================//
 
     protected bool EnemyInRange()
     {
@@ -188,21 +198,16 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
         currentHealth -= amount;
 
         // Debug.Log($"Deal [{amount}] damage to [{name}]. Remaining health = [{currentHealth}]");
-        
-        if (currentHealth <= 0)
-        {
-            SetState(STATE.DEATH);
 
-            // run death animation
-            //
-
-            // destroy/recycle enemy
-            Destroy(gameObject);
-            
+        if (!(currentHealth <= 0)) 
             return;
-        }
-        
+        SetState(STATE.DEATH);
 
+        // run death animation
+        //
+
+        // destroy/recycle enemy
+        Destroy(gameObject);
     }
 
     public void Heal(float amount)
@@ -211,17 +216,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     }
 
     //================================================================================================================//
-
-    [FoldoutGroup("Debug Damage Tree"), Button("Tree Receive 1 Damage")]
-    public void debugDamageTree() {
-        Damage(1);
-    }
-
-    [FoldoutGroup("Debug Damage Tree"), Button("Kill Tree")]
-    public void debugKillTree() {
-        Damage(currentHealth);
-    }
-
+    
     private void OnDestroy()
     {
         foreach (var t in activeSeeds)
@@ -234,4 +229,17 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
 
         GameManager.UnRegisterPlant(this);
     }
+
+    #if UNITY_EDITOR
+    [FoldoutGroup("Debug Damage Tree"), Button("Tree Receive 1 Damage")]
+    public void debugDamageTree() {
+        Damage(1);
+    }
+
+    [FoldoutGroup("Debug Damage Tree"), Button("Kill Tree")]
+    public void debugKillTree() {
+        Damage(currentHealth);
+    }
+
+    #endif
 }
