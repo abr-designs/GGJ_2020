@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using System.Linq;
 
 public class StageManager : MonoBehaviour
 {
@@ -52,12 +53,14 @@ public class StageManager : MonoBehaviour
     
     public void checkFailure() {
 
-        Debug.Log($"Tree destroyed. check stage failure = {currentBaseTree}");
+        var check = !gm.plants.Any(p => p == currentBaseTree);
+        
+        Debug.Log($"Tree destroyed. check stage failure = {check}");
 
         // check if the base tree is alive
         // bool homeBaseTreeAlive = true;
 
-        if(currentBaseTree == null) {
+        if(check) {
             // home base tree is dead, fail level
             failStage();
         }

@@ -86,10 +86,14 @@ public class GameManager : MonoBehaviour
             plants = new List<PlantBase>();
         
         plants.Add(plant);
+
+        
     }
     public void UnRegisterPlant(PlantBase plant)
     {
         plants?.Remove(plant);
+
+        checkStageFailure();
     }
     
     public void RegisterPlant(EnemySpawnController enemySpawnController)

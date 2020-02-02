@@ -208,11 +208,12 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
         // run death animation
         //
 
+        // destroy/recycle enemy
+        Destroy(gameObject);
+        
         // call game manager to check if the home base tree was destroyed
         GameManager.checkStageFailure();
         
-        // destroy/recycle enemy
-        Destroy(gameObject);
     }
 
     public void Heal(float amount)
