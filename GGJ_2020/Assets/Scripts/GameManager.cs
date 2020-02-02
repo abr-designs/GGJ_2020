@@ -150,6 +150,11 @@ public class GameManager : MonoBehaviour
         // Debug.Log($"Set home base tree as {g}");
         stageHomeBaseTree = g;
 
+        if (!currentStageReference)
+        {
+            Debug.LogError($"{nameof(currentStageReference)} is missing.");
+            return;
+        }
         // set this on the stage manager
         currentStageReference.GetComponent<StageManager>().setHomeBaseTree(g);
     }
@@ -210,8 +215,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void checkStageFailure() {
+    public void checkStageFailure()
+    {
 
+        if (!currentStageReference)
+            return;
         currentStageReference.GetComponent<StageManager>().checkFailure();
 
     }
