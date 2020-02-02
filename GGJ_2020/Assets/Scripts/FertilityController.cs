@@ -10,12 +10,16 @@ public class FertilityController : MonoBehaviour
 
     private static int DetailAlbedoMap;
     private static readonly int Brush = Shader.PropertyToID("_Brush");
+    private static readonly int Mult = Shader.PropertyToID("_Mult");
 
     [SerializeField]
     private string targetProperty;
 
     [SerializeField]
     private int pow2;
+
+    [SerializeField, Range(1f,1000f)]
+    private int Multiplier;
 
     [SerializeField] private bool isDebug;
     //================================================================================================================//
@@ -43,7 +47,7 @@ public class FertilityController : MonoBehaviour
         DetailAlbedoMap = Shader.PropertyToID(targetProperty);
         
         drawMaterial = new Material(drawShader);
-        drawMaterial.SetVector(Color, UnityEngine.Color.white);
+        drawMaterial.SetVector(Color, UnityEngine.Color.white * 0.001f);
         splatMap = new RenderTexture(pow2,pow2, 0, RenderTextureFormat.ARGBFloat);
         //TODO Need to Set the Detail texture here
         setMaterial.SetTexture(DetailAlbedoMap, splatMap);
@@ -64,6 +68,7 @@ public class FertilityController : MonoBehaviour
         //TODO Raycast down to ground geet hit.textCoord
         drawMaterial.SetVector(Coordinate, new Vector4(texCoord.x,texCoord.y,0f,0f));
         drawMaterial.SetFloat(Brush, brushSize);
+        drawMaterial.SetFloat(Mult, Multiplier);
         
         var temp = RenderTexture.GetTemporary(splatMap.width, splatMap.height,0, RenderTextureFormat.ARGBFloat);
         Graphics.Blit(splatMap, temp);

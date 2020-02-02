@@ -7,6 +7,8 @@
         _Color("Draw Color", Color) = (1,1,1,0)
         
         _Brush("Brush Size", Range(0.0, 50.0)) = 25.0
+        
+        _Mult("Multiplier", float) = 1.0
     }
     SubShader
     {
@@ -36,7 +38,7 @@
             sampler2D _MainTex;
             float4 _MainTex_ST;
             fixed4 _Coordinate, _Color;
-            float _Brush;
+            float _Brush, _Mult;
 
             v2f vert (appdata v)
             {
@@ -51,7 +53,7 @@
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
                 
-                float draw = pow(saturate(1 - distance(i.uv, _Coordinate.xy)), 750.0 - _Brush);
+                float draw = pow(saturate(1 - distance(i.uv, _Coordinate.xy)), (10 - _Brush) * _Mult);
                 fixed4 drawCol = _Color * (draw * 1);
                 
                 return saturate(col + drawCol);
