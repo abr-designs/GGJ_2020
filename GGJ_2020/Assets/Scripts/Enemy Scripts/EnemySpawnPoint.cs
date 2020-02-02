@@ -93,9 +93,17 @@ public class EnemySpawnPoint : MonoBehaviour
 
             GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, spawnController.enemyContainer);
 
+
             // set pathway for newEnemy
             newEnemy.GetComponent<EnemyBaseState>().setPathway(pathwayForSpawnPoint);
             newEnemy.GetComponent<EnemyBaseState>().setSpawnPoint(gameObject);
+
+            // identify first waypoint
+            GameObject firstWaypoint = pathwayForSpawnPoint.pathway[0].gameObject;
+            // rotate spawned enemy to look at first waypoint
+            Vector3 localTarget = newEnemy.transform.InverseTransformPoint(firstWaypoint.transform.position);
+            float angleToTarget = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
+            newEnemy.transform.Rotate(Vector3.up * angleToTarget);
 
             // reduce the number of remainingEnemies
             // remainingEnemies -= 1;
@@ -131,5 +139,12 @@ public class EnemySpawnPoint : MonoBehaviour
         // set pathway for newEnemy
         newEnemy.GetComponent<EnemyBaseState>().setPathway(pathwayForSpawnPoint);
         newEnemy.GetComponent<EnemyBaseState>().setSpawnPoint(gameObject);
+        
+        // identify first waypoint
+        GameObject firstWaypoint = pathwayForSpawnPoint.pathway[0].gameObject;
+        // rotate spawned enemy to look at first waypoint
+        Vector3 localTarget = newEnemy.transform.InverseTransformPoint(firstWaypoint.transform.position);
+        float angleToTarget = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
+        newEnemy.transform.Rotate(Vector3.up * angleToTarget);
     }
 }

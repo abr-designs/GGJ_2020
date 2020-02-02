@@ -44,9 +44,16 @@ private float attackCooldownCounter;
 private float attackDamage;
 // drop table stats
 
+// reference static
+private static GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
+        if(gm == null) {
+            gm = FindObjectOfType<GameManager>();
+        }
+
         defaultEnemyStats();
         initEnemy();
     }
@@ -111,6 +118,9 @@ private float attackDamage;
         if(robotPathway != null) {
             currentWaypoint = robotPathway.pathway[0];
         }
+
+        // register enemy
+        gm.RegisterEnemy(this);
         
     }
 
@@ -175,7 +185,7 @@ private float attackDamage;
         // check distance to a target plant]
         
         // search a target forlder for any gameobject
-        GameObject targetsParent = GameObject.Find("Trees").gameObject;
+        GameObject targetsParent = GameObject.Find("Current Stage Trees").gameObject;
 
         // check count of trees in scene
         int numTrees = targetsParent.transform.childCount;
@@ -287,6 +297,12 @@ private float attackDamage;
     public void Heal(float amount)
     {
         health += amount;
+    }
+
+    private void OnDestroy() {
+        
+        // unregister
+        gm.UnRegisterEnemy(this);
     }
 
     void despawnEnemy() {

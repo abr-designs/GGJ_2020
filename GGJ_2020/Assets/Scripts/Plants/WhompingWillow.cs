@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using UnityEngine;
 
-public class WhompingWillow : PlantBase
+public class WhompingWillow : PlantBase, IAnimationAttack
 {
     private static readonly int Attack = Animator.StringToHash("Attack");
     [SerializeField, Required]
@@ -21,12 +23,10 @@ public class WhompingWillow : PlantBase
     {
         base.SetState(nextState);
         
-        animator.SetBool(Attack, false);
-        
         switch (nextState)
         {
             case STATE.ATTACK:
-                animator.SetBool(Attack, true);
+                animator.SetTrigger(Attack);
                 break;
         }
     }
@@ -39,6 +39,8 @@ public class WhompingWillow : PlantBase
         {
             Timer += Time.deltaTime;
             transform.localScale = Vector3.one * growCurve.Evaluate(Timer / growTime);
+
+            currentHealth = startHealth * growCurve.Evaluate(Timer / growTime);
             
             //Paints on the Fertility Controller
             FertilityController.PaintAt(transform.position + Vector3.up, fetilityRadius);
@@ -48,11 +50,26 @@ public class WhompingWillow : PlantBase
             Timer = 0f;
             SetState(STATE.FRUITING);
             transform.localScale = Vector3.one;
+            currentHealth = startHealth;
         }
+        
+        if(EnemyInRange())
+            SetState(STATE.ATTACK);
     }
 
     public override void IdleState()
     {
+        if (currentHealth < startHealth)
+        {
+            Timer = growCurve.Evaluate(currentHealth / startHealth);
+            
+            SetState(STATE.GROW);
+        }
+        else
+        {
+            SetState(STATE.FRUITING);
+        }
+
     }
 
     public override void FruitingState()
@@ -67,7 +84,7 @@ public class WhompingWillow : PlantBase
                 activeSeeds[i].localScale = Vector3.zero;
             }
 
-            if (seedTimers[i] > growTime)
+            if (seedTimers[i] > seedGrowthTime)
             {
                 activeSeeds[i].GetComponent<Rigidbody>().isKinematic = false;
                 activeSeeds[i].GetComponent<BoxCollider>().enabled = true;
@@ -76,14 +93,31 @@ public class WhompingWillow : PlantBase
             }
             
             seedTimers[i] += Time.deltaTime;
-            activeSeeds[i].localScale = Vector3.one * growCurve.Evaluate( seedTimers[i] / growTime);
+            activeSeeds[i].localScale = Vector3.one * growCurve.Evaluate( seedTimers[i] / seedGrowthTime);
 
         }
+        
+        
     }
 
     public override void AttackState()
     {
-        throw new System.NotImplementedException();
+        if (Timer < attackCooldown)
+        {
+            Timer += Time.deltaTime;
+        }
+        else
+        {
+            Timer = 0f;
+
+            if (!EnemyInRange())
+            {
+                SetState(STATE.IDLE);
+                return;
+            }
+            
+            animator.SetTrigger(Attack);
+        }
     }
 
     public override void DeathState()
@@ -92,5 +126,24 @@ public class WhompingWillow : PlantBase
         Destroy(gameObject);
 
         throw new System.NotImplementedException();
+    }
+
+    public void AnimationAttack()
+    {
+        var enemies = GameManager.enemies;
+
+        if (enemies == null || enemies.Count == 0)
+            return;
+
+        enemies.Where(e => Vector3.Distance(e.transform.position, transform.position) <= attackRange).ForEach(e => e.Damage(attackDamage));
+    }
+
+    public override void Damage(float amount)
+    {
+        
+        transform.localScale = Vector3.one * growCurve.Evaluate(currentHealth / startHealth);
+        
+        base.Damage(amount);
+
     }
 }

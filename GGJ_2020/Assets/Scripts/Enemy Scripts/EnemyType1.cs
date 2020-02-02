@@ -17,16 +17,16 @@ public class EnemyType1 : EnemyBaseState
     public override void initEnemy() {
         // set movement stats
         setMovementSpeed(5.0f);
-        setRotationSpeed(50.0f);
+        setRotationSpeed(150.0f);
         // set health stats
         setHealth(10.0f);
         setDefense(0.0f);
         // set attack stats
-        setAttackRange(2.5f);
+        setAttackRange(12.5f);
         setAttackCooldown(2.0f);
 
         // set referneces to other objects
-        projectileContainer = GameObject.Find("Projectile Container");
+        projectileContainer = GameObject.Find("Enemy Projectiles");
     }
 
     public override void performAttack() {
