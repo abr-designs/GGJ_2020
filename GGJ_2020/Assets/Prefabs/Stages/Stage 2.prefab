@@ -59,6 +59,7 @@ MonoBehaviour:
   stageToBegin: 2
   currentTreeContainer: {fileID: 0}
   seedAmmoContainer: {fileID: 0}
+  willowSeedPrefab: {fileID: 0}
 --- !u!135 &8341676261857163161
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20380,7 +20381,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyTypes.Array.data[0]
       value: 
-      objectReference: {fileID: 4718155872682688671, guid: 10fed490b951f419ebb8dbf384032196,
+      objectReference: {fileID: 2010911748538247856, guid: 6c837c7baad114447982134d90848aa8,
         type: 3}
     - target: {fileID: 2942710138742470033, guid: aa56426ba331d499c8574bd86dac9c10,
         type: 3}

@@ -494,6 +494,7 @@ MonoBehaviour:
   pickupSeedsContainer: {fileID: 2036953494}
   spawnController1: {fileID: 0}
   spawnController2: {fileID: 0}
+  currentStageIndex: 0
   currentStageReference: {fileID: 0}
   stagePrefabs:
   - {fileID: 5380802697588105843, guid: 6dcdf4ede018f4f7e806a80b137dc56a, type: 3}
