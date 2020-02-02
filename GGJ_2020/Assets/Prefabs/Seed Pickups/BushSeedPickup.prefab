@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4633668425555023673}
   - component: {fileID: 4633668425555023672}
   - component: {fileID: 4633668425555023679}
-  - component: {fileID: 4633668425555023677}
   - component: {fileID: 4633668425555023676}
   - component: {fileID: 4633668425555022019}
   - component: {fileID: -1540294667355983139}
+  - component: {fileID: 7569113494543078492}
   m_Layer: 0
   m_Name: BushSeedPickup
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4633668425555022018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8665829, y: 0.30634442, z: 3.46}
+  m_LocalPosition: {x: 0.8665829, y: 0.355, z: 3.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,20 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4633668425555023677
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4633668425555022018}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 2297425034801156755, guid: 2a4927bc0d4367d43b1e3387e424ece7, type: 3}
 --- !u!65 &4633668425555023676
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -139,3 +125,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &7569113494543078492
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4633668425555022018}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15
+  m_Height: 0.76
+  m_Direction: 0
+  m_Center: {x: -0.0027457774, y: 0, z: 0.000000022351742}

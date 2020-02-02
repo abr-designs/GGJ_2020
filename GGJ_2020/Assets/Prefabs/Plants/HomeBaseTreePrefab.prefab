@@ -2260,7 +2260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b081a6d76fa64488bda44393169dec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFruiting: 1
+  isFruiting: 0
   currentState: 0
   plantType: 0
   lockRadius: 15

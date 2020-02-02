@@ -204,7 +204,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void deactivateStageSpawners() {
+    public void deactivateStageSpawners()
+    {
+        if (!selectedSpawner)
+            return;
+        
         selectedSpawner.GetComponent<EnemySpawnController>().setSpawnersActive(false);
         selectedSpawner = null;
     }
