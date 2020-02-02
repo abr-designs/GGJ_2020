@@ -51,7 +51,7 @@
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
                 
-                float draw = pow(saturate(1 - distance(i.uv, _Coordinate.xy)), 50 - _Brush);
+                float draw = pow(saturate(1 - distance(i.uv, _Coordinate.xy)), 750.0 - _Brush);
                 fixed4 drawCol = _Color * (draw * 1);
                 
                 return saturate(col + drawCol);

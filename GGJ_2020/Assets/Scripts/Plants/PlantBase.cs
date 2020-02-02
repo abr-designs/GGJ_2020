@@ -40,7 +40,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     [SerializeField]
     private TYPE plantType;
     
-    [SerializeField, Range(0.1f, 50f)]
+    [SerializeField]
     protected float fetilityRadius = 1f;
 
     [SerializeField]

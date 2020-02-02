@@ -14,6 +14,9 @@ public class FertilityController : MonoBehaviour
     [SerializeField]
     private string targetProperty;
 
+    [SerializeField]
+    private int pow2;
+
     [SerializeField] private bool isDebug;
     //================================================================================================================//
     [SerializeField]
@@ -31,6 +34,7 @@ public class FertilityController : MonoBehaviour
 
     private readonly float checkDistance = 10f;
     
+    
     //================================================================================================================//
 
     // Start is called before the first frame update
@@ -40,9 +44,11 @@ public class FertilityController : MonoBehaviour
         
         drawMaterial = new Material(drawShader);
         drawMaterial.SetVector(Color, UnityEngine.Color.white);
-        splatMap = new RenderTexture(1024,1024, 0, RenderTextureFormat.ARGBFloat);
+        splatMap = new RenderTexture(pow2,pow2, 0, RenderTextureFormat.ARGBFloat);
         //TODO Need to Set the Detail texture here
         setMaterial.SetTexture(DetailAlbedoMap, splatMap);
+        
+        
     }
 
     //================================================================================================================//
@@ -53,7 +59,6 @@ public class FertilityController : MonoBehaviour
         
         if (!Physics.Raycast(position, Vector3.down, out var hit, checkDistance, layerMask.value)) 
             return;
-        
         
         var texCoord = hit.textureCoord;
         //TODO Raycast down to ground geet hit.textCoord
