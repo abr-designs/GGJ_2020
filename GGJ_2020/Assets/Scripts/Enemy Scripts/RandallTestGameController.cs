@@ -19,7 +19,7 @@ public class RandallTestGameController : MonoBehaviour
     {
         // set spawn controller 1 as active
         // changeActiveSpawnerSet(spawnController1);
-        Debug.Log("Press key 1 or 2 to activate stage spawners. Press 0 to deactivate stage.");
+        // Debug.Log("Press key 1 or 2 to activate stage spawners. Press 0 to deactivate stage.");
 
     }
 
@@ -44,7 +44,7 @@ public class RandallTestGameController : MonoBehaviour
             // activate selected spawn controller
             if(selectedSpawner != null) {
                 selectedSpawner.GetComponent<EnemySpawnController>().setSpawnersActive(true);
-                Debug.Log("Activate stage " + selectedSpawner);
+                // Debug.Log("Activate stage " + selectedSpawner);
             } else {
                 // disable stage spawners
                 Debug.Log("Disable stage spawners");
@@ -53,6 +53,46 @@ public class RandallTestGameController : MonoBehaviour
 
         }
 
+    }
+
+    // function to call when base tree is planted
+    public void initStage(int i) {
+
+        Debug.Log($"Set stage as active: {i}");
+
+        GameObject spawnsToActivate = null;
+
+        switch(i) {
+            case 1:
+                spawnsToActivate = spawnController1;
+                break;
+            case 2:
+                spawnsToActivate = spawnController1;
+                break;
+            default:
+                spawnsToActivate = null;
+                break;
+        }
+
+        changeActiveSpawnerSet(spawnsToActivate);
+
+    }
+
+    public void failStage(int i) {
+
+        Debug.Log($"Failed stage: {i}");
+
+        // replace base seed of this stage
+        //
+
+    }
+
+    public void completeStage(int i) {
+        
+        Debug.Log($"Complete stage: {i}");
+
+        // need to activate the base seed of the next stage
+        //
     }
 
 }

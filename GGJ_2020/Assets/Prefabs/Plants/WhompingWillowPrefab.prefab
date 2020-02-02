@@ -573,9 +573,10 @@ GameObject:
   - component: {fileID: 433523011827172128}
   - component: {fileID: 8242668419476210941}
   - component: {fileID: 2809409171232036326}
+  - component: {fileID: -8179980571606227102}
   m_Layer: 0
   m_Name: WhompingWillowPrefab
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -673,6 +674,20 @@ MonoBehaviour:
     type: 3}
   seedGrowthLocations: []
   animator: {fileID: 8242668419476210941}
+--- !u!136 &-8179980571606227102
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3485635723547930931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 5
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!1 &3857902266213936350
 GameObject:
   m_ObjectHideFlags: 0

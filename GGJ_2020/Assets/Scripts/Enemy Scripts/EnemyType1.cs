@@ -22,11 +22,11 @@ public class EnemyType1 : EnemyBaseState
         setHealth(10.0f);
         setDefense(0.0f);
         // set attack stats
-        setAttackRange(2.5f);
+        setAttackRange(12.5f);
         setAttackCooldown(2.0f);
 
         // set referneces to other objects
-        projectileContainer = GameObject.Find("Projectile Container");
+        projectileContainer = GameObject.Find("Enemy Projectiles");
     }
 
     public override void performAttack() {

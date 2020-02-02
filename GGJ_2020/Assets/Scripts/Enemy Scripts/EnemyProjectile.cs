@@ -6,7 +6,7 @@ using Recycling;
 public class EnemyProjectile : MonoBehaviour
 {
 
-    float projectileDamage = 1.0f;
+    public float projectileDamage = 25.0f;
     
     private void OnTriggerEnter(Collider other) {
 

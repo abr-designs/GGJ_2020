@@ -8,12 +8,16 @@ public class SeedAmmo : BaseItem
     [SerializeField]
     private string targetTag;
 
+    public Transform currentTreeContainer;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag(targetTag))
             return;
 
-        Instantiate(prefab, collision.contacts[0].point, Quaternion.identity);
+        GameObject treeContainer = GameObject.Find("Current Stage Trees");
+
+        Instantiate(prefab, collision.contacts[0].point, Quaternion.identity, treeContainer.transform);
         
         Destroy(gameObject);
 
