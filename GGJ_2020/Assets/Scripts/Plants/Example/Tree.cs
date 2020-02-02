@@ -14,11 +14,14 @@ public class Tree : PlantBase
     protected override void Init()
     {
         base.Init();
-        shrubs = new GameObject[numShrubs]; 
-        for(int i =0; i <numShrubs; i ++)
+        shrubs = new GameObject[numShrubs];
+        print("hi");// PlanarCoordinate.x + " " + " " + PlanarCoordinate.y);
+        for (int i =0; i <numShrubs; i ++)
         {
    
             Vector2 PlanarCoordinate = Random.insideUnitCircle * fetilityRadius;
+            
+           
             Vector3 position = new Vector3(transform.position.x + PlanarCoordinate.x, transform.position.y, transform.position.z+PlanarCoordinate.y);
             float rotation = Random.Range(0, 359);
             shrubs[i] = Instantiate(shrubPrefab, position, Quaternion.Euler(Vector3.up *rotation));
