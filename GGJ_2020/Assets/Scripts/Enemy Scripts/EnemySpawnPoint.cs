@@ -99,7 +99,7 @@ public class EnemySpawnPoint : MonoBehaviour
             GameObject enemyToSpawn = enemyTypes[0];
 
             // spawn the selected type of enemy
-            Vector3 spawnPositionOffset = new Vector3(0,0,0);//1,0);
+            Vector3 spawnPositionOffset = new Vector3(0,1,0);//1,0);
             Vector3 spawnPosition = transform.position + spawnPositionOffset;
 
             GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, gm.robotsContainer);//spawnController.enemyContainer)

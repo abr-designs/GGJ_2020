@@ -2263,7 +2263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   plantType: 0
-  fetilityRadius: 50
+  fetilityRadius: 10
   startHealth: 1000
   currentHealth: 0
   growCurve:
@@ -2321,7 +2321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   plantType: 0
-  fetilityRadius: 50
+  fetilityRadius: 10
   startHealth: 1000
   currentHealth: 0
   growCurve:
@@ -2365,7 +2365,6 @@ MonoBehaviour:
   seedPrefab: {fileID: 0}
   seedGrowthLocations:
   - {fileID: 298278327874724335}
-  animator: {fileID: 0}
 --- !u!136 &159470114814218252
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -68,6 +68,7 @@ public class BaseTreeSpawn : MonoBehaviour
             launchSeeds();
 
             // call game manager to initialize enemy spawns
+            
             gm.activateStageSpawners();//stageToBegin);
             
             Destroy(gameObject);

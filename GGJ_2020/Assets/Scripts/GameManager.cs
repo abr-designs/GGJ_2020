@@ -109,6 +109,10 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Set stage as active: {i}");
 
         currentStageIndex = i;
+        
+        // check if stagesRefernceList is emtpty
+        if(stagesRefernceList.Count == 0) return;
+
         currentStageReference = stagesRefernceList[i-1];
 
         string stageObjectName = "Stage " + currentStageIndex;
