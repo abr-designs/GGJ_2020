@@ -6325,6 +6325,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage 1 Home Base Seed
       objectReference: {fileID: 0}
+    - target: {fileID: 5739673342757094710, guid: c9a10a6cec5813642bcf879827cc08e6,
+        type: 3}
+      propertyPath: toolkitSeeds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9a10a6cec5813642bcf879827cc08e6, type: 3}
 --- !u!4 &952936267202454419 stripped
