@@ -217,6 +217,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain_SM (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6995117097110254675, guid: 1e388669acd63e243bb02357e145ed95,
+        type: 3}
+      propertyPath: splatMap
+      value: 
+      objectReference: {fileID: 8400000, guid: c6bb4e27c57b9934689a8ed7d3347f08, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e388669acd63e243bb02357e145ed95, type: 3}
 --- !u!4 &223641275 stripped
