@@ -28,7 +28,10 @@ public class FertilityController : MonoBehaviour
     
     [SerializeField]
     private Material setMaterial;
-    
+
+    [SerializeField]
+    private Material setFogMaterial;    //mac
+
     [SerializeField]
     private Shader drawShader;
 
@@ -51,8 +54,9 @@ public class FertilityController : MonoBehaviour
         splatMap = new RenderTexture(pow2,pow2, 0, RenderTextureFormat.ARGBFloat);
         //TODO Need to Set the Detail texture here
         setMaterial.SetTexture(DetailAlbedoMap, splatMap);
-        
-        
+        setFogMaterial.SetTexture(DetailAlbedoMap, splatMap); //mac
+
+
     }
 
     //================================================================================================================//
@@ -76,6 +80,7 @@ public class FertilityController : MonoBehaviour
         RenderTexture.ReleaseTemporary(temp);
 
         setMaterial.SetTexture(DetailAlbedoMap, splatMap);
+        setFogMaterial.SetTexture(DetailAlbedoMap, splatMap);              //mac
 
         //Debug.Log($"Hit {hit.collider.gameObject.name} at Tex Coord [{texCoord}]");
         //Debug.Break();

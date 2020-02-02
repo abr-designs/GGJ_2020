@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class Tree : PlantBase
 {
+    [SerializeField]
+    int numShrubs = 10;
+    public GameObject shrubPrefab;
+
+    private GameObject[] shrubs;
     // Start is called before the first frame update
+
     protected override void Init()
     {
         base.Init();
-        
+        shrubs = new GameObject[numShrubs]; 
+        for(int i =0; i <numShrubs; i ++)
+        {
+   
+            Vector2 PlanarCoordinate = Random.insideUnitCircle * fetilityRadius;
+            Vector3 position = new Vector3(transform.position.x + PlanarCoordinate.x, transform.position.y, transform.position.z+PlanarCoordinate.y);
+            float rotation = Random.Range(0, 359);
+            shrubs[i] = Instantiate(shrubPrefab, position, Quaternion.Euler(Vector3.up *rotation));
+        }
         transform.localScale = Vector3.zero;
     }
 
@@ -20,9 +34,15 @@ public class Tree : PlantBase
         {
             Timer += Time.deltaTime;
             transform.localScale = Vector3.one * growCurve.Evaluate(Timer / growTime);
-            
+           
             //Paints on the Fertility Controller
             FertilityController.PaintAt(transform.position + Vector3.up, fetilityRadius);
+            int shrubtotal = Mathf.RoundToInt(numShrubs * CurrentGrowth);
+            for (int i = 0; i < numShrubs; i++)
+            {
+                shrubs[i].SetActive(i <= shrubtotal);
+                shrubs[i].transform.localScale = Vector3.one * CurrentGrowth;
+            }
         }
         else
         {

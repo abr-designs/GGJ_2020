@@ -7,18 +7,15 @@
 	{
 
 		_MainTex("Texture", 2D) = "white" {}
-
+	_MainTex2("Albedo 2 (RGB)", 2D) = "white" {}
+	_Blend("Texture Blend", Range(0,1)) = 0.0
 		_Coordinate("Coordinate", Vector) = (0,0,0,0)
-
+		
 		_Color("Draw Color", Color) = (1,1,1,0)
 
 
 
 		_Brush("Brush Size", Range(0.0, 50.0)) = 25.0
-
-
-
-		_Mult("Multiplier", float) = 1.0
 
 	}
 
@@ -55,6 +52,7 @@
 					float4 vertex : POSITION;
 
 					float2 uv : TEXCOORD0;
+					float2 uv2: TEXCOORD1;
 
 				};
 
@@ -78,7 +76,7 @@
 
 				fixed4 _Coordinate, _Color;
 
-				float _Brush, _Mult;
+				float _Brush;
 
 
 
@@ -108,7 +106,7 @@
 
 
 
-					float draw = pow(saturate(1 - distance(i.uv, _Coordinate.xy)), (10 - _Brush) * _Mult);
+					float draw = pow(saturate(1 - distance(i.uv, _Coordinate.xy)), 50 - _Brush);
 
 					fixed4 drawCol = _Color * (draw * 1);
 

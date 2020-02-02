@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cdd1354d6e06c44bb2d45c94ed9627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFruiting: 1
   currentState: 0
   plantType: 0
   lockRadius: 5
@@ -143,6 +144,9 @@ MonoBehaviour:
   seedGrowthLocations:
   - {fileID: 8155183349501040170}
   - {fileID: 961830542512615019}
+  numShrubs: 10
+  shrubPrefab: {fileID: 7409205008176631598, guid: 767a5c4771ddb1f4eb3e517f7c74b870,
+    type: 3}
 --- !u!65 &6493222069164372403
 BoxCollider:
   m_ObjectHideFlags: 0
