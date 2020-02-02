@@ -63,7 +63,7 @@ public class BaseTreeSpawn : MonoBehaviour
         // delay for 1 second
         StartCoroutine(Wait(0.025f, () => {
             // launch seeds
-            launchSeeds();
+            // launchSeeds();
 
             // call game manager to initialize enemy spawns
             randallTestGameController.initStage(stageToBegin);

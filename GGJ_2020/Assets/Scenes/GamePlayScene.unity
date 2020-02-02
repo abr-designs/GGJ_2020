@@ -137,6 +137,12 @@ PrefabInstance:
       propertyPath: pathwayForSpawnPoint
       value: 
       objectReference: {fileID: 1327695814}
+    - target: {fileID: 2942710138742470033, guid: aa56426ba331d499c8574bd86dac9c10,
+        type: 3}
+      propertyPath: enemyTypes.Array.data[0]
+      value: 
+      objectReference: {fileID: 744711105457299597, guid: 746a04c19a79b4f75988773ed5ce973d,
+        type: 3}
     - target: {fileID: 6713182111744315285, guid: aa56426ba331d499c8574bd86dac9c10,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -758,6 +764,12 @@ PrefabInstance:
       propertyPath: pathwayForSpawnPoint
       value: 
       objectReference: {fileID: 1046839970}
+    - target: {fileID: 2942710138742470033, guid: aa56426ba331d499c8574bd86dac9c10,
+        type: 3}
+      propertyPath: enemyTypes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2010911748538247856, guid: 6c837c7baad114447982134d90848aa8,
+        type: 3}
     - target: {fileID: 6713182111744315285, guid: aa56426ba331d499c8574bd86dac9c10,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2593,7 +2605,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyTypes.Array.data[0]
       value: 
-      objectReference: {fileID: 2010911748538247856, guid: 6c837c7baad114447982134d90848aa8,
+      objectReference: {fileID: 744711105457299597, guid: 746a04c19a79b4f75988773ed5ce973d,
         type: 3}
     - target: {fileID: 6713182111744315285, guid: aa56426ba331d499c8574bd86dac9c10,
         type: 3}
