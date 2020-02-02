@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class WhompingWillow : PlantBase
+public class WhompingWillow : PlantBase, IAnimationAttack
 {
     private static readonly int Attack = Animator.StringToHash("Attack");
     [SerializeField, Required]
@@ -21,12 +21,10 @@ public class WhompingWillow : PlantBase
     {
         base.SetState(nextState);
         
-        animator.SetBool(Attack, false);
-        
         switch (nextState)
         {
             case STATE.ATTACK:
-                animator.SetBool(Attack, true);
+                animator.SetTrigger(Attack);
                 break;
         }
     }
@@ -49,10 +47,16 @@ public class WhompingWillow : PlantBase
             SetState(STATE.FRUITING);
             transform.localScale = Vector3.one;
         }
+        
+        if(EnemyInRange())
+            SetState(STATE.ATTACK);
     }
 
     public override void IdleState()
     {
+        //TODO Decide if i need to heal
+        //Decide if i need to grow
+        //Decide if i need to fruit
     }
 
     public override void FruitingState()
@@ -79,11 +83,28 @@ public class WhompingWillow : PlantBase
             activeSeeds[i].localScale = Vector3.one * growCurve.Evaluate( seedTimers[i] / growTime);
 
         }
+        
+        
     }
 
     public override void AttackState()
     {
-        throw new System.NotImplementedException();
+        if (Timer < attackCooldown)
+        {
+            Timer += Time.deltaTime;
+        }
+        else
+        {
+            Timer = 0f;
+
+            if (!EnemyInRange())
+            {
+                SetState(STATE.IDLE);
+                return;
+            }
+            
+            animator.SetTrigger(Attack);
+        }
     }
 
     public override void DeathState()
@@ -92,5 +113,10 @@ public class WhompingWillow : PlantBase
         Destroy(gameObject);
 
         throw new System.NotImplementedException();
+    }
+
+    public void AnimationAttack()
+    {
+        Debug.Break();
     }
 }

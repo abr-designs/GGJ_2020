@@ -151,10 +151,13 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     {
         var activeEnemies = GameManager.enemies;
         
-        activeEnemies.FirstOrDefault(e => Vector3.Distance(e.transform.position, transform.position) <= attackRange);
+        if(activeEnemies == null || activeEnemies.Count == 0)
+            return false;
+        
+        var enemy = activeEnemies.FirstOrDefault(e => Vector3.Distance(e.transform.position, transform.position) <= attackRange);
         
         
-        return false;
+        return enemy != null;
     }
     
     //================================================================================================================//

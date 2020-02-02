@@ -572,7 +572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 433523011827172128}
   - component: {fileID: 8242668419476210941}
-  - component: {fileID: 8732308529869436471}
+  - component: {fileID: 2809409171232036326}
   m_Layer: 0
   m_Name: WhompingWillowPrefab
   m_TagString: Untagged
@@ -615,7 +615,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8732308529869436471
+--- !u!114 &2809409171232036326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -624,13 +624,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3485635723547930931}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0cdd1354d6e06c44bb2d45c94ed9627, type: 3}
+  m_Script: {fileID: 11500000, guid: bdb4e9336f08d1446b82143f29485c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
   plantType: 0
-  fetilityRadius: 25
-  startHealth: 1000
+  fetilityRadius: 10
+  startHealth: 100
   currentHealth: 0
   growCurve:
     serializedVersion: 2
@@ -665,12 +665,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  growTime: 120
-  seedGrowthTime: 180
-  attackCooldown: 30
+  growTime: 60
+  seedGrowthTime: 60
+  attackCooldown: 5
+  attackRange: 5
   seedPrefab: {fileID: 6154364813649377400, guid: 2a4395fcbbabf614295021fd06dfaf44,
     type: 3}
   seedGrowthLocations: []
+  animator: {fileID: 8242668419476210941}
 --- !u!1 &3857902266213936350
 GameObject:
   m_ObjectHideFlags: 0
