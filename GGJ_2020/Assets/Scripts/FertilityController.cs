@@ -35,6 +35,7 @@ public class FertilityController : MonoBehaviour
     [SerializeField]
     private Shader drawShader;
 
+    //[SerializeField]
     private RenderTexture splatMap;
 
     private Material drawMaterial;
