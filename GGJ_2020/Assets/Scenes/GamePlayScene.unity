@@ -3267,7 +3267,7 @@ PrefabInstance:
     - target: {fileID: 1802292383390927952, guid: 3bc2774ee84af4d64af0029b0ef546d8,
         type: 3}
       propertyPath: toolkitSeeds.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1802292383390927952, guid: 3bc2774ee84af4d64af0029b0ef546d8,
         type: 3}
@@ -3318,7 +3318,7 @@ PrefabInstance:
         type: 3}
       propertyPath: baseTreeSeedPrefab
       value: 
-      objectReference: {fileID: 4008730514266649294, guid: e33ed91cb3c2c304089a9989083ae565,
+      objectReference: {fileID: 3927724437367063948, guid: 80c129ffffa4e435eb2123f087ae19a4,
         type: 3}
     - target: {fileID: 1802292383390927952, guid: 3bc2774ee84af4d64af0029b0ef546d8,
         type: 3}

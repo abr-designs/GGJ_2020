@@ -70,7 +70,7 @@ MonoBehaviour:
   rotationSpeed: 50
   health: 10
   defense: 0
-  attackRange: 2.5
+  attackRange: 10
   attackCooldown: 5
   attackCooldownCounter: 0
   attackDamage: 25

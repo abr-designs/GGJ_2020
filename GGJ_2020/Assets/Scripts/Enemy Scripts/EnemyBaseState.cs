@@ -45,6 +45,7 @@ public abstract class EnemyBaseState : MonoBehaviour, IDamageable
     public float health;
     public float defense;
     // attack stats
+    public float perceptionValue = 12.5f;
     public float attackRange = 2.5f;
     public float attackCooldown;
     public float attackCooldownCounter;
@@ -210,7 +211,7 @@ public abstract class EnemyBaseState : MonoBehaviour, IDamageable
 
             // Debug.Log($"Distance from {gameObject} to {child} = {dist}");
 
-            float distThreshold = 5.0f; // move to a class variable
+            float distThreshold = perceptionValue; // move to a class variable
             if(dist < distThreshold) {
                 setTarget(child.gameObject);
                 // set state to pursueTarget
@@ -238,7 +239,16 @@ public abstract class EnemyBaseState : MonoBehaviour, IDamageable
 
             // check range to target
             float distToTarget = Vector3.Distance(transform.position, target.transform.position);
-            if(distToTarget > attackRange) {
+
+            // implement a reference to target scale
+            float targetScale = target.GetComponent<PlantBase>().CurrentGrowth;
+
+            // distToTarget += targetScale * distToTarget; // increment distance based on tree growth scale
+            // Debug.Log(distToTarget);
+
+            float scaledAttackRange = attackRange + targetScale * attackRange;
+
+            if(distToTarget > scaledAttackRange) {
                 // move towards target
                 transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
                 state = enemyState.pursueTarget;
@@ -255,6 +265,10 @@ public abstract class EnemyBaseState : MonoBehaviour, IDamageable
 
         // check range to target
         float distToTarget = Vector3.Distance(transform.position, target.transform.position);
+
+        // implement a reference to target scale
+        //
+
         if(distToTarget > attackRange) {
             // change state to purse
             state = enemyState.pursueTarget;

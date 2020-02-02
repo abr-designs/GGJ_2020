@@ -2215,8 +2215,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7004502437239140780}
   - component: {fileID: 3820649418452189082}
+  - component: {fileID: 159470114814218252}
   m_Layer: 0
-  m_Name: BaseTree
+  m_Name: BaseTreePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2305,6 +2306,20 @@ MonoBehaviour:
   seedPrefab: {fileID: 0}
   seedGrowthLocations:
   - {fileID: 298278327874724335}
+--- !u!136 &159470114814218252
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6300434732218434495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.66
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 1.99, y: 4.3, z: 1.08}
 --- !u!1 &6411012512025643284
 GameObject:
   m_ObjectHideFlags: 0

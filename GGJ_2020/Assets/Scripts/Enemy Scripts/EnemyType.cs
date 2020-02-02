@@ -11,7 +11,7 @@ public class EnemyType : EnemyBaseState
     // private GameObject projectileContainer;
 
     private float projectileUpwardForce = 150.0f;
-    private float projectileForwardForceMultiplier = 25.0f;
+    private float projectileForwardForceMultiplier = 50.0f;
 
     // initialize this enemy with specific variables
     // public override void initEnemy() {
@@ -43,6 +43,7 @@ public class EnemyType : EnemyBaseState
     }
 
     private void performChopAttack() {
+
     }
 
     private void performProjectileAttack() {
@@ -67,6 +68,7 @@ public class EnemyType : EnemyBaseState
 
         // check distance to target
         float distance = Vector3.Distance(newProjectile.transform.position, target.transform.position);
+
         float forwardForce = distance * projectileForwardForceMultiplier;
         
         // set target and trajectory and projectile

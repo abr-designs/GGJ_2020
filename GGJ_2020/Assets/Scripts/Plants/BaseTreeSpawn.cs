@@ -63,7 +63,7 @@ public class BaseTreeSpawn : MonoBehaviour
         // delay for 1 second
         StartCoroutine(Wait(0.025f, () => {
             // launch seeds
-            // launchSeeds();
+            launchSeeds();
 
             // call game manager to initialize enemy spawns
             randallTestGameController.initStage(stageToBegin);
@@ -93,9 +93,9 @@ public class BaseTreeSpawn : MonoBehaviour
             GameObject newSeed = Instantiate(seedAmmoPrefab, spawnPosition, Quaternion.identity, gm.seedAmmoContainer);
 
             // add force to launched seed
-            randX = (float)Random.Range(-250,-750);
-            randY = (float)Random.Range(0,250);
-            randZ = (float)Random.Range(-250,-750);
+            randX = (float)Random.Range(-250,-750)/10;
+            randY = (float)Random.Range(0,250)/10;
+            randZ = (float)Random.Range(-250,-750)/10;
             Vector3 newLauchForce = new Vector3(toolkitSeedLaunchForce.x + randX,
                 toolkitSeedLaunchForce.y + randY,
                 toolkitSeedLaunchForce.z + randZ);

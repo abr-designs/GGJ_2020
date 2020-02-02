@@ -69,6 +69,7 @@ MonoBehaviour:
   rotationSpeed: 50
   health: 20
   defense: 0
+  perceptionValue: 7.5
   attackRange: 2.5
   attackCooldown: 5
   attackCooldownCounter: 0
