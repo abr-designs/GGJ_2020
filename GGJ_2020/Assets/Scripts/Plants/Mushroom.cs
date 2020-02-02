@@ -5,15 +5,10 @@ using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
 
-public class Mushroom : PlantBase
+public class Mushroom : PlantBase, IInteractable
 {
-    private static readonly int Attack = Animator.StringToHash("Attack");
-    
-    //================================================================================================================//
-
-    [SerializeField, Required]
-    private Animator animator;
-    
+    [SerializeField, ReadOnly]
+    protected bool isActivated;
     //================================================================================================================//
 
     
@@ -27,18 +22,15 @@ public class Mushroom : PlantBase
 
     protected override void SetState(STATE nextState)
     {
-        base.SetState(nextState);
+        if (nextState == STATE.ATTACK && !isActivated)
+            return;
         
-        switch (nextState)
-        {
-            case STATE.ATTACK:
-                animator.SetTrigger(Attack);
-                break;
-        }
+        base.SetState(nextState);
     }
 
     //================================================================================================================//
 
+    #region States 
     public override void GrowState()
     {
         if (Timer < growTime)
@@ -108,22 +100,7 @@ public class Mushroom : PlantBase
 
     public override void AttackState()
     {
-        if (Timer < attackCooldown)
-        {
-            Timer += Time.deltaTime;
-        }
-        else
-        {
-            Timer = 0f;
-
-            if (!EnemyInRange())
-            {
-                SetState(STATE.IDLE);
-                return;
-            }
-            
-            animator.SetTrigger(Attack);
-        }
+        TriggerAttack();
     }
 
     public override void DeathState()
@@ -134,18 +111,32 @@ public class Mushroom : PlantBase
         throw new System.NotImplementedException();
     }
     
+    #endregion States
+    
     //================================================================================================================//
 
 
-    public void AnimationAttack()
+    private void TriggerAttack()
     {
+        if (!isActivated)
+        {
+            Debug.Log($"{gameObject} Has not been activated");
+            return;
+        }
+        
         var enemies = GameManager.enemies;
 
-        if (enemies == null || enemies.Count == 0)
-            return;
+        if (enemies != null && enemies.Count != 0)
+        {
+            enemies.Where(e => Vector3.Distance(e.transform.position, transform.position) <= attackRange * CurrentGrowth)
+                .ForEach(e => e.Damage(attackDamage));
+        }
 
-        enemies.Where(e => Vector3.Distance(e.transform.position, transform.position) <= attackRange * CurrentGrowth)
-            .ForEach(e => e.Damage(attackDamage));
+        currentHealth = 1;
+        SetState(STATE.IDLE);
+
+        isActivated = false;
+
     }
     
     //================================================================================================================//
@@ -157,5 +148,10 @@ public class Mushroom : PlantBase
         
         base.Damage(amount);
 
+    }
+
+    public void Interact()
+    {
+        isActivated = true;
     }
 }
