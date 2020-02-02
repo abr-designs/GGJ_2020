@@ -23,9 +23,16 @@ public class EnemySpawnPoint : MonoBehaviour
     [SerializeField]
     private bool isSpawning;
 
+    // reference static
+    private static GameManager gm;
+    
     // Start is called before the first frame update
     void Start()
     {
+        if(gm == null) {
+            gm = FindObjectOfType<GameManager>();
+        }
+        
         initStats();
     }
 
@@ -91,7 +98,7 @@ public class EnemySpawnPoint : MonoBehaviour
             Vector3 spawnPositionOffset = new Vector3(0,0,0);//1,0);
             Vector3 spawnPosition = transform.position + spawnPositionOffset;
 
-            GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, spawnController.enemyContainer);
+            GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, gm.robotsContainer);//spawnController.enemyContainer);
 
 
             // set pathway for newEnemy
@@ -134,7 +141,7 @@ public class EnemySpawnPoint : MonoBehaviour
         Vector3 spawnPositionOffset = new Vector3(0,1,0);
         Vector3 spawnPosition = transform.position + spawnPositionOffset;
 
-        GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, spawnController.enemyContainer);
+        GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, gm.robotsContainer);//spawnController.enemyContainer);
 
         // set pathway for newEnemy
         newEnemy.GetComponent<EnemyBaseState>().setPathway(pathwayForSpawnPoint);

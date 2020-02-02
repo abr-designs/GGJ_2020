@@ -80,7 +80,7 @@ public class WhompingWillow : PlantBase, IAnimationAttack
             if (activeSeeds[i] == null)
             {
                 seedTimers[i] = 0f - Random.value;
-                activeSeeds[i] = Instantiate(seedPrefab, seedGrowthLocations[i].position, Quaternion.identity).transform;
+                activeSeeds[i] = Instantiate(seedPrefab, seedGrowthLocations[i].position, Quaternion.identity, GameManager.pickupSeedsContainer).transform;
                 activeSeeds[i].localScale = Vector3.zero;
             }
 

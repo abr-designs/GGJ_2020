@@ -8,7 +8,7 @@ public class EnemyType2 : EnemyBaseState
     [SerializeField]
     private GameObject projectilePrefab;
 
-    private GameObject projectileContainer;
+    // private GameObject projectileContainer;
 
     private float projectileUpwardForce = 150.0f;
     private float projectileForwardForceMultiplier = 25.0f;
@@ -26,7 +26,7 @@ public class EnemyType2 : EnemyBaseState
         setAttackCooldown(5.0f);
         
         // set referneces to other objects
-        projectileContainer = GameObject.Find("Projectile Container");
+        // projectileContainer = GameObject.Find("Projectile Container");
     }
 
     public override void performAttack() {
@@ -44,7 +44,7 @@ public class EnemyType2 : EnemyBaseState
         Vector3 spawnPositionOffset = new Vector3(0,2,0);
         Vector3 spawnPosition = transform.position + spawnPositionOffset;
         
-        GameObject newProjectile = Instantiate(projectilePrefab, spawnPosition, transform.rotation, projectileContainer.transform); // Quaternion.identity);
+        GameObject newProjectile = Instantiate(projectilePrefab, spawnPosition, transform.rotation, gm.enemyProjectilesContainer); // Quaternion.identity);
 
         // identify projectile rigidbody
         Rigidbody rb = newProjectile.GetComponent<Rigidbody>();

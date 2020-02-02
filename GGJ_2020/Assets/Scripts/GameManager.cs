@@ -11,6 +11,22 @@ public class GameManager : MonoBehaviour
     private GameObject playerGameObject;
     private PlayerInventory playerInventory;
 
+    //================================================================================================================//
+    // containers
+    [FoldoutGroup("Containers References")]
+    public Transform enemyProjectilesContainer;
+    [FoldoutGroup("Containers References")]
+    public Transform robotsContainer;
+    [FoldoutGroup("Containers References")]
+    public Transform currentStageTreesContainer;
+    [FoldoutGroup("Containers References")]
+    public Transform archivedTreesContainer;
+    [FoldoutGroup("Containers References")]
+    public Transform seedAmmoContainer;
+    [FoldoutGroup("Containers References")]
+    public Transform pickupSeedsContainer;
+    //================================================================================================================//
+
     private void Start()
     {
         playerInventory = FindObjectOfType<PlayerInventory>();

@@ -45,7 +45,7 @@ private float attackDamage;
 // drop table stats
 
 // reference static
-private static GameManager gm;
+protected static GameManager gm;
 
     // Start is called before the first frame update
     void Start()
@@ -267,7 +267,6 @@ private static GameManager gm;
 
     // enemy will received damage from an attack minus its defense stat
     public void receiveDamage(float f) {
-        
         
     }
 

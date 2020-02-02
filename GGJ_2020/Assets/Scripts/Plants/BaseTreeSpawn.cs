@@ -20,6 +20,17 @@ public class BaseTreeSpawn : MonoBehaviour
     public Transform currentTreeContainer;
     public Transform seedAmmoContainer;
 
+    // reference static
+    private static GameManager gm;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        if(gm == null) {
+            gm = FindObjectOfType<GameManager>();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -47,7 +58,7 @@ public class BaseTreeSpawn : MonoBehaviour
         Destroy(seedMesh);
 
         // instantiate 
-        GameObject newSeed = Instantiate(baseTreeSeedPrefab, seedMesh.transform.position, Quaternion.identity, currentTreeContainer);
+        GameObject newSeed = Instantiate(baseTreeSeedPrefab, seedMesh.transform.position, Quaternion.identity, gm.seedAmmoContainer);
 
         // delay for 1 second
         StartCoroutine(Wait(0.025f, () => {
@@ -79,12 +90,12 @@ public class BaseTreeSpawn : MonoBehaviour
             float randZ = (float)Random.Range(-20,20)/40.0f;
             Vector3 randomPosition = new Vector3(randX, randY, randZ);
             Vector3 spawnPosition = transform.position + randomPosition;
-            GameObject newSeed = Instantiate(seedAmmoPrefab, spawnPosition, Quaternion.identity, seedAmmoContainer);
+            GameObject newSeed = Instantiate(seedAmmoPrefab, spawnPosition, Quaternion.identity, gm.seedAmmoContainer);
 
             // add force to launched seed
-            randX = (float)Random.Range(-250,250);
+            randX = (float)Random.Range(-250,-750);
             randY = (float)Random.Range(0,250);
-            randZ = (float)Random.Range(-250,250);
+            randZ = (float)Random.Range(-250,-750);
             Vector3 newLauchForce = new Vector3(toolkitSeedLaunchForce.x + randX,
                 toolkitSeedLaunchForce.y + randY,
                 toolkitSeedLaunchForce.z + randZ);
