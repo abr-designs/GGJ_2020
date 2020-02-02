@@ -23,6 +23,8 @@ public class EnemySpawnPoint : MonoBehaviour
     [SerializeField]
     private bool isSpawning;
 
+    public float factoryIntegrity; // use for factory damage in order to cause factory to be destoryed
+
     // reference static
     private static GameManager gm;
     
@@ -63,6 +65,8 @@ public class EnemySpawnPoint : MonoBehaviour
         // isSpawning = true;
         spawnSpeedMultiplier = 1.0f;
 
+        factoryIntegrity = 1.0f; // use for factory damage in order to cause factory to be destoryed
+
     }
 
     public void setIsSpawning(bool b) { isSpawning = b; }
@@ -98,8 +102,7 @@ public class EnemySpawnPoint : MonoBehaviour
             Vector3 spawnPositionOffset = new Vector3(0,0,0);//1,0);
             Vector3 spawnPosition = transform.position + spawnPositionOffset;
 
-            GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, gm.robotsContainer);//spawnController.enemyContainer);
-
+            GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, gm.robotsContainer);//spawnController.enemyContainer)
 
             // set pathway for newEnemy
             newEnemy.GetComponent<EnemyBaseState>().setPathway(pathwayForSpawnPoint);
@@ -153,5 +156,14 @@ public class EnemySpawnPoint : MonoBehaviour
         Vector3 localTarget = newEnemy.transform.InverseTransformPoint(firstWaypoint.transform.position);
         float angleToTarget = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
         newEnemy.transform.Rotate(Vector3.up * angleToTarget);
+    }
+
+    public void crumbleFactory() {
+
+        // factory is destroyed
+
+        // transition to next stage
+        gm.completeCurrentStage();
+
     }
 }
