@@ -210,6 +210,10 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
 
         // destroy/recycle enemy
         Destroy(gameObject);
+        
+        // call game manager to check if the home base tree was destroyed
+        GameManager.checkStageFailure();
+        
     }
 
     public void Heal(float amount)
