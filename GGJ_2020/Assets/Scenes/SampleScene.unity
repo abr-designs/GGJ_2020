@@ -684,6 +684,11 @@ PrefabInstance:
       propertyPath: setMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 4c91db470a3462b46a4e0f4b7a215d71, type: 2}
+    - target: {fileID: 2605429988428089562, guid: f9f051ff9e4a13243b21915f737115f2,
+        type: 3}
+      propertyPath: setFogMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 533598e114c4b294c8aaabc4393f9253, type: 2}
     - target: {fileID: 2605429988428089563, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_Name

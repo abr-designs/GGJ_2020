@@ -19,7 +19,7 @@ public class Tree : PlantBase
         for (int i =0; i <numShrubs; i ++)
         {
    
-            Vector2 PlanarCoordinate = Random.insideUnitCircle * fetilityRadius;
+            Vector2 PlanarCoordinate = Random.insideUnitCircle * fertilityRadius;
             
            
             Vector3 position = new Vector3(transform.position.x + PlanarCoordinate.x, transform.position.y, transform.position.z+PlanarCoordinate.y);
@@ -41,7 +41,7 @@ public class Tree : PlantBase
             currentHealth = startHealth * growCurve.Evaluate(Timer / growTime);
            
             //Paints on the Fertility Controller
-            FertilityController.PaintAt(transform.position + Vector3.up, fetilityRadius);
+            FertilityController.PaintAt(transform.position + Vector3.up, fertilityRadius);
             
             var shrubTotal = Mathf.RoundToInt(numShrubs * CurrentGrowth);
             for (var i = 0; i < numShrubs; i++)

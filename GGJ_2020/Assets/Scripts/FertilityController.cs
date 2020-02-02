@@ -68,6 +68,9 @@ public class FertilityController : MonoBehaviour
         if (!Physics.Raycast(position, Vector3.down, out var hit, checkDistance, layerMask.value)) 
             return;
         
+        //Debug.Log($"Hit {hit.collider.gameObject.name} TexCoord {hit.textureCoord} Hit {hit.point}");
+        //Debug.Break();
+        
         var texCoord = hit.textureCoord;
         //TODO Raycast down to ground geet hit.textCoord
         drawMaterial.SetVector(Coordinate, new Vector4(texCoord.x,texCoord.y,0f,0f));

@@ -660,10 +660,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb4e9336f08d1446b82143f29485c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFruiting: 0
   currentState: 0
   plantType: 0
   lockRadius: 10
-  fetilityRadius: 10
+  fertilityRadius: 1
   startHealth: 100
   currentHealth: 0
   growCurve:
