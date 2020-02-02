@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tree : PlantBase
 {
+    public GameObject shrubPrefab;
     // Start is called before the first frame update
     protected override void Init()
     {
@@ -20,7 +21,11 @@ public class Tree : PlantBase
         {
             Timer += Time.deltaTime;
             transform.localScale = Vector3.one * growCurve.Evaluate(Timer / growTime);
-            
+             if (Timer%10 == 1)
+            {
+                GameObject ShrubCopy = Instantiate(shrubPrefab, Random.insideUnitCircle * fetilityRadius, transform.rotation);
+                print("hi");
+            }
             //Paints on the Fertility Controller
             FertilityController.PaintAt(transform.position + Vector3.up, fetilityRadius);
         }
