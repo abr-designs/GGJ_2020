@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
 
         // destroy all seeds in player inventory
         // player.witherInventory()
-//        playerInventory.ClearInventory();
+        playerInventory.ClearInventory();
 
         // remove all seed pickups in the world
         destroyRemainingSeedPickups();
@@ -223,7 +223,8 @@ public class GameManager : MonoBehaviour
         }
 
         // eject all remaining seeds in player inventory
-        // player.ejectPlayerSeeds()
+//playerInventory.ejectPlayerSeeds()
+        playerInventory.ClearInventory();
 
         // move all current stage trees into archived trees and set as no longer fruiting
         foreach(Transform tree in currentStageTreesContainer) {

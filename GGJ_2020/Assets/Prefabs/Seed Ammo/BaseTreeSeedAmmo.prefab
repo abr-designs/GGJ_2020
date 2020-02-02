@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83969e8f1e29ab448a5697246ded263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6300434732218434495, guid: ec9ee12b69771f24aaea0ff34f1e51b0, type: 3}
+  prefab: {fileID: 6300434732218434495, guid: f38b42763b9697a4a9999710ca300030, type: 3}
   spawnRequiredRadius: 15
   targetTag: Ground
   PickupPrefab: {fileID: 4633668425555022018, guid: 37dfb9b628be71b42a5ebb6bd000de89,
