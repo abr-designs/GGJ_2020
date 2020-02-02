@@ -3949,7 +3949,7 @@ MonoBehaviour:
   pathwaysForSpawnPoint:
   - {fileID: 8650710120655006230}
   enemyTypes:
-  - {fileID: 2010911748538247856, guid: 6c837c7baad114447982134d90848aa8, type: 3}
+  - {fileID: 4718155872682688671, guid: 10fed490b951f419ebb8dbf384032196, type: 3}
   spawnMinInterval: 10
   spawnMaxInterval: 10
   fertilityDamageInterval: 5
