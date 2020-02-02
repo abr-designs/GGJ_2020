@@ -156,37 +156,37 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 5006512736848714004}
     m_Modifications:
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8665829
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.093655586
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.35106373
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
@@ -196,7 +196,7 @@ PrefabInstance:
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
@@ -216,53 +216,18 @@ PrefabInstance:
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.702528
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 7.9752
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 7.9752
-      objectReference: {fileID: 0}
-    - target: {fileID: 2605429988428089562, guid: f9f051ff9e4a13243b21915f737115f2,
-        type: 3}
-      propertyPath: targetProperty
-      value: _Splatter
-      objectReference: {fileID: 0}
-    - target: {fileID: 2605429988428089562, guid: f9f051ff9e4a13243b21915f737115f2,
-        type: 3}
-      propertyPath: isDebug
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2605429988428089562, guid: f9f051ff9e4a13243b21915f737115f2,
-        type: 3}
-      propertyPath: pow2
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 2605429988428089562, guid: f9f051ff9e4a13243b21915f737115f2,
-        type: 3}
-      propertyPath: levelPowOffset
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2605429988428089562, guid: f9f051ff9e4a13243b21915f737115f2,
-        type: 3}
-      propertyPath: Multiplier
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2605429988428089562, guid: f9f051ff9e4a13243b21915f737115f2,
-        type: 3}
-      propertyPath: setFogMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 533598e114c4b294c8aaabc4393f9253, type: 2}
-    - target: {fileID: 2605429988428089562, guid: f9f051ff9e4a13243b21915f737115f2,
-        type: 3}
-      propertyPath: setMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 4c91db470a3462b46a4e0f4b7a215d71, type: 2}
     - target: {fileID: 2605429988428089563, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_Name
