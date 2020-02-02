@@ -20,12 +20,19 @@ public class SeedCannon : MonoBehaviour
 
     private PlayerInventory playerInventory;
 
+    // reference static
+    private static GameManager gm;
+
     //================================================================================================================//
 
 
     // Start is called before the first frame update
     private void Start()
     {
+        if(gm == null) {
+            gm = FindObjectOfType<GameManager>();
+        }
+
         playerInventory = GetComponent<PlayerInventory>();
     }
 
@@ -49,7 +56,7 @@ public class SeedCannon : MonoBehaviour
 
         var direction = (spawnPointTransform.forward.normalized * shootForce) + spawnPointTransform.up.normalized;
 
-        var tempRigidbody = Instantiate(seedPrefab, spawnPointTransform.position + spawnPointTransform.forward.normalized , Quaternion.identity)
+        var tempRigidbody = Instantiate(seedPrefab, spawnPointTransform.position + spawnPointTransform.forward.normalized , Quaternion.identity, gm.seedAmmoContainer)
             .GetComponent<Rigidbody>();
 
         tempRigidbody.AddForce(direction * shootForce);

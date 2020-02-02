@@ -7,10 +7,10 @@ public class BaseItem : MonoBehaviour
 {
 
     public enum itemList {
-        bramblePlantSeed,
-        oakWithBeesPlantSeed,
-        slowingFungusPlantSeed,
-        restorativeFlowerPlantSeed
+        BASE_SEED,
+        WILLOW_SEED,
+        BUSH_SEED,
+        FUNGUS_SEED
     }
 
     [SerializeField, Required]

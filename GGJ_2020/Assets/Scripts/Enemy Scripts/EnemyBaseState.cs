@@ -6,46 +6,53 @@ using Recycling;
 
 public abstract class EnemyBaseState : MonoBehaviour, IDamageable
 {
+
+    public enum enemyState {
+        idle,
+        followWaypoint,
+        pursueTarget,
+        attack,
+        dying,
+        returnHome
+    };
+
+    protected enum attackTypeList {
+        chop,
+        projectileAttack
+    }
     
-public enum enemyState {
-    idle,
-    followWaypoint,
-    pursueTarget,
-    attack,
-    dying,
-    returnHome
-};
+    [SerializeField]
+    private enemyState state;
+    [SerializeField]
+    protected attackTypeList attackType;
+    [SerializeField]
+    private GameObject spawnPoint;
 
-[SerializeField]
-private enemyState state;
-[SerializeField]
-private GameObject spawnPoint;
+    // waypoint stats
+    public RobotPathway robotPathway;
 
-// waypoint stats
-public RobotPathway robotPathway;
+    [SerializeField]
+    Waypoint currentWaypoint; 
 
-[SerializeField]
-Waypoint currentWaypoint; 
+    [SerializeField]
+    protected GameObject target;
+    // movement stats
+    public float movementSpeed = 5.0f;
+    private float lookAtThreshold = 2.5f;
 
-[SerializeField]
-protected GameObject target;
-// movement stats
-private float movementSpeed = 5.0f;
-private float lookAtThreshold = 2.5f;
+    public float rotationSpeed = 50.0f;
+    // health stats
+    public float health;
+    public float defense;
+    // attack stats
+    public float attackRange = 2.5f;
+    public float attackCooldown;
+    public float attackCooldownCounter;
+    public float attackDamage;
+    // drop table stats
 
-private float rotationSpeed = 50.0f;
-// health stats
-protected float health;
-private float defense;
-// attack stats
-private float attackRange = 2.5f;
-private float attackCooldown;
-private float attackCooldownCounter;
-private float attackDamage;
-// drop table stats
-
-// reference static
-private static GameManager gm;
+    // reference static
+    protected static GameManager gm;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +62,7 @@ private static GameManager gm;
         }
 
         defaultEnemyStats();
-        initEnemy();
+        // initEnemy();
     }
 
     // Update is called once per frame
@@ -125,7 +132,7 @@ private static GameManager gm;
     }
 
     // each enemy will need to be loaded with their specifc stats based on the type of enemy
-    public abstract void initEnemy();
+    // public abstract void initEnemy();
     
     // update counters being tracked for this enemy
     void updateCounters() {
@@ -267,7 +274,6 @@ private static GameManager gm;
 
     // enemy will received damage from an attack minus its defense stat
     public void receiveDamage(float f) {
-        
         
     }
 

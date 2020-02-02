@@ -8,8 +8,14 @@ using UnityEngine;
 public class WhompingWillow : PlantBase, IAnimationAttack
 {
     private static readonly int Attack = Animator.StringToHash("Attack");
+    
+    //================================================================================================================//
+
     [SerializeField, Required]
     private Animator animator;
+    
+    //================================================================================================================//
+
     
     // Start is called before the first frame update
     protected override void Init()
@@ -61,7 +67,7 @@ public class WhompingWillow : PlantBase, IAnimationAttack
     {
         if (currentHealth < startHealth)
         {
-            Timer = growCurve.Evaluate(currentHealth / startHealth);
+            Timer = growTime * growCurve.Evaluate(currentHealth / startHealth);
             
             SetState(STATE.GROW);
         }
@@ -80,7 +86,7 @@ public class WhompingWillow : PlantBase, IAnimationAttack
             if (activeSeeds[i] == null)
             {
                 seedTimers[i] = 0f - Random.value;
-                activeSeeds[i] = Instantiate(seedPrefab, seedGrowthLocations[i].position, Quaternion.identity).transform;
+                activeSeeds[i] = Instantiate(seedPrefab, seedGrowthLocations[i].position, Quaternion.identity, GameManager.pickupSeedsContainer).transform;
                 activeSeeds[i].localScale = Vector3.zero;
             }
 
@@ -127,6 +133,9 @@ public class WhompingWillow : PlantBase, IAnimationAttack
 
         throw new System.NotImplementedException();
     }
+    
+    //================================================================================================================//
+
 
     public void AnimationAttack()
     {
@@ -135,8 +144,11 @@ public class WhompingWillow : PlantBase, IAnimationAttack
         if (enemies == null || enemies.Count == 0)
             return;
 
-        enemies.Where(e => Vector3.Distance(e.transform.position, transform.position) <= attackRange).ForEach(e => e.Damage(attackDamage));
+        enemies.Where(e => Vector3.Distance(e.transform.position, transform.position) <= attackRange * CurrentGrowth)
+            .ForEach(e => e.Damage(attackDamage));
     }
+    
+    //================================================================================================================//
 
     public override void Damage(float amount)
     {

@@ -16,16 +16,16 @@ class PlayerInventory : SerializedMonoBehaviour
         new Dictionary<BaseItem.itemList, GameObject>
         {
             {
-                BaseItem.itemList.bramblePlantSeed, null
+                BaseItem.itemList.BASE_SEED, null
             },
             {
-                BaseItem.itemList.oakWithBeesPlantSeed, null
+                BaseItem.itemList.WILLOW_SEED, null
             },
             {
-                BaseItem.itemList.slowingFungusPlantSeed, null
+                BaseItem.itemList.BUSH_SEED, null
             },
             {
-                BaseItem.itemList.restorativeFlowerPlantSeed, null
+                BaseItem.itemList.FUNGUS_SEED, null
             },
         };
 

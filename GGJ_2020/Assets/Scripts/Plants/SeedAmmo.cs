@@ -10,6 +10,17 @@ public class SeedAmmo : BaseItem
 
     public Transform currentTreeContainer;
 
+    // reference static
+    private static GameManager gm;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        if(gm == null) {
+            gm = FindObjectOfType<GameManager>();
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag(targetTag))
@@ -17,7 +28,7 @@ public class SeedAmmo : BaseItem
 
         GameObject treeContainer = GameObject.Find("Current Stage Trees");
 
-        Instantiate(prefab, collision.contacts[0].point, Quaternion.identity, treeContainer.transform);
+        Instantiate(prefab, collision.contacts[0].point, Quaternion.identity, gm.currentStageTreesContainer);
         
         Destroy(gameObject);
 
