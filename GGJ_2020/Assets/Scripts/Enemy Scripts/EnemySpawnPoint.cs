@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class EnemySpawnPoint : MonoBehaviour
+public class EnemySpawnPoint : MonoBehaviour, IDamageable
 {
     EnemySpawnController spawnController;
     
@@ -157,13 +158,50 @@ public class EnemySpawnPoint : MonoBehaviour
         float angleToTarget = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
         newEnemy.transform.Rotate(Vector3.up * angleToTarget);
     }
+    public void Damage(float amount)
+    {
+        factoryIntegrity -= amount;
+
+        // Debug.Log($"Deal [{amount}] damage to [{name}]. Remaining health = [{health}]");
+
+        if(factoryIntegrity <= 0) {
+            // factory is destroyed
+            crumbleFactory();
+        }
+    }
+    public void Heal(float amount)
+    {
+        factoryIntegrity += amount;
+    }
 
     public void crumbleFactory() {
 
         // factory is destroyed
+        Debug.Log("Cruble factory");
+        // call animation to move the factory beneath the ground
+        
+        // placeholder to just make mesh not visible - destroy spawn point children
+        foreach (Transform child in transform) {
+            GameObject.Destroy(child.gameObject);
+        }
 
-        // transition to next stage
-        gm.completeCurrentStage();
+        // set spawning to false
+        isSpawning = false;
+        
+        // call stage manager to check for all spawn points having been destroyed
+        gm.checkStageCompletion();
 
     }
+
+    // debug damage factory
+    [FoldoutGroup("Debug Reduce Factory Integrity"), Button("Factory Reduce Integrity by 0.25/1.0")]
+    public void debugDamageFactory() {
+        Damage(0.25f);
+    }
+
+    [FoldoutGroup("Debug Destroy Factory"), Button("Factory Deathblow")]
+    public void debugFactoryDeathblow() {
+        Damage(factoryIntegrity);
+    }
+
 }

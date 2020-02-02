@@ -176,6 +176,12 @@ public class GameManager : MonoBehaviour
         selectedSpawner.GetComponent<EnemySpawnController>().setSpawnersActive(false);
         selectedSpawner = null;
     }
+
+    public void checkStageCompletion() {
+
+        currentStageReference.GetComponent<StageManager>().checkCompletion();
+
+    }
     
     public void failCurrentStage() {
 
@@ -183,6 +189,21 @@ public class GameManager : MonoBehaviour
 
         // deactivate existing spawners
         deactivateStageSpawners();
+
+        // destroy all seeds in player inventory
+        // player.witherInventory()
+//        playerInventory.ClearInventory();
+
+        // remove all seed pickups in the world
+        destroyRemainingSeedPickups();
+
+        // destroy all current stage trees
+        // foreach(GameObject tree in currentStageTreesContainer) {
+            // destroy - or deal interative damage until dead
+        // }
+
+        // wait until the stage has reverted to initial state
+        // reverting a stage will need to include restoring destroed factories
 
         // replace base seed of this stage
         initStage(currentStageIndex);
@@ -196,8 +217,33 @@ public class GameManager : MonoBehaviour
         // deactivate existing spawners
         deactivateStageSpawners();
 
+        // destory all current robots
+        foreach(Transform robot in robotsContainer) {
+            Destroy(robot.gameObject);
+        }
+
+        // eject all remaining seeds in player inventory
+        // player.ejectPlayerSeeds()
+
+        // move all current stage trees into archived trees and set as no longer fruiting
+        foreach(Transform tree in currentStageTreesContainer) {
+            // set as no longer fruiting
+            //
+            // move to archivedTreesContainer
+            tree.parent = archivedTreesContainer;
+        }
+
+        // remove all seed pickups in the world
+        destroyRemainingSeedPickups();
+
         // need to activate the base seed of the next stage
         initStage(currentStageIndex + 1);
+    }
+
+    private void destroyRemainingSeedPickups() {
+        foreach (Transform child in pickupSeedsContainer) {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 
     //================================================================================================================//
