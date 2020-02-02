@@ -104,6 +104,7 @@ public class BaseTreeSpawn : MonoBehaviour
                 toolkitSeedLaunchForce.z + randZ);
 
             newSeed.GetComponent<Rigidbody>().AddForce(newLauchForce);
+            newSeed.GetComponent<Rigidbody>().AddTorque(newLauchForce);
 
         }
 
