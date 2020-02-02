@@ -34,6 +34,8 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
 
     //================================================================================================================//
 
+    public bool isFruiting = true;
+
 
     [SerializeField, ReadOnly]
     private STATE currentState;
@@ -105,9 +107,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     // Update is called once per frame
     private void Update()
     {
-        
-        
-        
+
         switch (currentState)
         {
             case STATE.GROW:
@@ -221,13 +221,17 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     
     private void OnDestroy()
     {
-        foreach (var t in activeSeeds)
+        if (activeSeeds != null && activeSeeds.Length != 0)
         {
-            if(t == null)
-                continue;
+            foreach (var t in activeSeeds)
+            {
+                if(t == null)
+                    continue;
             
-            Destroy(t.gameObject);
+                Destroy(t.gameObject);
+            }
         }
+        
 
         GameManager.UnRegisterPlant(this);
     }

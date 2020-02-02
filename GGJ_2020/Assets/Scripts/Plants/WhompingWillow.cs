@@ -71,7 +71,7 @@ public class WhompingWillow : PlantBase, IAnimationAttack
             
             SetState(STATE.GROW);
         }
-        else
+        else if(isFruiting)
         {
             SetState(STATE.FRUITING);
         }
@@ -80,6 +80,11 @@ public class WhompingWillow : PlantBase, IAnimationAttack
 
     public override void FruitingState()
     {
+        if (!isFruiting)
+        {
+            SetState(STATE.IDLE);
+            return;
+        }
         //Do nothing...
         for (var i = 0; i < seedGrowthLocations.Length; i++)
         {
