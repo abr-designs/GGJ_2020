@@ -10,7 +10,7 @@ Material:
   m_Name: GroundSurface
   m_Shader: {fileID: 4800000, guid: a5d160985d34f074da45bf0252190d47, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -18,7 +18,23 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _HappyGround:
+        m_Texture: {fileID: 2800000, guid: c2b430947a9549a4e94285ce6af3b459, type: 3}
+        m_Scale: {x: 20, y: 20}
+        m_Offset: {x: 0, y: 0}
+    - _SadGround:
+        m_Texture: {fileID: 2800000, guid: 945d5886942c35a4f94bf7cb94eead77, type: 3}
+        m_Scale: {x: 30, y: 30}
+        m_Offset: {x: 0, y: 0}
+    - _Splatter:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - __dirty: 0
     m_Colors: []

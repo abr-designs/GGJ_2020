@@ -48,7 +48,7 @@ public class SeedCannon : MonoBehaviour
     private void ShootSeed()
     {
         //TODO Try to get prefab
-        if (!playerInventory.TryGetSeed(0, out var seedPrefab))
+        if (!playerInventory.TryGetSeed(selectedAmmo, out var seedPrefab))
         {
             Debug.Log($"Out of ammo");
             return;
