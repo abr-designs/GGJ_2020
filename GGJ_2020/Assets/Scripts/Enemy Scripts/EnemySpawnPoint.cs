@@ -177,7 +177,7 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
     public void crumbleFactory() {
 
         // factory is destroyed
-        Debug.Log("Cruble factory");
+        Debug.Log($"Crumble {this}");
         // call animation to move the factory beneath the ground
         
         // placeholder to just make mesh not visible - destroy spawn point children

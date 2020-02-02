@@ -14638,6 +14638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b24cfd05d4d4eecb3d63796b7d92cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  homeBaseSeedStagePrefab: {fileID: 6887040648122996040, guid: 172617221cc94464eb68da63b75dd78c,
+    type: 3}
   baseSeedContainerReference: {fileID: 1154315192}
   enemySpawnControllerReference: {fileID: 3080447567954451536}
   pathwaysContainerReference: {fileID: 2074022226}
@@ -23602,6 +23604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b24cfd05d4d4eecb3d63796b7d92cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  homeBaseSeedStagePrefab: {fileID: 1644414984875724430, guid: b179ffc449df5425f9449152985ce531,
+    type: 3}
   baseSeedContainerReference: {fileID: 2011371808}
   enemySpawnControllerReference: {fileID: 3080447567608733270}
   pathwaysContainerReference: {fileID: 1456617737}

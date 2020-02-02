@@ -6,6 +6,7 @@ public class StageManager : MonoBehaviour
 {
 
     // variable existing in heirarchy
+    public GameObject homeBaseSeedStagePrefab;
     public GameObject baseSeedContainerReference;
     public GameObject enemySpawnControllerReference;
     public GameObject pathwaysContainerReference;
