@@ -49,8 +49,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Cutoff: 0.001
-    - _FogIntensity: 0.059
-    - _FogMaxIntensity: 1.194
+    - _FogIntensity: 1
+    - _FogMaxIntensity: 1.23
     - _ForestNormalStrengthF: 0
     - _Metalness0: 1
     - _Smoothness: 1
@@ -60,11 +60,12 @@ Material:
     - _TransScattering: 50
     - _TransShadow: 0.9
     - _Translucency: 50
+    - _Transparency: 0
     - _WastelandNormalStrengthF: 0
     - __dirty: 0
     m_Colors:
-    - _AlphaBlend: {r: 0.7264151, g: 0.46257564, b: 0.46257564, a: 0}
+    - _AlphaBlend: {r: 1, g: 0, b: 0, a: 0}
     - _Color0: {r: 0, g: 0, b: 0, a: 0}
-    - _FogColor: {r: 0.027451038, g: 1, b: 0, a: 0}
+    - _FogColor: {r: 1, g: 0.18396229, b: 0.43022165, a: 0}
     - _FogColour: {r: 1, g: 1, b: 1, a: 0}
-    - _FogEmission: {r: 0, g: 0, b: 0, a: 0}
+    - _FogEmission: {r: 0.030262403, g: 0.3490566, b: 0, a: 0}
