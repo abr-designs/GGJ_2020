@@ -15,7 +15,7 @@ public class Tree : PlantBase
     {
         base.Init();
         shrubs = new GameObject[numShrubs];
-        print("hi");// PlanarCoordinate.x + " " + " " + PlanarCoordinate.y);
+        //print("hi");// PlanarCoordinate.x + " " + " " + PlanarCoordinate.y);
         for (int i =0; i <numShrubs; i ++)
         {
    

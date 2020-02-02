@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb4e9336f08d1446b82143f29485c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFruiting: 0
+  isFruiting: 1
   currentState: 0
   plantType: 0
   lockRadius: 10
@@ -705,7 +705,7 @@ MonoBehaviour:
   attackCooldown: 5
   attackRange: 5
   attackDamage: 8
-  seedPrefab: {fileID: 6154364813649377400, guid: 2a4395fcbbabf614295021fd06dfaf44,
+  seedPrefab: {fileID: 283108232876989202, guid: e667e10c0a1ab524eaeeba89d5d654bb,
     type: 3}
   seedGrowthLocations:
   - {fileID: 8042504033362572711}
