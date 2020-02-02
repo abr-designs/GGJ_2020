@@ -194,7 +194,7 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
     void dealFertilityDamage() {
 
         // fertilityController.GetFloatAtPos(transform.position);
-        float fertilityDamageAmount = fertilityController.GetFloatAtPos(transform.position);;
+        float fertilityDamageAmount = fertilityController.GetFloatAtPos(transform.position) / 100.0f;
 
         // check fertility in range of factory to determine how much damage to deal
         Debug.Log($"Deal [{fertilityDamageAmount}] fertility damage to factory");
