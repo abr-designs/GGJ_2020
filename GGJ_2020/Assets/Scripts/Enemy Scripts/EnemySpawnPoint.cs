@@ -7,7 +7,8 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
 {
     EnemySpawnController spawnController;
     
-    public RobotPathway pathwayForSpawnPoint;
+    public List<RobotPathway> pathwaysForSpawnPoint;
+    private int nextPathwayIndex;
     
     public List<GameObject> enemyTypes;
 
@@ -68,6 +69,8 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
 
         factoryIntegrity = 1.0f; // use for factory damage in order to cause factory to be destoryed
 
+        nextPathwayIndex = 0;
+
     }
 
     public void setIsSpawning(bool b) { isSpawning = b; }
@@ -106,11 +109,17 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
             GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, gm.robotsContainer);//spawnController.enemyContainer)
 
             // set pathway for newEnemy
-            newEnemy.GetComponent<EnemyBaseState>().setPathway(pathwayForSpawnPoint);
+            RobotPathway newPathway = pathwaysForSpawnPoint[nextPathwayIndex];
+            newEnemy.GetComponent<EnemyBaseState>().setPathway(newPathway);
             newEnemy.GetComponent<EnemyBaseState>().setSpawnPoint(gameObject);
 
+            // increment lastUsedPathIndex
+            nextPathwayIndex += 1;
+            if(nextPathwayIndex >= pathwaysForSpawnPoint.Count) { nextPathwayIndex = 0; }
+
             // identify first waypoint
-            GameObject firstWaypoint = pathwayForSpawnPoint.pathway[0].gameObject;
+            GameObject firstWaypoint = newPathway.pathway[0].gameObject;
+
             // rotate spawned enemy to look at first waypoint
             Vector3 localTarget = newEnemy.transform.InverseTransformPoint(firstWaypoint.transform.position);
             float angleToTarget = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
@@ -147,12 +156,18 @@ public class EnemySpawnPoint : MonoBehaviour, IDamageable
 
         GameObject newEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity, gm.robotsContainer);//spawnController.enemyContainer);
 
-        // set pathway for newEnemy
-        newEnemy.GetComponent<EnemyBaseState>().setPathway(pathwayForSpawnPoint);
-        newEnemy.GetComponent<EnemyBaseState>().setSpawnPoint(gameObject);
-        
-        // identify first waypoint
-        GameObject firstWaypoint = pathwayForSpawnPoint.pathway[0].gameObject;
+            // set pathway for newEnemy
+            RobotPathway newPathway = pathwaysForSpawnPoint[nextPathwayIndex];
+            newEnemy.GetComponent<EnemyBaseState>().setPathway(newPathway);
+            newEnemy.GetComponent<EnemyBaseState>().setSpawnPoint(gameObject);
+
+            // increment lastUsedPathIndex
+            nextPathwayIndex += 1;
+            if(nextPathwayIndex >= pathwaysForSpawnPoint.Count) { nextPathwayIndex = 0; }
+
+            // identify first waypoint
+            GameObject firstWaypoint = newPathway.pathway[0].gameObject;
+            
         // rotate spawned enemy to look at first waypoint
         Vector3 localTarget = newEnemy.transform.InverseTransformPoint(firstWaypoint.transform.position);
         float angleToTarget = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;

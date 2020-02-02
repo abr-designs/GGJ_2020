@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5739673342757094710}
   - component: {fileID: 7954639129042355855}
   m_Layer: 0
-  m_Name: Stage 1 Base Tree Spawn
+  m_Name: Stage 1 Home Base Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,10 +50,10 @@ MonoBehaviour:
   baseTreeSeedPrefab: {fileID: 3927724437367063948, guid: 80c129ffffa4e435eb2123f087ae19a4,
     type: 3}
   toolkitSeeds:
+  - {fileID: 3927724437367063948, guid: 1800bf7fe4c869248a26367cba554fd4, type: 3}
   - {fileID: 3710909547522393244, guid: 00fb37af9f84f0e42820d37938077833, type: 3}
   toolkitSeedLaunchForce: {x: 0, y: 500, z: 0}
   stageToBegin: 1
-  randallTestGameController: {fileID: 0}
   currentTreeContainer: {fileID: 0}
   seedAmmoContainer: {fileID: 0}
 --- !u!135 &7954639129042355855

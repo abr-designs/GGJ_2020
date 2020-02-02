@@ -1933,7 +1933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38de1641ff8b43da8fb087fddf83657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathwayForSpawnPoint: {fileID: 3833500624060534646}
+  pathwaysForSpawnPoint:
+  - {fileID: 3833500624060534646}
   enemyTypes:
   - {fileID: 2010911748538247856, guid: 6c837c7baad114447982134d90848aa8, type: 3}
   spawnMinInterval: 2
@@ -1986,7 +1987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38de1641ff8b43da8fb087fddf83657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathwayForSpawnPoint: {fileID: 3833500624307833362}
+  pathwaysForSpawnPoint:
+  - {fileID: 3833500624307833362}
   enemyTypes:
   - {fileID: 744711105457299597, guid: 746a04c19a79b4f75988773ed5ce973d, type: 3}
   spawnMinInterval: 2
