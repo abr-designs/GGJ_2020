@@ -7,7 +7,7 @@
 	{
 
 		_MainTex("Texture", 2D) = "white" {}
-	//_MainTex2("Albedo 2 (RGB)", 2D) = "white" {}
+	_MainTex2("Albedo 2 (RGB)", 2D) = "white" {}
 	_Blend("Texture Blend", Range(0,1)) = 0.0
 		_Coordinate("Coordinate", Vector) = (0,0,0,0)
 		
