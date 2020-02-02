@@ -1990,7 +1990,7 @@ PrefabInstance:
     - target: {fileID: 7386624692955794209, guid: 3180a373d3a164e7aa6729ca36c76de1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.2
+      value: -19.1
       objectReference: {fileID: 0}
     - target: {fileID: 7386624692955794209, guid: 3180a373d3a164e7aa6729ca36c76de1,
         type: 3}
@@ -2000,7 +2000,7 @@ PrefabInstance:
     - target: {fileID: 7386624692955794209, guid: 3180a373d3a164e7aa6729ca36c76de1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -46
+      value: -35.9
       objectReference: {fileID: 0}
     - target: {fileID: 7386624692955794209, guid: 3180a373d3a164e7aa6729ca36c76de1,
         type: 3}
@@ -2371,9 +2371,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2942710138742470033, guid: aa56426ba331d499c8574bd86dac9c10,
         type: 3}
+      propertyPath: enemyTypes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942710138742470033, guid: aa56426ba331d499c8574bd86dac9c10,
+        type: 3}
       propertyPath: pathwayForSpawnPoint
       value: 
       objectReference: {fileID: 1230656080}
+    - target: {fileID: 2942710138742470033, guid: aa56426ba331d499c8574bd86dac9c10,
+        type: 3}
+      propertyPath: enemyTypes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2010911748538247856, guid: 6c837c7baad114447982134d90848aa8,
+        type: 3}
+    - target: {fileID: 2942710138742470033, guid: aa56426ba331d499c8574bd86dac9c10,
+        type: 3}
+      propertyPath: enemyTypes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2010911748538247856, guid: 6c837c7baad114447982134d90848aa8,
+        type: 3}
     - target: {fileID: 6713182111744315285, guid: aa56426ba331d499c8574bd86dac9c10,
         type: 3}
       propertyPath: m_LocalPosition.x
