@@ -89,6 +89,29 @@ public class FertilityController : MonoBehaviour
         //Debug.Break();
     }
 
+    /// <summary>
+    /// Checks splay map at position to see if it has a fertility value
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns></returns>
+    public bool CanPlantAt(Vector3 position)
+    {
+        
+        if (!Physics.Raycast(position + Vector3.up, Vector3.down, out var hit, checkDistance, layerMask.value)) 
+            return false;
+        
+        var text = new Texture2D(splatMap.width, splatMap.height);
+        RenderTexture.active = splatMap;
+        text.ReadPixels(new Rect(0, 0, splatMap.width, splatMap.height), 0, 0);
+        //text.Apply();
+
+        var coord = hit.textureCoord;
+        var color = text.GetPixel(Mathf.RoundToInt(coord.x * pow2), Mathf.RoundToInt(coord.y * pow2));
+        
+        return color.r > 0;
+    }
+
+    #if UNITY_EDITOR
     private void OnGUI()
     {
         if(!isDebug)
@@ -96,4 +119,5 @@ public class FertilityController : MonoBehaviour
         
         GUI.DrawTexture(new Rect(0,0,256,256), splatMap, ScaleMode.ScaleToFit, false, 1);
     }
+    #endif
 }
