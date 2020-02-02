@@ -16,6 +16,10 @@
 
 		_Brush("Brush Size", Range(0.0, 50.0)) = 25.0
 
+
+
+		_Mult("Multiplier", float) = 1.0
+
 	}
 
 		SubShader
@@ -74,7 +78,7 @@
 
 				fixed4 _Coordinate, _Color;
 
-				float _Brush;
+				float _Brush, _Mult;
 
 
 
@@ -104,7 +108,7 @@
 
 
 
-					float draw = pow(saturate(1 - distance(i.uv, _Coordinate.xy)), 50 - _Brush);
+					float draw = pow(saturate(1 - distance(i.uv, _Coordinate.xy)), (10 - _Brush) * _Mult);
 
 					fixed4 drawCol = _Color * (draw * 1);
 

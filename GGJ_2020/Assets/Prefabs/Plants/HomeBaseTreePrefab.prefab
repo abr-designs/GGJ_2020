@@ -2215,9 +2215,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7004502437239140780}
   - component: {fileID: 3820649418452189082}
+  - component: {fileID: 6785098345824876431}
   - component: {fileID: 159470114814218252}
   m_Layer: 0
-  m_Name: BaseTreePrefab
+  m_Name: HomeBaseTreePrefab
   m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2255,14 +2256,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6300434732218434495}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0cdd1354d6e06c44bb2d45c94ed9627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
   plantType: 0
-  fetilityRadius: 7
+  fetilityRadius: 50
   startHealth: 1000
   currentHealth: 0
   growCurve:
@@ -2306,6 +2307,65 @@ MonoBehaviour:
   seedPrefab: {fileID: 0}
   seedGrowthLocations:
   - {fileID: 298278327874724335}
+--- !u!114 &6785098345824876431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6300434732218434495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b081a6d76fa64488bda44393169dec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  plantType: 0
+  fetilityRadius: 50
+  startHealth: 1000
+  currentHealth: 0
+  growCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7380687
+      value: 0.78964543
+      inSlope: 0.37833068
+      outSlope: 0.37833068
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.19100212
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  growTime: 120
+  seedGrowthTime: 120
+  attackCooldown: 0
+  attackRange: 0
+  attackDamage: 0
+  seedPrefab: {fileID: 0}
+  seedGrowthLocations:
+  - {fileID: 298278327874724335}
+  animator: {fileID: 0}
 --- !u!136 &159470114814218252
 CapsuleCollider:
   m_ObjectHideFlags: 0

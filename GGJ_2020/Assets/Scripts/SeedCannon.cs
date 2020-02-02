@@ -41,6 +41,16 @@ public class SeedCannon : MonoBehaviour
     {
         if (Input.GetKeyDown(shootKey))
             ShootSeed();
+
+        if (!Input.GetKeyDown(KeyCode.Tab)) 
+            return;
+        
+        var val = (int)selectedAmmo;
+        val++;
+        if (val > 3)
+            val = 0;
+
+        selectedAmmo = (BaseItem.itemList)val;
     }
 
     //================================================================================================================//

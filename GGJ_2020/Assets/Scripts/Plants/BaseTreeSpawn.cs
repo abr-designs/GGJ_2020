@@ -16,7 +16,7 @@ public class BaseTreeSpawn : MonoBehaviour
 
     public int stageToBegin;
 
-    public RandallTestGameController randallTestGameController;
+    // public RandallTestGameController randallTestGameController;
     public Transform currentTreeContainer;
     public Transform seedAmmoContainer;
 
@@ -54,6 +54,8 @@ public class BaseTreeSpawn : MonoBehaviour
 
     void plantBaseSeed() {
         
+        gm.currentHomeBaseSeed = gameObject;
+
         // remove existing rotating mesh 
         Destroy(seedMesh);
 
