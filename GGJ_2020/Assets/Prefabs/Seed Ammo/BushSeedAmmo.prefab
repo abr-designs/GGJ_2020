@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3710909547522392931}
   - component: {fileID: 5482891403076240713}
   - component: {fileID: 2149960996181353925}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BushSeedAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
