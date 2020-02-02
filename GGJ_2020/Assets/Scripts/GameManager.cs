@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     public GameObject currentHomeBaseSeed;
     public GameObject stageHomeBaseTree;
 
+    public int startingStage;
+
     //================================================================================================================//
 
     private void Start()
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
         playerInventory = FindObjectOfType<PlayerInventory>();
         playerGameObject = playerInventory.gameObject;
 
-        initStage(1);
+        initStage(startingStage);
     }
 
     //================================================================================================================//
