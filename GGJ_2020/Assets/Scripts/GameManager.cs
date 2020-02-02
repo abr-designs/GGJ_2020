@@ -223,13 +223,13 @@ public class GameManager : MonoBehaviour
         }
 
         // eject all remaining seeds in player inventory
-//playerInventory.ejectPlayerSeeds()
-        playerInventory.ClearInventory();
+        playerInventory.ejectPlayerSeeds()
+        //playerInventory.ClearInventory();
 
         // move all current stage trees into archived trees and set as no longer fruiting
         foreach(Transform tree in currentStageTreesContainer) {
             // set as no longer fruiting
-            //
+            // tree.GetComponent<PlantBase>().IsFruiting = false;
             // move to archivedTreesContainer
             tree.parent = archivedTreesContainer;
         }

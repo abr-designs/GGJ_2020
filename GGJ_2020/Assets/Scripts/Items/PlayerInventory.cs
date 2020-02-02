@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 class PlayerInventory : SerializedMonoBehaviour
 {
@@ -16,6 +17,7 @@ class PlayerInventory : SerializedMonoBehaviour
 
     [ReadOnly]
     public BaseItem.itemList? currentlySelected;
+    // SeedCannon seedCannon;
 
     //================================================================================================================//
 
@@ -65,14 +67,18 @@ class PlayerInventory : SerializedMonoBehaviour
     [FoldoutGroup("Held Objects"), ]
     public Vector3 localHoldRotation = Vector3.zero;
 
-
+    // reference static
+    private static GameManager gm;
 
     //================================================================================================================//
 
     private void Start()
     {
         initInventory();
-
+        // seedCannon = GetComponent<SeedCannon>();
+        if(gm == null) {
+            gm = FindObjectOfType<GameManager>();
+        }
     }
 
     private void Update()
@@ -238,5 +244,32 @@ class PlayerInventory : SerializedMonoBehaviour
         }
     }
 
+    //================================================================================================================//
+    
+    public void ejectPlayerSeeds() {
+
+        // lauch each toolkit seed
+        foreach(GameObject seedAmmoPrefab in playerInventory) {
+
+            // randomize spawn position
+            float randX = (float)Random.Range(-20,20)/40.0f;
+            float randY = (float)Random.Range(-20,20)/40.0f;
+            float randZ = (float)Random.Range(-20,20)/40.0f;
+            Vector3 randomPosition = new Vector3(randX, randY, randZ);
+            Vector3 spawnPosition = transform.position + randomPosition;
+            GameObject newSeed = Instantiate(seedAmmoPrefab, spawnPosition, Quaternion.identity, gm.seedAmmoContainer);
+
+            // add force to launched seed
+            randX = (float)Random.Range(-250,-750)/2;
+            randY = (float)Random.Range(25,750)/10;
+            randZ = (float)Random.Range(-250,-750)/2;
+            Vector3 newLauchForce = new Vector3(randX, randY, randZ);
+
+            newSeed.GetComponent<Rigidbody>().AddForce(newLauchForce);
+            newSeed.GetComponent<Rigidbody>().AddTorque(newLauchForce);
+
+        }
+
+    }
 
 }
