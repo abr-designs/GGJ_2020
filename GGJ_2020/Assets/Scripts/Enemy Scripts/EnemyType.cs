@@ -10,7 +10,7 @@ public class EnemyType : EnemyBaseState
 
     // private GameObject projectileContainer;
 
-    private float projectileUpwardForce = 150.0f;
+    private float projectileUpwardForce = 250.0f;
     private float projectileForwardForceMultiplier = 50.0f;
 
     // initialize this enemy with specific variables
