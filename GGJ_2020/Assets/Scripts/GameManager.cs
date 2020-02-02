@@ -26,8 +26,7 @@ public class GameManager : MonoBehaviour
     [FoldoutGroup("Containers References")]
     public Transform pickupSeedsContainer;
     //================================================================================================================//
-    // stage variables
-    public int currentStageIndex;
+
 
     [FoldoutGroup("Spawn Controllers")]
     public GameObject spawnController1;
@@ -35,9 +34,13 @@ public class GameManager : MonoBehaviour
     public GameObject spawnController2;
     
     // [FoldoutGroup("Debug Enemy Spawner")]
+
+    // stage variables
+    public int currentStageIndex;
     [SerializeField]
     private GameObject selectedSpawner;
 
+    public Vector3 stageBaseSeedPosition;
     public GameObject stageBaseTree;
 
     //================================================================================================================//
@@ -101,9 +104,16 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Set stage as active: {i}");
 
         currentStageIndex = i;
+
+        string stageObjectName = "Stage " + currentStageIndex;
         
         // init stage needs to identify the base seed - and subsequent base tree
-        
+        GameObject stageObject = GameObject.Find(stageObjectName);
+        // GameObject baseSeedContainer = stageObject.chil
+        Transform[] children = stageObject.GetComponentsInChildren<Transform>();
+        foreach (Transform child in children)
+            if (child.name == "Base Seed Container")
+                stageBaseSeedPosition = child.position;
 
     }
     
