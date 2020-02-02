@@ -86,6 +86,7 @@ public class BaseTreeSpawn : MonoBehaviour
 
     void launchSeeds() {
 
+        Debug.Log($"Launch {toolkitSeeds.Count} toolkit seeds");
         // lauch each toolkit seed
         foreach(GameObject seedAmmoPrefab in toolkitSeeds) {
 
@@ -104,6 +105,9 @@ public class BaseTreeSpawn : MonoBehaviour
             Vector3 newLauchForce = new Vector3(toolkitSeedLaunchForce.x + randX,
                 toolkitSeedLaunchForce.y + randY,
                 toolkitSeedLaunchForce.z + randZ);
+
+            // newSeed.GetComponent<Collider>().isKinematic = false;
+            // newSeed.GetComponent<Rigidbody>().isKinematic = false;
 
             newSeed.GetComponent<Rigidbody>().AddForce(newLauchForce);
             newSeed.GetComponent<Rigidbody>().AddTorque(newLauchForce);

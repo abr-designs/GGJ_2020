@@ -8,6 +8,8 @@ using UnityEngine;
 public class SeedAmmo : BaseItem
 {
     [SerializeField]
+    private bool ignoreFertility;
+    [SerializeField]
     private float spawnRequiredRadius;
     
     [SerializeField]
@@ -25,6 +27,7 @@ public class SeedAmmo : BaseItem
 
     // reference static
     private static GameManager gm;
+    private static FertilityController FertilityController;
     
     // Start is called before the first frame update
     private void Start()
@@ -32,12 +35,16 @@ public class SeedAmmo : BaseItem
         if(gm == null) {
             gm = FindObjectOfType<GameManager>();
         }
+
+        if (!FertilityController)
+            FertilityController = FindObjectOfType<FertilityController>();
         
         if(!PickupPrefab)
             throw new MissingReferenceException($"Pickup prefab not set on {gameObject.name}");
 
         transform = gameObject.transform;
         rigidbody = gameObject.GetComponent<Rigidbody>();
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -85,6 +92,8 @@ public class SeedAmmo : BaseItem
 
     private bool CheckCanSpawn(Vector3 point)
     {
+        if (!ignoreFertility && FertilityController.CanPlantAt(point))
+            return true;
         
         var plants = gm.plants;
 

@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6300434732218434495, guid: f38b42763b9697a4a9999710ca300030, type: 3}
+  ignoreFertility: 1
   spawnRequiredRadius: 15
   targetTag: Ground
   PickupPrefab: {fileID: 4633668425555022018, guid: 37dfb9b628be71b42a5ebb6bd000de89,

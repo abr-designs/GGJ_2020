@@ -19146,8 +19146,6 @@ MonoBehaviour:
   - {fileID: 3710909547522393244, guid: 00fb37af9f84f0e42820d37938077833, type: 3}
   - {fileID: 3927724437367063948, guid: 1800bf7fe4c869248a26367cba554fd4, type: 3}
   - {fileID: 3927724437367063948, guid: 1800bf7fe4c869248a26367cba554fd4, type: 3}
-  - {fileID: 2575019335926624051, guid: cd5cc820b365b60418660bf5d86c69e3, type: 3}
-  - {fileID: 2575019335926624051, guid: cd5cc820b365b60418660bf5d86c69e3, type: 3}
   toolkitSeedLaunchForce: {x: 50, y: 50, z: 50}
   stageToBegin: 2
   currentTreeContainer: {fileID: 0}
