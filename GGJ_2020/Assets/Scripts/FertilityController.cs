@@ -7,8 +7,11 @@ public class FertilityController : MonoBehaviour
 {
     private static readonly int Color = Shader.PropertyToID("_Color");
     private static readonly int Coordinate = Shader.PropertyToID("_Coordinate");
-    private static readonly int DetailAlbedoMap = Shader.PropertyToID("_DetailAlbedoMap");
+    private static readonly int DetailAlbedoMap = Shader.PropertyToID("_Splatter");
+    //private static readonly int DetailAlbedoMap2 = Shader.PropertyToID("_DetailAlbedoMap2");
     private static readonly int Brush = Shader.PropertyToID("_Brush");
+    
+
 
     [SerializeField] private bool isDebug;
     //================================================================================================================//
