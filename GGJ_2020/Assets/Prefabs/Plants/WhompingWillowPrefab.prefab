@@ -702,7 +702,7 @@ MonoBehaviour:
   seedGrowthTime: 6
   attackCooldown: 5
   attackRange: 5
-  attackDamage: 0
+  attackDamage: 8
   seedPrefab: {fileID: 6154364813649377400, guid: 2a4395fcbbabf614295021fd06dfaf44,
     type: 3}
   seedGrowthLocations:
@@ -719,10 +719,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 5
+  m_Radius: 2.66
   m_Height: 10
   m_Direction: 1
-  m_Center: {x: 0, y: 5, z: 0}
+  m_Center: {x: 1.99, y: 4.3, z: 1.08}
 --- !u!1 &3857902266213936350
 GameObject:
   m_ObjectHideFlags: 0

@@ -84,7 +84,7 @@ public class WhompingWillow : PlantBase, IAnimationAttack
                 activeSeeds[i].localScale = Vector3.zero;
             }
 
-            if (seedTimers[i] > growTime)
+            if (seedTimers[i] > seedGrowthTime)
             {
                 activeSeeds[i].GetComponent<Rigidbody>().isKinematic = false;
                 activeSeeds[i].GetComponent<BoxCollider>().enabled = true;
@@ -93,7 +93,7 @@ public class WhompingWillow : PlantBase, IAnimationAttack
             }
             
             seedTimers[i] += Time.deltaTime;
-            activeSeeds[i].localScale = Vector3.one * growCurve.Evaluate( seedTimers[i] / growTime);
+            activeSeeds[i].localScale = Vector3.one * growCurve.Evaluate( seedTimers[i] / seedGrowthTime);
 
         }
         
@@ -136,5 +136,14 @@ public class WhompingWillow : PlantBase, IAnimationAttack
             return;
 
         enemies.Where(e => Vector3.Distance(e.transform.position, transform.position) <= attackRange).ForEach(e => e.Damage(attackDamage));
+    }
+
+    public override void Damage(float amount)
+    {
+        
+        transform.localScale = Vector3.one * growCurve.Evaluate(currentHealth / startHealth);
+        
+        base.Damage(amount);
+
     }
 }
