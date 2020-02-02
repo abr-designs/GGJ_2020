@@ -6,7 +6,7 @@ public class EnemySpawnController : MonoBehaviour
 {
 
     public List<GameObject> spawnPointList;
-    public Transform enemyContainer;
+    // private Transform enemyContainer;
 
     [SerializeField]
     bool isActiveStageSpawner;

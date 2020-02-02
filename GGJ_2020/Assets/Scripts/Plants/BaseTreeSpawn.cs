@@ -69,6 +69,7 @@ public class BaseTreeSpawn : MonoBehaviour
             launchSeeds();
 
             // call game manager to initialize enemy spawns
+            
             gm.activateStageSpawners();//stageToBegin);
             
             Destroy(gameObject);
@@ -104,6 +105,7 @@ public class BaseTreeSpawn : MonoBehaviour
                 toolkitSeedLaunchForce.z + randZ);
 
             newSeed.GetComponent<Rigidbody>().AddForce(newLauchForce);
+            newSeed.GetComponent<Rigidbody>().AddTorque(newLauchForce);
 
         }
 

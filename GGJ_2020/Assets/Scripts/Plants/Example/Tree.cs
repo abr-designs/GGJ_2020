@@ -43,6 +43,11 @@ public class Tree : PlantBase
 
     public override void FruitingState()
     {
+        if (!isFruiting)
+        {
+            SetState(STATE.IDLE);
+            return;
+        }
         //Do nothing...
         for (var i = 0; i < seedGrowthLocations.Length; i++)
         {

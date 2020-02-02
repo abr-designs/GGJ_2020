@@ -7016,6 +7016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   plantType: 0
+  lockRadius: 15
   fetilityRadius: 7
   startHealth: 1000
   currentHealth: 0

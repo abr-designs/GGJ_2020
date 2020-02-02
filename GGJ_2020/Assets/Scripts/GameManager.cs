@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     public GameObject currentHomeBaseSeed;
     public GameObject stageHomeBaseTree;
 
+    public int startingStage;
+
     //================================================================================================================//
 
     private void Start()
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
         playerInventory = FindObjectOfType<PlayerInventory>();
         playerGameObject = playerInventory.gameObject;
 
-        initStage(1);
+        initStage(startingStage);
     }
 
     //================================================================================================================//
@@ -107,6 +109,10 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Set stage as active: {i}");
 
         currentStageIndex = i;
+        
+        // check if stagesRefernceList is emtpty
+        if(stagesRefernceList.Count == 0) return;
+
         currentStageReference = stagesRefernceList[i-1];
 
         string stageObjectName = "Stage " + currentStageIndex;
@@ -170,6 +176,12 @@ public class GameManager : MonoBehaviour
         selectedSpawner.GetComponent<EnemySpawnController>().setSpawnersActive(false);
         selectedSpawner = null;
     }
+
+    public void checkStageCompletion() {
+
+        currentStageReference.GetComponent<StageManager>().checkCompletion();
+
+    }
     
     public void failCurrentStage() {
 
@@ -177,6 +189,21 @@ public class GameManager : MonoBehaviour
 
         // deactivate existing spawners
         deactivateStageSpawners();
+
+        // destroy all seeds in player inventory
+        // player.witherInventory()
+        playerInventory.ClearInventory();
+
+        // remove all seed pickups in the world
+        destroyRemainingSeedPickups();
+
+        // destroy all current stage trees
+        // foreach(GameObject tree in currentStageTreesContainer) {
+            // destroy - or deal interative damage until dead
+        // }
+
+        // wait until the stage has reverted to initial state
+        // reverting a stage will need to include restoring destroed factories
 
         // replace base seed of this stage
         initStage(currentStageIndex);
@@ -190,8 +217,34 @@ public class GameManager : MonoBehaviour
         // deactivate existing spawners
         deactivateStageSpawners();
 
+        // destory all current robots
+        foreach(Transform robot in robotsContainer) {
+            Destroy(robot.gameObject);
+        }
+
+        // eject all remaining seeds in player inventory
+        playerInventory.ejectPlayerSeeds();
+        //playerInventory.ClearInventory();
+
+        // move all current stage trees into archived trees and set as no longer fruiting
+        foreach(Transform tree in currentStageTreesContainer) {
+            // set as no longer fruiting
+            // tree.GetComponent<PlantBase>().IsFruiting = false;
+            // move to archivedTreesContainer
+            tree.parent = archivedTreesContainer;
+        }
+
+        // remove all seed pickups in the world
+        destroyRemainingSeedPickups();
+
         // need to activate the base seed of the next stage
         initStage(currentStageIndex + 1);
+    }
+
+    private void destroyRemainingSeedPickups() {
+        foreach (Transform child in pickupSeedsContainer) {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 
     //================================================================================================================//
