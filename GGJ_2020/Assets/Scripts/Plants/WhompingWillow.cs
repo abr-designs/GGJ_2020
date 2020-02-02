@@ -92,6 +92,8 @@ public class WhompingWillow : PlantBase, IAnimationAttack
             {
                 seedTimers[i] = 0f - Random.value;
                 activeSeeds[i] = Instantiate(seedPrefab, seedGrowthLocations[i].position, Quaternion.identity, GameManager.pickupSeedsContainer).transform;
+                activeSeeds[i].GetComponent<Rigidbody>().isKinematic = true;
+                activeSeeds[i].GetComponent<BoxCollider>().enabled = false;
                 activeSeeds[i].localScale = Vector3.zero;
             }
 

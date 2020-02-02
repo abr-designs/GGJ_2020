@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2605429988428089563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.8665829, y: -0.093655586, z: 0.35106373}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7.702528, y: 15.9504, z: 7.9752}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,4 +51,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   setMaterial: {fileID: 2100000, guid: 4c91db470a3462b46a4e0f4b7a215d71, type: 2}
+  setFogMaterial: {fileID: 2100000, guid: 533598e114c4b294c8aaabc4393f9253, type: 2}
   drawShader: {fileID: 4800000, guid: 4003cdaec08523645bace977a4f8a91f, type: 3}
