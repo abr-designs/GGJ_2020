@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -85,6 +86,8 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
         if(GameManager == null)
             GameManager = FindObjectOfType<GameManager>();
         
+        GameManager.RegisterPlant(this);
+        
         transform = gameObject.transform;
         
         Init();
@@ -93,6 +96,9 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     // Update is called once per frame
     private void Update()
     {
+        
+        
+        
         switch (currentState)
         {
             case STATE.GROW:
@@ -113,6 +119,9 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
             default:
                 throw new NotImplementedException($"{currentState} not implemented.");
         }
+        
+        if(EnemyInRange() && currentState != STATE.DEATH)
+            SetState(STATE.ATTACK);
     }
 
 //================================================================================================================//
@@ -173,7 +182,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     public abstract void DeathState();
     
     //================================================================================================================//
-    public void Damage(float amount)
+    public virtual void Damage(float amount)
     {
 
         currentHealth -= amount;
@@ -211,5 +220,18 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     [FoldoutGroup("Debug Damage Tree"), Button("Kill Tree")]
     public void debugKillTree() {
         Damage(currentHealth);
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var t in activeSeeds)
+        {
+            if(t == null)
+                continue;
+            
+            Destroy(t.gameObject);
+        }
+
+        GameManager.UnRegisterPlant(this);
     }
 }
