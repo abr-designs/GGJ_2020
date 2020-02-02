@@ -37,11 +37,14 @@ public class GameManager : MonoBehaviour
 
     // stage variables
     public int currentStageIndex;
+    public GameObject currentStageReference;
+    public List<GameObject> stagesRefernceList;
     [SerializeField]
     private GameObject selectedSpawner;
 
     public Vector3 stageBaseSeedPosition;
-    public GameObject stageBaseTree;
+    public GameObject currentHomeBaseSeed;
+    public GameObject stageHomeBaseTree;
 
     //================================================================================================================//
 
@@ -104,6 +107,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Set stage as active: {i}");
 
         currentStageIndex = i;
+        currentStageReference = stagesRefernceList[i-1];
 
         string stageObjectName = "Stage " + currentStageIndex;
         
@@ -117,7 +121,7 @@ public class GameManager : MonoBehaviour
 
     }
     
-    void setStageBaseTree(GameObject g) { stageBaseTree = g; }
+    public void setStageBaseTree(GameObject g) { stageHomeBaseTree = g; }
 
 
     public void activateStageSpawners() {
