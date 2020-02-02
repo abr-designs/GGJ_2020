@@ -7,11 +7,12 @@ public class FertilityController : MonoBehaviour
 {
     private static readonly int Color = Shader.PropertyToID("_Color");
     private static readonly int Coordinate = Shader.PropertyToID("_Coordinate");
-    private static readonly int DetailAlbedoMap = Shader.PropertyToID("_Splatter");
-    //private static readonly int DetailAlbedoMap2 = Shader.PropertyToID("_DetailAlbedoMap2");
-    private static readonly int Brush = Shader.PropertyToID("_Brush");
-    
 
+    private static int DetailAlbedoMap;
+    private static readonly int Brush = Shader.PropertyToID("_Brush");
+
+    [SerializeField]
+    private string targetProperty;
 
     [SerializeField] private bool isDebug;
     //================================================================================================================//
@@ -35,6 +36,8 @@ public class FertilityController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        DetailAlbedoMap = Shader.PropertyToID(targetProperty);
+        
         drawMaterial = new Material(drawShader);
         drawMaterial.SetVector(Color, UnityEngine.Color.white);
         splatMap = new RenderTexture(1024,1024, 0, RenderTextureFormat.ARGBFloat);
@@ -47,9 +50,10 @@ public class FertilityController : MonoBehaviour
     public void PaintAt(Vector3 position, float brushSize = 25f)
     {
         Debug.DrawRay(position, Vector3.down * checkDistance, UnityEngine.Color.blue, 2f);
-        if (!Physics.Raycast(position, Vector3.down * checkDistance, out var hit, layerMask.value)) 
+        
+        if (!Physics.Raycast(position, Vector3.down, out var hit, checkDistance, layerMask.value)) 
             return;
-
+        
         
         var texCoord = hit.textureCoord;
         //TODO Raycast down to ground geet hit.textCoord
