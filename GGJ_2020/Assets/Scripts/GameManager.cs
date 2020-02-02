@@ -223,7 +223,7 @@ public class GameManager : MonoBehaviour
         }
 
         // eject all remaining seeds in player inventory
-        playerInventory.ejectPlayerSeeds()
+        playerInventory.ejectPlayerSeeds();
         //playerInventory.ClearInventory();
 
         // move all current stage trees into archived trees and set as no longer fruiting

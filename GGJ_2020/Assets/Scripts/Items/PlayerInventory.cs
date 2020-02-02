@@ -205,7 +205,10 @@ class PlayerInventory : SerializedMonoBehaviour
 
     public void ClearInventory()
     {
-        playerInventory = new Dictionary<BaseItem.itemList, int>();
+        // playerInventory = new Dictionary<BaseItem.itemList, int>();
+
+        playerInventory.Clear();
+        ShowSelectedObject();
     }
 
     /// <summary>
@@ -249,26 +252,39 @@ class PlayerInventory : SerializedMonoBehaviour
     public void ejectPlayerSeeds() {
 
         // lauch each toolkit seed
-        foreach(GameObject seedAmmoPrefab in playerInventory) {
+        foreach(var kvp in ammoLibrary) {
+            
+            if(!playerInventory.ContainsKey(kvp.Key)) {
+                continue;
+            }
 
-            // randomize spawn position
-            float randX = (float)Random.Range(-20,20)/40.0f;
-            float randY = (float)Random.Range(-20,20)/40.0f;
-            float randZ = (float)Random.Range(-20,20)/40.0f;
-            Vector3 randomPosition = new Vector3(randX, randY, randZ);
-            Vector3 spawnPosition = transform.position + randomPosition;
-            GameObject newSeed = Instantiate(seedAmmoPrefab, spawnPosition, Quaternion.identity, gm.seedAmmoContainer);
+            int count = playerInventory[kvp.Key];
 
-            // add force to launched seed
-            randX = (float)Random.Range(-250,-750)/2;
-            randY = (float)Random.Range(25,750)/10;
-            randZ = (float)Random.Range(-250,-750)/2;
-            Vector3 newLauchForce = new Vector3(randX, randY, randZ);
+            for(int i = 0; i <= count; i += 1) {
+                GameObject seedAmmoPrefab = kvp.Value;
 
-            newSeed.GetComponent<Rigidbody>().AddForce(newLauchForce);
-            newSeed.GetComponent<Rigidbody>().AddTorque(newLauchForce);
+                // randomize spawn position
+                float randX = (float)Random.Range(-20,20)/40.0f;
+                float randY = (float)Random.Range(-20,20)/40.0f;
+                float randZ = (float)Random.Range(-20,20)/40.0f;
+                Vector3 randomPosition = new Vector3(randX, randY, randZ);
+                Vector3 spawnPosition = transform.position + randomPosition;
+                GameObject newSeed = Instantiate(seedAmmoPrefab, spawnPosition, Quaternion.identity, gm.seedAmmoContainer);
+
+                // add force to launched seed
+                randX = (float)Random.Range(-250,-750)/2;
+                randY = (float)Random.Range(25,750)/10;
+                randZ = (float)Random.Range(-250,-750)/2;
+                Vector3 newLauchForce = new Vector3(randX, randY, randZ);
+
+                newSeed.GetComponent<Rigidbody>().AddForce(newLauchForce);
+                newSeed.GetComponent<Rigidbody>().AddTorque(newLauchForce);
+            }
 
         }
+
+        ClearInventory();
+
 
     }
 
