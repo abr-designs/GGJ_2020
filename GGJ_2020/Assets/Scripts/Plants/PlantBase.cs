@@ -36,10 +36,10 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     protected float fetilityRadius = 1f;
 
     [SerializeField]
-    private float startHealth;
+    protected float startHealth;
     
     [SerializeField, ProgressBar(0f,nameof(startHealth),0f,1f,0f), ReadOnly, PropertyOrder(-1000)]
-    private float currentHealth;
+    protected float currentHealth;
     
     [SerializeField]
     protected AnimationCurve growCurve = new AnimationCurve();
@@ -55,7 +55,10 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
 
     [SerializeField] 
     protected float attackRange;
-
+    
+    [SerializeField] 
+    protected float attackDamage;
+    
     [SerializeField] 
     protected GameObject seedPrefab;
 
@@ -118,7 +121,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
         activeSeeds = new Transform[seedGrowthLocations.Length];
         seedTimers = new float[seedGrowthLocations.Length];
         
-        currentHealth = startHealth;
+        currentHealth = 1;
         
         // set attack cooldown to zero
         Timer = 0;

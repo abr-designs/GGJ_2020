@@ -13,7 +13,7 @@ public class SceneController : Singleton<SceneController>
     private int menuSceneIndex;
 
     [SerializeField]
-    private int gameSceneIndex;
+    private int gameSceneIndex = 0;
 
     //================================================================================================================//
 
@@ -32,16 +32,18 @@ public class SceneController : Singleton<SceneController>
     }
 
     [HorizontalGroup("LoadScene"), Button("Load Menu")]
-    public void LoadMenuScene()
+    public void LoadMenuScene(Action OnLoadedCallback)
     {
-        StartCoroutine(LoadTargetSceneAsync(menuSceneIndex, null));
+        StartCoroutine(LoadTargetSceneAsync(menuSceneIndex, OnLoadedCallback));
     }
     
     [HorizontalGroup("LoadScene"), Button("Load Game")]
-    public void LoadGameScene()
+    public void LoadGameScene(Action OnLoadedCallback)
     {
-        StartCoroutine(LoadTargetSceneAsync(gameSceneIndex, null));
+        StartCoroutine(LoadTargetSceneAsync(gameSceneIndex, OnLoadedCallback));
+        
     }
+    
     //================================================================================================================//
     private IEnumerator LoadTargetSceneAsync(int targetScene, Action onSceneLoaded)
     {
