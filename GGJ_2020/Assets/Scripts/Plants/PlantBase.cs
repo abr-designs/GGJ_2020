@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -22,6 +23,7 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     //================================================================================================================//
 
     protected static FertilityController FertilityController;
+    protected static GameManager GameManager;
 
     
 
@@ -52,6 +54,9 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     protected float attackCooldown;
 
     [SerializeField] 
+    protected float attackRange;
+
+    [SerializeField] 
     protected GameObject seedPrefab;
 
     [SerializeField]
@@ -73,6 +78,9 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
     {
         if(FertilityController == null)
             FertilityController = FindObjectOfType<FertilityController>();
+        
+        if(GameManager == null)
+            GameManager = FindObjectOfType<GameManager>();
         
         transform = gameObject.transform;
         
@@ -137,6 +145,19 @@ public abstract class PlantBase : MonoBehaviour, IDamageable
             default:
                 throw new ArgumentOutOfRangeException(nameof(nextState), nextState, null);
         }
+    }
+
+    protected bool EnemyInRange()
+    {
+        var activeEnemies = GameManager.enemies;
+        
+        if(activeEnemies == null || activeEnemies.Count == 0)
+            return false;
+        
+        var enemy = activeEnemies.FirstOrDefault(e => Vector3.Distance(e.transform.position, transform.position) <= attackRange);
+        
+        
+        return enemy != null;
     }
     
     //================================================================================================================//

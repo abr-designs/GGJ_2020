@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInventory))]
 public class SeedCannon : MonoBehaviour
 {
+    //TODO Reference the selected Seed index from Player Inventory
+
     [SerializeField] 
     private BaseItem.itemList selectedAmmo;
     //================================================================================================================//
@@ -20,7 +22,6 @@ public class SeedCannon : MonoBehaviour
 
     //================================================================================================================//
 
-    //TODO Reference the selected Seed index from Player Inventory
 
     // Start is called before the first frame update
     private void Start()
@@ -52,6 +53,7 @@ public class SeedCannon : MonoBehaviour
             .GetComponent<Rigidbody>();
 
         tempRigidbody.AddForce(direction * shootForce);
+        tempRigidbody.AddTorque(new Vector3(Random.Range(-90f,90f), Random.Range(-90f,90f), Random.Range(-90f,90f)));
     }
 
     //================================================================================================================//
