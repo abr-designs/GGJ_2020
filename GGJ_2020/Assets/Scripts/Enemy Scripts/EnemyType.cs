@@ -44,6 +44,9 @@ public class EnemyType : EnemyBaseState
 
     private void performChopAttack() {
 
+        // perform melee animation
+        target.GetComponent<PlantBase>().Damage(attackDamage);
+
     }
 
     private void performProjectileAttack() {

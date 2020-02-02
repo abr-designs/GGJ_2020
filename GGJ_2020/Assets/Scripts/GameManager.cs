@@ -26,6 +26,19 @@ public class GameManager : MonoBehaviour
     [FoldoutGroup("Containers References")]
     public Transform pickupSeedsContainer;
     //================================================================================================================//
+    // stage variables
+    [FoldoutGroup("Spawn Controllers")]
+    public GameObject spawnController1;
+    [FoldoutGroup("Spawn Controllers")]
+    public GameObject spawnController2;
+    
+    // [FoldoutGroup("Debug Enemy Spawner")]
+    [SerializeField]
+    private GameObject selectedSpawner;
+
+    public GameObject stageBaseTree;
+
+    //================================================================================================================//
 
     private void Start()
     {
@@ -74,12 +87,81 @@ public class GameManager : MonoBehaviour
     }
     #endregion //Registration of Objects
     
+
+    //================================================================================================================//
+    // stage management
+
+    // function to call when base tree is planted
+    public void initStage(int i) {
+
+        Debug.Log($"Set stage as active: {i}");
+
+        GameObject spawnsToActivate = null;
+
+        switch(i) {
+            case 1:
+                spawnsToActivate = spawnController1;
+                break;
+            case 2:
+                spawnsToActivate = spawnController1;
+                break;
+            default:
+                spawnsToActivate = null;
+                break;
+        }
+
+        changeActiveSpawnerSet(spawnsToActivate);
+
+    }
+    
+    void setStageBaseTree(GameObject g) { stageBaseTree = g; }
+
+    void changeActiveSpawnerSet(GameObject g) {
+
+        if(g != selectedSpawner) {
+            // deactivate previous spawner
+            if(selectedSpawner != null) {
+                selectedSpawner.GetComponent<EnemySpawnController>().setSpawnersActive(false);
+            }
+            
+            selectedSpawner = g;
+            // activate selected spawn controller
+            if(selectedSpawner != null) {
+                selectedSpawner.GetComponent<EnemySpawnController>().setSpawnersActive(true);
+                // Debug.Log("Activate stage " + selectedSpawner);
+            } else {
+                // disable stage spawners
+                Debug.Log("Disable stage spawners");
+            }
+
+
+        }
+
+    }
+    
+    public void failStage(int i) {
+
+        Debug.Log($"Failed stage: {i}");
+
+        // replace base seed of this stage
+        //
+
+    }
+
+    public void completeStage(int i) {
+        
+        Debug.Log($"Complete stage: {i}");
+
+        // need to activate the base seed of the next stage
+        //
+    }
+
     //================================================================================================================//
     
     #region Spawn Debug Enemies
 
-    [FoldoutGroup("Debug Enemy Spawner")]
-    GameObject selectedSpawner;
+    // [FoldoutGroup("Debug Enemy Spawner")]
+    // GameObject selectedSpawner;
 
     [FoldoutGroup("Debug Enemy Spawner")]
     public GameObject debugSpawnPoint;

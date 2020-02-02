@@ -1160,32 +1160,32 @@ PrefabInstance:
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.245665
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5869416
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 38.033836
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2605429988428089561, guid: f9f051ff9e4a13243b21915f737115f2,
         type: 3}
@@ -1318,7 +1318,7 @@ PrefabInstance:
         type: 3}
       propertyPath: randallTestGameController
       value: 
-      objectReference: {fileID: 1634510587}
+      objectReference: {fileID: 0}
     - target: {fileID: 4644987572154566632, guid: 3bc2774ee84af4d64af0029b0ef546d8,
         type: 3}
       propertyPath: m_Name
@@ -2141,7 +2141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610789520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.379082, y: -1.6805972, z: -37.682774}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1634510588}
@@ -2437,7 +2437,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1634510588}
-  - component: {fileID: 1634510587}
   - component: {fileID: 1634510586}
   m_Layer: 0
   m_Name: GameController
@@ -2464,24 +2463,13 @@ MonoBehaviour:
   archivedTreesContainer: {fileID: 285011039}
   seedAmmoContainer: {fileID: 76633632}
   pickupSeedsContainer: {fileID: 2036953494}
-  debugSpawnPoint: {fileID: 1699058737}
-  prefabDebugEnemyType: {fileID: 8209669636462423545, guid: 0be7ae5190bff4569a54ff4366d03bcd,
-    type: 3}
---- !u!114 &1634510587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634510585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1687759e456c4cc3b5c8e021676b6ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   spawnController1: {fileID: 1594000474}
   spawnController2: {fileID: 1252935264}
   selectedSpawner: {fileID: 0}
+  stageBaseTree: {fileID: 0}
+  debugSpawnPoint: {fileID: 1699058737}
+  prefabDebugEnemyType: {fileID: 744711105457299597, guid: 746a04c19a79b4f75988773ed5ce973d,
+    type: 3}
 --- !u!4 &1634510588
 Transform:
   m_ObjectHideFlags: 0
@@ -2489,8 +2477,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634510585}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.379082, y: 1.6805972, z: 37.682774}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1610789521}
@@ -2605,7 +2593,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyTypes.Array.data[0]
       value: 
-      objectReference: {fileID: 744711105457299597, guid: 746a04c19a79b4f75988773ed5ce973d,
+      objectReference: {fileID: 2010911748538247856, guid: 6c837c7baad114447982134d90848aa8,
         type: 3}
     - target: {fileID: 6713182111744315285, guid: aa56426ba331d499c8574bd86dac9c10,
         type: 3}
@@ -3300,7 +3288,7 @@ PrefabInstance:
         type: 3}
       propertyPath: toolkitSeeds.Array.data[0]
       value: 
-      objectReference: {fileID: 3927724437367063948, guid: 1800bf7fe4c869248a26367cba554fd4,
+      objectReference: {fileID: 3710909547522393244, guid: 00fb37af9f84f0e42820d37938077833,
         type: 3}
     - target: {fileID: 1802292383390927952, guid: 3bc2774ee84af4d64af0029b0ef546d8,
         type: 3}
@@ -3329,7 +3317,7 @@ PrefabInstance:
         type: 3}
       propertyPath: randallTestGameController
       value: 
-      objectReference: {fileID: 1634510587}
+      objectReference: {fileID: 0}
     - target: {fileID: 1802292383390927952, guid: 3bc2774ee84af4d64af0029b0ef546d8,
         type: 3}
       propertyPath: currentTreeContainer

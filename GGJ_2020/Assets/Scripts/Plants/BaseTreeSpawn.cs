@@ -66,7 +66,7 @@ public class BaseTreeSpawn : MonoBehaviour
             launchSeeds();
 
             // call game manager to initialize enemy spawns
-            randallTestGameController.initStage(stageToBegin);
+            gm.initStage(stageToBegin);
             
             Destroy(gameObject);
         }));

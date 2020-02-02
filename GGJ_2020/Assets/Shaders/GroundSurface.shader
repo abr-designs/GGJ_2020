@@ -5,6 +5,7 @@ Shader "GroundSurface"
 	Properties
 	{
 		_SadGround("Sad Ground", 2D) = "white" {}
+		_Normal("Normal", 2D) = "bump" {}
 		_HappyGround("Happy Ground", 2D) = "white" {}
 		_Splatter("Splatter", 2D) = "white" {}
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
@@ -23,6 +24,8 @@ Shader "GroundSurface"
 			float2 uv_texcoord;
 		};
 
+		uniform sampler2D _Normal;
+		uniform float4 _Normal_ST;
 		uniform sampler2D _HappyGround;
 		uniform float4 _HappyGround_ST;
 		uniform sampler2D _SadGround;
@@ -32,6 +35,8 @@ Shader "GroundSurface"
 
 		void surf( Input i , inout SurfaceOutputStandard o )
 		{
+			float2 uv_Normal = i.uv_texcoord * _Normal_ST.xy + _Normal_ST.zw;
+			o.Normal = UnpackNormal( tex2D( _Normal, uv_Normal ) );
 			float2 uv_HappyGround = i.uv_texcoord * _HappyGround_ST.xy + _HappyGround_ST.zw;
 			float2 uv_SadGround = i.uv_texcoord * _SadGround_ST.xy + _SadGround_ST.zw;
 			float2 uv_Splatter = i.uv_texcoord * _Splatter_ST.xy + _Splatter_ST.zw;
@@ -47,10 +52,10 @@ Shader "GroundSurface"
 }
 /*ASEBEGIN
 Version=17700
-14;82;1415;870;-590.7314;-26.73636;1.3;True;True
-Node;AmplifyShaderEditor.SamplerNode;5;1075.353,954.2722;Inherit;True;Property;_SadGround;Sad Ground;0;0;Create;True;0;0;False;0;-1;None;c2b430947a9549a4e94285ce6af3b459;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;1;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+1629;501;1415;870;-376.7385;162.2938;1.6;True;True
 Node;AmplifyShaderEditor.SamplerNode;3;1053.118,618.4871;Inherit;True;Property;_HappyGround;Happy Ground;3;0;Create;True;0;0;False;0;-1;None;8daf317ad25d492449d9063d4ba1edfb;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SamplerNode;4;1425.65,889.0443;Inherit;True;Property;_Splatter;Splatter;4;0;Create;True;0;0;False;0;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SamplerNode;5;937.5531,851.5724;Inherit;True;Property;_SadGround;Sad Ground;0;0;Create;True;0;0;False;0;-1;None;c2b430947a9549a4e94285ce6af3b459;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;1;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SamplerNode;4;1260.549,987.8444;Inherit;True;Property;_Splatter;Splatter;4;0;Create;True;0;0;False;0;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TextureCoordinatesNode;10;1114.406,401.8123;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;15;1412.22,329.4683;Inherit;False;Property;_normalstrength;normal strength;5;0;Create;True;0;0;False;0;1;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;9;1901.225,73.01985;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
@@ -67,5 +72,6 @@ WireConnection;6;1;5;0
 WireConnection;6;2;4;1
 WireConnection;14;1;15;0
 WireConnection;0;0;6;0
+WireConnection;0;1;8;0
 ASEEND*/
-//CHKSM=6412904E2C81A02D886CB53FF30758AC1AABDC30
+//CHKSM=80CE42AED37E2E1F8C481FE443A4F82D6839953D
