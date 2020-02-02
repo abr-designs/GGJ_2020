@@ -41,11 +41,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Forest:
         m_Texture: {fileID: 2800000, guid: c2b430947a9549a4e94285ce6af3b459, type: 3}
-        m_Scale: {x: 30, y: 30}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ForestNormal:
         m_Texture: {fileID: 2800000, guid: 83213d04d9868424e9b9fbe66517cabf, type: 3}
-        m_Scale: {x: 30, y: 30}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HappyGround:
         m_Texture: {fileID: 2800000, guid: 1c57985b1706ab1479cc79b226bd6b26, type: 3}
@@ -85,11 +85,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Wasteland:
         m_Texture: {fileID: 2800000, guid: 1c57985b1706ab1479cc79b226bd6b26, type: 3}
-        m_Scale: {x: 30, y: 30}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WastelandNormal:
         m_Texture: {fileID: 2800000, guid: 3e6389f7d0efad6499b532f60e04a9cd, type: 3}
-        m_Scale: {x: 30, y: 30}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
@@ -100,7 +100,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 0.77
     - _DstBlend: 0
-    - _ForestNormalStrengthF: 0.15
+    - _ForestNormalStrengthF: 0.495
     - _GlossMapScale: 1
     - _Glossiness: 1
     - _GlossyReflections: 1
@@ -115,7 +115,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WastelandNormalStrengthF: 0.503
+    - _WastelandNormalStrengthF: 0.649
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:

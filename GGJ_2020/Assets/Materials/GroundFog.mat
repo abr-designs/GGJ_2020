@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: b465540aa1273e34091f6dedc6af545c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 1
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -19,6 +19,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Forest:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ForestNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Splatter:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -27,16 +35,37 @@ Material:
         m_Texture: {fileID: 2800000, guid: 827041f3739a1fc449807a70cf9c835f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Wasteland:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WastelandNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Cutoff: 0.5
-    - _FogIntensity: 0.0012
-    - _FogMaxIntensity: 1
+    - _Cutoff: 0.001
+    - _FogIntensity: 1
+    - _FogMaxIntensity: 1.23
+    - _ForestNormalStrengthF: 0
+    - _Metalness0: 1
+    - _Smoothness: 1
+    - _TransAmbient: 1
+    - _TransDirect: 1
+    - _TransNormalDistortion: 1
+    - _TransScattering: 50
+    - _TransShadow: 0.9
+    - _Translucency: 50
+    - _Transparency: 0
+    - _WastelandNormalStrengthF: 0
     - __dirty: 0
     m_Colors:
-    - _FogColor: {r: 0, g: 0, b: 0, a: 0}
+    - _AlphaBlend: {r: 1, g: 0, b: 0, a: 0}
+    - _Color0: {r: 0, g: 0, b: 0, a: 0}
+    - _FogColor: {r: 1, g: 0.18396229, b: 0.43022165, a: 0}
     - _FogColour: {r: 1, g: 1, b: 1, a: 0}
-    - _FogEmission: {r: 1, g: 0, b: 0, a: 0}
+    - _FogEmission: {r: 0.030262403, g: 0.3490566, b: 0, a: 0}

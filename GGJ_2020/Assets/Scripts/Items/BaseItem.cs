@@ -7,7 +7,7 @@ public class BaseItem : MonoBehaviour
 {
 
     public enum itemList {
-        BASE_SEED,
+        BASE_SEED = 0,
         WILLOW_SEED,
         BUSH_SEED,
         FUNGUS_SEED

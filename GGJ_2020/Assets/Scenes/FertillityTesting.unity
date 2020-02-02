@@ -335,7 +335,6 @@ MonoBehaviour:
   pickupSeedsContainer: {fileID: 0}
   spawnController1: {fileID: 0}
   spawnController2: {fileID: 0}
-  currentStageIndex: 0
   currentStageReference: {fileID: 0}
   stagePrefabs: []
   selectedSpawner: {fileID: 0}
@@ -628,6 +627,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 683606453}
     m_Modifications:
+    - target: {fileID: 352319759981710481, guid: 8cbe7591779f8eb44a920376c57e0650,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230437401814494099, guid: 8cbe7591779f8eb44a920376c57e0650,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230437401814494103, guid: 8cbe7591779f8eb44a920376c57e0650,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6768692698233557506, guid: 8cbe7591779f8eb44a920376c57e0650,
         type: 3}
       propertyPath: m_Name
